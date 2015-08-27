@@ -1,0 +1,39 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+.center{
+	position: absolute;
+    left: 50%;
+    top: 50%; 
+}
+
+.jumbotron {
+  text-align: center;
+  background-color: transparent;
+}
+.jumbotron .btn {
+  padding: 14px 24px;
+  font-size: 21px;
+}
+.footer {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  margin-top: 40px;
+  border-top: 1px solid #eee;
+}
+.content .col-sm-4 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+.content h2 {
+  font-weight: normal;
+}
+.content.col-sm-4 p {
+  margin-right: 10px;
+  margin-left: 10px;
+}
