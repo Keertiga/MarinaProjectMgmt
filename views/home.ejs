@@ -3,17 +3,23 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
+
   <link rel='stylesheet' href='\css\bootstrap.min.css'/>
    <link rel='stylesheet' href='\css\style.css' />
   </head>
   <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
-      <div class="navbar navbar-inverse">
-         <div class="container-fluid">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="#">Project Management</a>
-          </div>
-          <ul class="nav navbar-nav navbar-right">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Project Management</a>
+          <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>  
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right ">
             <li class="active"><a href="#">Home</a></li>
             <li><a href="#">Projects</a></li>
             <li><a href="#">Locations</a></li>
@@ -23,7 +29,9 @@
           </ul>
         </div>
       </div>
-
+    </div>
+       
+      <div class="container">
       <!-- Jumbotron -->
       <div class=" container jumbotron">
         <h1>Managing Projects</h1>
@@ -60,7 +68,8 @@
       </footer>
 
     </div> <!-- /container -->
-
+  <script src="\js\jquery.js"></script>
+    <script src="\js\bootstrap.min.js"></script>
   </body>
 </html>
 
