@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+  <link rel='stylesheet' href='\css\bootstrap.min.css'/>
+  <link rel='stylesheet' href='\css\style.css' />
+  <link rel='stylesheet' href='\css\beneficiary.css' />
+   <!-- Load jQuery from Google's CDN -->
+    <!-- Load jQuery UI CSS  -->
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    
+    <!-- Load jQuery JS -->
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <!-- Load jQuery UI Main JS  -->
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    
+    <!-- Load SCRIPT.JS which will create datepicker for input field  -->
+   <script src="\js\datepicker.js"></script>
+</head>
+<body>
+  <div class="container">
+      <div class="navbar navbar-inverse">
+         <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Beneficiary Details</a>
+          </div>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">Locations</a></li>
+            <li><a href="#">Import/Export</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Log out</a></li>
+          </ul>
+        </div>
+  </div>
+
+
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label for="beneficiaryGroup" class="control-label col-sm-6">Beneficiary Group</label>
+            <div class="col-sm-6">
+                <select name = "beneficiary_group">
+                <option>School</option>
+                <option>College</option>
+                <option>Hospital</option>
+              </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="beneficiaryLocation" class="control-label col-sm-6">Beneficiary Location</label>
+            <div class="col-sm-6">
+                <select name = "beneficiary_location">
+                <option>Tamilnadu</option>
+                <option>Kerala</option>
+                <option>Andhra Pradesh</option>
+              </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="beneficiaryCategory" class="control-label col-sm-6">Beneficiary Category</label>
+            <div class="col-sm-6">
+                <select name = "beneficiary_category">
+                <option>Select an option</option>
+                <option>Organization</option>
+                <option>Individual</option>
+              </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="beneficiaryName" class="control-label col-sm-6">Beneficiary Name</label>
+            <div class="col-sm-6">
+                <input type="text" name="beneficiary_name">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="beneficiaryFundsAllocated" class="control-label col-sm-6">Funds Allocated</label>
+            <div class="col-sm-6">
+                <input type="text" name="beneficiary_fundsallocated">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="benfNumPeopleBenefited" class="control-label col-sm-6">Number of People Benefited</label>
+            <div class="col-sm-6">
+                <input type="text" name="benf_numpeoplebenefited">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="beneficaryTxnDate" class="control-label col-sm-6">Transaction Date</label>
+            <div class="col-sm-6">
+                <input type="text" name="beneficiary_txndate">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="beneficaryTxnOwner" class="control-label col-sm-6">Transaction Owner</label>
+            <div class="col-sm-6">
+                <input type="text" name="beneficiary_txnowner">
+            </div>
+        </div>     
+
+        <div class="form-group">
+            <div class="col-sm-2">
+            </div>
+            <div class="col-sm-4 text-right">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+            <div class="col-sm-4">
+                <button type="button" class="btn btn-primary">Cancel</button>
+            </div>
+            <div class="col-sm-2">
+            </div>
+        </div>
+    </form>
+  
+
+</body>
+</html>
