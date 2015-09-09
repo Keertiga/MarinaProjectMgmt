@@ -14,5 +14,12 @@ router.get('/register', function(req, res, next) {
   res.render('register');
 });
 
+router.get('/beneficiary', function(req, res, next) {
+  res.render('beneficiary');
+});
+
+router.get('/viewbeneficiary', function(req, res, next) {
+  res.render('viewbeneficiary');
+});
 
 module.exports = router;
