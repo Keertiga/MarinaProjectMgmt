@@ -1,0 +1,9 @@
+.button{
+    height:20px; 
+    width:100px; 
+    margin: 0 auto;
+    position:relative;
+    top:50%; 
+    width:40%;
+   
+}

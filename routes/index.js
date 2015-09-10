@@ -22,4 +22,8 @@ router.get('/viewbeneficiary', function(req, res, next) {
   res.render('viewbeneficiary');
 });
 
+router.get('/analytics', function(req, res, next) {
+  res.render('analytics');
+});
+
 module.exports = router;
