@@ -1,0 +1,23 @@
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+
+// create a schema
+var BenfDetailsSchema = new Schema({
+  group: String,
+  location: String,
+  category: String,
+  name: String,
+  funds: String,
+  people_benefited: String,
+  trans_date: String,
+  trans_owner: String,
+  gender: String,
+  age:number
+},{collection:'benf_details'});
+
+
+//creating a model using schema
+var benfDetails = mongoose.model('benf_details', BenfDetailsSchema);
+
+//exporting this model
+module.exports = benfDetails;
