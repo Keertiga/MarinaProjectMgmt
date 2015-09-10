@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Project creation</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel='stylesheet' href='\css\bootstrap.min.css'/>
+<link rel='stylesheet' href='\css\projectcreate.css'/>
+   <script src="\js\jquery.js"></script>
+  <script src="\js\bootstrap.min.js"></script>
+ 
+</head>
+<body>
+
+<div class="container">
+  <h2 align="center">Create a New Project</h2>
+
+  <form  action="/addProject" method="POST" class="form-horizontal" role="form">
+    <br/>
+    <div class="form-group">
+      <label for="inputProjectName" class="control-label col-sm-2">Project Name:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="inputProjectName" placeholder="Enter your Project Name">
+      </div>
+    </div>
+
+    <div class="form-group">
+       <label for="inputProjectDesc" class="control-label col-sm-2">Project Description:</label>
+      <div class="col-sm-10">          
+         <input id="inputProjectDesc" class="form-control" placeholder="Enter your Project Description" required >
+      </div>
+    </div>
+    
+<div class="form-group">
+       <label for="inputProjectLead" class=" control-label col-sm-2">Project Lead:</label>
+      <div class="col-sm-10">
+       <input id="inputProjectLead" class="form-control" placeholder="Enter your Project Lead Name" required >
+      </div>
+    </div>
+
+    <div class="form-group">
+       <label for="inputProjectconemail" class=" control-label col-sm-2">Contact Email/DL:</label>
+      <div class="col-sm-10">
+        <input id="inputProjectconemail" class="form-control" placeholder="Person/DL email to be notified" required >
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="inputProjectContactNo" class=" control-label col-sm-2">Contact Number:</label>
+      <div class="col-sm-10">          
+       <input id="inputProjectContactNo" class="form-control" placeholder="Person Contact Number for this Project" required >
+      </div>
+    </div>
+
+<div class="form-group">
+       <label for="inputProjectConType" class=" control-label col-sm-2">Project Sponsor:</label>
+      <div class="col-sm-10">
+        <input id="inputProjectConType" class="form-control" placeholder="Contributors for the project" required >
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="inputProjectCat" class=" control-label col-sm-2">Project Category:</label>
+   
+    <div class="col-sm-10"> 
+    <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" id="inputProjectCat" data-toggle="dropdown">Project Category
+      <span class="caret"></span></button>
+    
+      <ul class="dropdown-menu" role="menu" aria-labelledby="inputProjectCat">
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
+
+      </ul>
+  </div>
+  </div>
+ </div>
+
+<div class="form-group">
+    
+      <label for="inputProjectPeriod" class=" control-label col-sm-2">Project period:</label>
+      <div class="col-sm-10">
+        <input type= "date" id="inputProjectPeriod_sd" class="form-control-date">
+        <b>- to -</b>
+        <input type= "date" id="inputProjectPeriod_ed" class="form-control-date">
+        <label><input type="checkbox" ><i> (Check if end date not applicable)</i></label>
+      </div>      
+  </div>
+
+    <div class="form-group">
+     <label for="inputProjectfunds" class=" control-label col-sm-2">Project Fund:</label>
+      
+      <div class="col-xs-12 col-sm-6">          
+
+         <input id="inputProjectfunds" class="form-control" placeholder="Project fund">
+
+         <button class="btn btn-default dropdown-toggle" type="button" id="inputProjectfunds_cur" data-toggle="dropdown">IND
+      <span class="caret"></span></button>
+    
+      <ul class="dropdown-menu" role="menu" aria-labelledby="inputProjectCat">
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">INR</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">USD</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">EUR</a></li>
+      </ul>
+      </div>
+
+    </div>
+
+
+
+
+   <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Add Project</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+</body>
+</html>
