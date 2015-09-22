@@ -44,10 +44,8 @@
      <label for="design-project_category_label">
             ProjectCategory:
       </label>
-        <select class="form-control dropdown font_size" name="project_category_dropdown">
-        <option value="Education">Education</option>
-        <option value="Health">Health</option>
-        <option value="Food">Food</option>
+        <select class="form-control dropdown font_size" name="project_category" id="project_category">
+           <option>Select a category</option>
         </select>
 
       <label for="design-project_name_label">
@@ -80,7 +78,27 @@
         </div>
         <button class="form-btn btn-lg btn-primary" type="submit">Submit</button>
         </form>
-        </div>      
-       
+        </div>         
   </body>
+    <script src="\js\jquery.js"></script>
+  <script src="\js\bootstrap.min.js"></script>
+  <script>
+      $(document).ready(function(){
+       $.ajax({
+              url:"http://localhost:3000/analytics/projectCategory",
+              type:"GET",
+              headers:{"Accept":"application/json;odata=verbose"},
+              success:function(data){
+                       for(var i in data){
+                          var item=$('<option>'+data[i].name+'</option>');
+                          $('#project_category').append(item);
+                      }
+              },
+              error:function(data){
+                alert("error");
+              }
+      });
+
+      });
+  </script>
 </html>
