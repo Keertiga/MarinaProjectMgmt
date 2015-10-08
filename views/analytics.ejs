@@ -3,12 +3,14 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
-	<link rel='stylesheet' href='\css\bootstrap.min.css'/>
-    <link rel='stylesheet' href='\css\analytics.css' />
- 
+    <link rel='stylesheet' href='\css\bootstrap.min.css'/>
+    <link rel='stylesheet' href='\css\style.css' />
+   <link rel='stylesheet' href='\css\analytics.css' />
   </head>
-   <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+  <body>
+
+    <!-- code for navigation bar starts-->
+    <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <a class="navbar-brand" href="#">Project Management</a>
@@ -21,84 +23,57 @@
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right ">
             <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">Projects</a></li>
-            <li><a href="#">Locations</a></li>
-            <li><a href="#">Import/Export</a></li>
+            <li><a href="#">FAQ</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Log out</a></li>
           </ul>
         </div>
       </div>
     </div>
-    <br></br>
-    <br></br>
-    <div class="container">
-      <div class="page-header">
-       <h3 class="form-analytics-heading">Analytics Dashboard</h3>
-      </div>
-      
-      <form class="form-analytics" action="/home" method="get">
-     
-     <div class="row">
-            <div class="col-md-6">
-     <label for="design-project_category_label">
-            ProjectCategory:
-      </label>
-        <select class="form-control dropdown font_size" name="project_category" id="project_category">
-           <option>Select a category</option>
-        </select>
+     <!--  code for navigation bar ends here-->
 
-      <label for="design-project_name_label">
-            Projects Name:
-      </label>
-       <select class="form-control dropdown font_size" name="project_Name_dropdown">
-        <option value="ProjectA">ProjectA</option>
-        <option value="ProjectB">ProjectB</option>
-        <option value="ProjectC">ProjectC</option>
-        </select>
+    <div class="jumbotron">
+      <div class="container">
+        <h4 class="lead">Analytics Dashboard</h4> 
+        <p>Select approppriate options to view analytics</p>
       </div>
-       <div class="col-md-6">
-                <!-- <h3>Title Options:</h3> -->
-       <div class="option-holder">
-        <label for="design-location_label">Location:</label>
-        <select class="form-control dropdown font_size" name="Location_dropdown">
-        <option value="Chennai">Chennai</option>
-        <option value="Kolkatta">Kolkatta</option>
-        <option value="Mumbai">Mumbai</option>
-        </select>
-       <label for="design-funds_label">Funds:</label>
-        <select class="form-control dropdown font_size" name="Funds_dropdown">
-        <option value="1lakh">>1lakh</option>
-        <option value="1lakh-5lakh">1lakh-5lakh</option>
-        <option value="5lakh-10lakh">5lakh-10lakh</option>
-        </select>
-       </div>
-       </div>
+    </div>
+   
+   <!--code for radio buttons-->
+    <div class="container radio">
+       <div class="row">
+          <div class="radio-inline col-xs-12 col-sm-3">
+             <input name="selection" id="general" value="general" type="radio" ><label for="general">General</label>
+          </div>
+          <div class="radio-inline  col-xs-12 col-sm-3"> 
+             <input name="selection" id="project" value="project" checked="" type="radio"/><label for="project">Project</label>
+          </div>
+           <div class="radio-inline  col-xs-12 col-sm-3">
+             <input name="selection" id="location" value="location" type="radio"/><label for="location">Location</label>
+          </div>
+      </div>
+    </div>
+    <!--code for radio buttons ends here-->
 
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <iframe src="project" id="mainFrame"></iframe>
         </div>
-        <button class="form-btn btn-lg btn-primary" type="submit">Submit</button>
-        </form>
-        </div>         
+         <div class="col-md-2"></div>
+      </div>
+    </div>
+     
   </body>
-    <script src="\js\jquery.js"></script>
+  <script src="\js\jquery.js"></script>
   <script src="\js\bootstrap.min.js"></script>
   <script>
-      $(document).ready(function(){
-       $.ajax({
-              url:"http://localhost:3000/analytics/projectCategory",
-              type:"GET",
-              headers:{"Accept":"application/json;odata=verbose"},
-              success:function(data){
-                       for(var i in data){
-                          var item=$('<option>'+data[i].name+'</option>');
-                          $('#project_category').append(item);
-                      }
-              },
-              error:function(data){
-                alert("error");
-              }
-      });
-
-      });
+         $(document).ready(function(){
+              $("input[name=selection]:radio").click(function(){
+                       var url=$(this).val();
+                       $("#mainFrame").attr("src",url);
+              });
+         });
   </script>
 </html>

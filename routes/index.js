@@ -11,10 +11,24 @@ var controllers=require('../controllers');
 router.get('/', function(req, res) {
   res.render('index', { title: 'Project Management' });
 });
-<<<<<<< HEAD
+
 
 router.post('/signin',function(req,res){
        res.redirect('/home');
+});
+
+router.get('/project',function(req,res){
+       res.render('project');
+});
+
+router.get('/location',function(req,res){
+       res.render('location');
+});
+
+router.get('/generateChart',function(req,res){
+    controllers.getChartData(req.body,function(err,data){
+           console.log(data)
+    });
 });
 
 router.post('/register',function(req,res){
@@ -26,17 +40,23 @@ router.post('/register',function(req,res){
      });
 });
 
+router.post('/updateBenificiary', function(req, res, next) {
+      console.log(req.body);
+
+});
 
 
-router.get('/home', function(req, res) {
-=======
 router.get('/home', function(req, res, next) {
->>>>>>> b54e8f00c0067a4aab874b4326e7e205198c3084
+
   res.render('home');
 });
 
 router.get('/register', function(req, res) {
   res.render('register');
+});
+
+router.get('/create', function(req, res) {
+  res.render('createProject');
 });
 	
 
@@ -58,13 +78,7 @@ router.get('/analytics', function(req, res) {
   res.render('analytics');
 });
 
-<<<<<<< HEAD
-=======
-router.get('/CreateProject', function(req, res, next) {	
-  res.render('CreateProject');
-});
 
->>>>>>> b54e8f00c0067a4aab874b4326e7e205198c3084
 
 
 module.exports = router;

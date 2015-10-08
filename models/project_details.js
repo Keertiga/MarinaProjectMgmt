@@ -5,6 +5,7 @@ var Schema = mongoose.Schema;
 var ProjectSchema = new Schema({
   category: String,
   name: String,
+  location:String,
   description: String,
   lead: String,
   contact_email: String,
@@ -12,8 +13,8 @@ var ProjectSchema = new Schema({
   org_type: String,
   start_date: Date,
   end_date: Date,
-  locations: Arrays,
-  total_funds: Double,
+  locations: Array,
+  total_funds: Number,
   currency: String
 },{collection:'project_details'});
 

@@ -67,3 +67,37 @@ hr{
   left:50px;
   bottom:0px;
 }
+
+
+.control-label{
+     margin:10px 0px 0px 0px; 
+}
+.form-control{
+    position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;  
+  font-size: 16px;
+  margin: 10px 0px 10px 0px;b0c4de;
+}
+.form-btn{
+  width:40%;
+  margin-left: 28%;
+  margin-bottom: 5%;
+  margin-top: 14px;
+}
+
+.form-group{
+
+  max-width: 400px;
+}
+
+  .form-heading{
+      max-width: 400px;
+  margin-bottom: 30px;
+  text-align: center;
+  }
+  
+ 
