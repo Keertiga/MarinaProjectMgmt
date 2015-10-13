@@ -7,6 +7,16 @@ var router = express.Router();
 var userDetails=require('../models/user_details.js');
 var controllers=require('../controllers');
 
+var benf_details=require('../models/benf_details.js');
+
+
+router.get('/beneficiaryData', function(req, res) {
+  console.log("here");
+  benf_details.find({},function(err,data){
+           console.log(data);
+           res.json(data);
+  });
+});
 /* GET home page. */
 router.get('/', function(req, res) {
   res.render('index', { title: 'Project Management' });
@@ -40,6 +50,7 @@ router.post('/register',function(req,res){
      });
 });
 
+//To edit or Remove bebenificary
 router.post('/updateBenificiary', function(req, res, next) {
       console.log(req.body);
 
@@ -53,6 +64,11 @@ router.get('/home', function(req, res, next) {
 
 router.get('/register', function(req, res) {
   res.render('register');
+});
+
+
+router.get('/editbeneficiary', function(req, res) {
+  res.render('editbeneficiary');
 });
 
 router.get('/create', function(req, res) {
