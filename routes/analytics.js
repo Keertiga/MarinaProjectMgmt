@@ -3,16 +3,37 @@ var router = express.Router();
 var url=require('url');
 var querystring=require('querystring');
 var mongoose =require('mongoose');
+var isLoggedIn=require('./index').isLoggedIn;
 
-var project_category=require('../models/project_category.js');
-var project_details=require('../models/project_details.js');
-var benf_details=require('../models/benf_details.js');
+var projectCategory=require('../models/projectCategory.js');
+var projectDetails=require('../models/projectDetails.js');
+var benfDetails=require('../models/benfDetails.js');
 
+
+//GET analyics page
+router.get('/',isLoggedIn,function(req,res){
+    res.render('analytics');
+})
+
+//GET location page of analytics
+router.get('/general',function(req,res){
+       res.render('analytics/general');
+});
+
+//GET project page of analytics
+router.get('/project',function(req,res){
+       res.render('analytics/project');
+});
+
+//GET location page of analytics
+router.get('/location',function(req,res){
+       res.render('analytics/location');
+});
 
 
 //Fetches All Project Categories
 router.get('/projectCategory', function(req, res) {
-	project_category.find({},function(err,data){
+	projectCategory.find({},function(err,data){
            res.json(data);
 	});
 });
@@ -21,7 +42,7 @@ router.get('/projectCategory', function(req, res) {
 //Fetches Projects based on Project Category
 router.get('/projects', function(req, res) {
 	var reqBody=querystring.parse(url.parse(req.url).query);
-    project_details.find(reqBody,{name:'true'},function(err,data){
+    projectDetails.find(reqBody,{name:'true'},function(err,data){
     	  res.json(data);
     });
 });
@@ -33,7 +54,7 @@ router.get('/locations', function(req, res) {
     if(reqBody["category"]=="all")
            reqBody={};
 
-    project_details.find(reqBody).distinct('location',function(err,data){
+    projectDetails.find(reqBody).distinct('location',function(err,data){
     	  res.json(data);
     });
 });
@@ -57,7 +78,7 @@ router.get('/getProjectData', function(req, res) {
     
 
      //hit db
-     benf_details.aggregate(query,function(err,data){
+     benfDetails.aggregate(query,function(err,data){
     	 res.json({chartData:data}); 
      });
     
@@ -82,7 +103,7 @@ router.get('/getLocationData', function(req, res) {
     
 
      //hit db
-     benf_details.aggregate(query,function(err,data){
+     benfDetails.aggregate(query,function(err,data){
     	 res.json({chartData:data}); 
      });
     

@@ -8,7 +8,7 @@ var CategorySchema = new Schema({
 
 
 //creating a model using schema
-var project_category = mongoose.model('project_category', CategorySchema);
+var projectCategory = mongoose.model('project_category', CategorySchema);
 
 //exporting this model
-module.exports = project_category;
+module.exports = projectCategory;

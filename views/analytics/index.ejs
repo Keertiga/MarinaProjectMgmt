@@ -25,7 +25,7 @@
             <li class="active"><a href="#">Home</a></li>
             <li><a href="#">FAQ</a></li>
             <li><a href="#">About</a></li>
-            <li><a href="#">Log out</a></li>
+            <li><a href="/signout">Log out</a></li>
           </ul>
         </div>
       </div>
@@ -59,7 +59,7 @@
       <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
-            <iframe src="project" id="mainFrame"></iframe>
+            <iframe src="analytics/project" id="mainFrame"></iframe>
         </div>
          <div class="col-md-2"></div>
       </div>
@@ -71,7 +71,7 @@
   <script>
          $(document).ready(function(){
               $("input[name=selection]:radio").click(function(){
-                       var url=$(this).val();
+                       var url="analytics/"+$(this).val();
                        $("#mainFrame").attr("src",url);
               });
          });

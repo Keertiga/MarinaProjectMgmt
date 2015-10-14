@@ -3,82 +3,64 @@
 var express = require('express');
 var router = express.Router();
 
+//function to check if user is logged in
+var isLoggedIn=function(req,res,next){
+    if(req.isAuthenticated())
+        return next();
+    res.redirect('/');
+}
 
-var userDetails=require('../models/user_details.js');
-var controllers=require('../controllers');
+//function to handle sign in/sign up features
+var index=function(passport){
 
-/* GET home page. */
-router.get('/', function(req, res) {
-  res.render('index', { title: 'Project Management' });
-});
-
-
-router.post('/signin',function(req,res){
-       res.redirect('/home');
-});
-
-router.get('/project',function(req,res){
-       res.render('project');
-});
-
-router.get('/location',function(req,res){
-       res.render('location');
-});
-
-router.get('/generateChart',function(req,res){
-    controllers.getChartData(req.body,function(err,data){
-           console.log(data)
+    // GET login page
+    router.get('/', function(req, res) {
+        res.render('index', { title: 'Project Management' });
     });
-});
 
-router.post('/register',function(req,res){
-     controllers.register(req.body,function(err){
-          if(err)
-              res.redirect('/');
-          else
-              res.redirect('/home');
-     });
-});
+    // Handle POST signin
+    router.post('/signin',passport.authenticate('signin',{
+        successRedirect:'/home',
+        failureRedirect:'/',
+        failureFlash:true
+    }));
+    
+    //GET register page
+    router.get('/register', function(req, res) {
+        res.render('register');
+    });
 
-router.post('/updateBenificiary', function(req, res, next) {
-      console.log(req.body);
+    //Handle POST register
+    router.post('/register',passport.authenticate('register',{
+        successRedirect:'/home',
+        failureRedirect:'/register',
+        failureFlash:true
+    }));
 
-});
+    //GET home page
+    router.get('/home',isLoggedIn,function(req, res) {
+        res.render('home');
+    });
 
+    //GET Create Project Page
+    router.get('/createProject',isLoggedIn,function(req, res) {
+        res.render('createProject');
+    });
 
-router.get('/home', function(req, res, next) {
-
-  res.render('home');
-});
-
-router.get('/register', function(req, res) {
-  res.render('register');
-});
-
-router.get('/create', function(req, res) {
-  res.render('createProject');
-});
-	
-
-
-
-
-
-
-
-router.get('/beneficiary', function(req, res) {
-  res.render('beneficiary');
-});
-
-router.get('/viewbeneficiary', function(req, res) {
-  res.render('viewbeneficiary');
-});
-
-router.get('/analytics', function(req, res) {
-  res.render('analytics');
-});
+    //Handle logout functionality
+    router.get('/signout',function(req,res){
+        console.log("here");
+        req.logout();
+        res.redirect('/');
+    });
 
 
+    return router;
+}  
 
+//exporting the functions
+module.exports={    
+    isLoggedIn:isLoggedIn,
+    index:index
+}
 
-module.exports = router;
