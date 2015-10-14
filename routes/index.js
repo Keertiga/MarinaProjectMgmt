@@ -10,8 +10,10 @@ var isLoggedIn=function(req,res,next){
     res.redirect('/');
 }
 
+
 //function to handle sign in/sign up features
 var index=function(passport){
+
 
     // GET login page
     router.get('/', function(req, res) {
@@ -30,6 +32,7 @@ var index=function(passport){
         res.render('register');
     });
 
+
     //Handle POST register
     router.post('/register',passport.authenticate('register',{
         successRedirect:'/home',
@@ -37,15 +40,18 @@ var index=function(passport){
         failureFlash:true
     }));
 
+
     //GET home page
     router.get('/home',isLoggedIn,function(req, res) {
         res.render('home');
     });
 
+
     //GET Create Project Page
     router.get('/createProject',isLoggedIn,function(req, res) {
         res.render('createProject');
     });
+
 
     //Handle logout functionality
     router.get('/signout',function(req,res){
@@ -55,12 +61,17 @@ var index=function(passport){
     });
 
 
+
+
+
     return router;
 }  
+
 
 //exporting the functions
 module.exports={    
     isLoggedIn:isLoggedIn,
     index:index
 }
+
 
