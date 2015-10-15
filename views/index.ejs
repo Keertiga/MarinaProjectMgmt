@@ -6,20 +6,24 @@
     <meta charset="utf-8">
 	<link rel='stylesheet' href='\css\bootstrap.min.css'/>
   <link rel='stylesheet' href='\css\signin.css' />
-  </head>
-  <body>
+  </head> 
+  <body>  
   	<div class="container center">
-  	  <form class="form-signin">
+  	  <form class="form-signin" action="/signin" method="post">
   		<h2 class="form-signin-heading"> Sign In</h2>
-        <label for="inputEmail" class="form-label">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-        <label for="inputPassword" class="form-label">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+
+        <label for="email" class="form-label">Email address</label>
+        <input type="email" id="email" class="form-control" placeholder="Email address" name="email" required autofocus>
+   
+        <label for="password" class="form-label">Password</label>
+        <input type="password" id="password" class="form-control" placeholder="password" name="password" required>
+
         <div class="checkbox">
           <label>
             <input type="checkbox" value="remember-me"> Remember me
           </label>
         </div>
+        
         <button class="form-btn btn-lg btn-primary" type="submit">Sign In</button>
         <p class="text-center"><b>Not a member. </b><a href="/register">Please Register</a></p>
   	  </form>

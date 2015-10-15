@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <link rel='stylesheet' href='\css\bootstrap.min.css'/>
+    <link rel='stylesheet' href='\css\style.css' />
+    <link rel='stylesheet' href='\css\analytics.css' />
+</head>
+<body>
+<div>
+  <form method="get" action="/generateChart">
+    <div id="left">
+    <div>
+        <label for="project_category" class="control-label">Project Category</label>
+        <select class="form-control" name="project_category" id="project_category">
+            <option>Select a category</option>
+        </select>
+    </div>
+    <div>
+        <label for="project_name" class="control-label">Project Name</label>
+        <select class="form-control" name="project_name" id="project_name">
+            <option>Select a project</option>
+        </select>
+    </div>
+    </div>
+    <div id="right">
+    <div>
+        <label for="chart_param" class="control-label">Chart For</label>
+        <select class="form-control" name="chart_param" id="chart_param">
+            <option value="">Select an option</option>
+            <option value="funds">Location Vs Funds</option>
+            <option  value="numPeopleBenefited">Location Vs Num Of Benfitted People</option>
+        </select>
+    </div>
+    <div>
+        <label for="chart_type" class="control-label">Chart Type</label>
+        <select class="form-control" name="chart_type" id="chart_type">
+            <option value="">Select an option</option>
+            <option value="pie">Pie Chart</option>
+            <option value="bar">Bar Chart</option>
+        </select>
+    </div>
+    </div>
+    <button class="form-btn btn-lg btn-primary" type="Submit" id="submit">Submit</button>
+  </form>
+</div>
+<!--<div class="container center">
+    <div class="row">
+        <div class="col-md-2"></div>-->
+        <div class="center" id="chart"></div>
+   <!--     <div class="col-md-2"></div>
+    </div>
+</div>-->
+
+</body>
+<script src="\js\jquery.js"></script>
+<script src="\js\bootstrap.min.js"></script>
+<script src="\js\highcharts.js"></script>
+<script src="\js\highcharts-3d.js"></script>
+<script>
+    $(document).ready(function(){
+
+        //For populating project category dropdown
+        $.ajax({
+            url:"../analytics/projectCategory",
+            type:"GET",
+            headers:{"Accept":"application/json;odata=verbose"},
+            success:function(data){
+                for(var i in data){
+                    var item=$('<option>'+data[i].name+'</option>');
+                    $('#project_category').append(item);
+                }
+            },
+            error:function(data){
+                alert("error");
+            }
+        });
+
+        //For populating projects dropdown
+        $('#project_category').on('change',function(){
+
+            var category= $('option:selected', this).val();
+
+            //resetting  all fields on form upon category change
+            $('#project_name').empty();
+            $('#chart_param').val("");
+            $('#chart_type').val("");
+
+
+            $('#project_name').append($('<option>Select a project</option>'));
+            $.ajax({
+                url:"../analytics/projects",
+                type:"GET",
+                data:'category='+category,
+                headers:{"Accept":"application/json;odata=verbose"},
+                success:function(data){
+                    for(var i in data){
+                        var item=$('<option>'+data[i].name+'</option>');
+                        $('#project_name').append(item);
+                    }
+                },
+                error:function(data){
+                    alert("error");
+                }
+              });
+        });
+
+        //On submit
+        $('#submit').click(function(){
+           
+             if($(window).width()<588 ){
+                $('form').hide();
+            }else{
+                $('#left').addClass('left');
+                $('#right').addClass('right');
+                $(this).removeClass('form-btn');
+                $(this).addClass('up-btn');
+            }
+            
+            var formData=new Object();
+            formData.Name= $('option:selected', '#project_name').val();
+            formData.Param=$('option:selected', '#chart_param').val();
+            formData.ChartType=$('option:selected', '#chart_type').val();
+                    
+            $.ajax({
+                url:"../analytics/getProjectData",
+                type:"GET",
+                headers:{"Accept":"application/json;odata=verbose"},
+                data:{
+                    FormData: JSON.stringify(formData)
+                },
+                success:function(data){
+                   if(formData.ChartType=="pie"){
+                       piechart(data,formData.Param);
+                   }else{
+                       barchart(data,formData.Param);
+                   }
+                },
+                error:function(data){
+                    alert("error");
+                },
+                async:false
+            });
+              
+            return false;  
+        });
+
+
+    });
+
+    function piechart(data,chartFor){
+       
+       //contruct array for pie chart
+       var dataArray=[];
+       var name=[];
+       var y=[];
+       for(var i in data.chartData){
+          name[i]=data.chartData[i]._id;
+          y[i]=parseFloat(data.chartData[i].y);
+          dataArray[i]=new Array(name[i],y[i]);
+       }
+
+
+       //set title and name
+       var title;
+           name;
+
+       if(chartFor=="funds"){
+            title="Locations Vs Funds Allocated";
+            name="Funds";
+       }else{
+            title="Locations Vs NumPeopleBenefited";
+            name="numPeopleBenefited";
+       }       
+
+
+       //generate pie chart
+       $('#chart').highcharts({
+          chart: {
+            type: 'pie',
+            backgroundColor:null
+        },
+        credits:{
+           text:""
+        },
+        title: {
+           text:title
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.y}</b>'
+        },
+        legend: {
+            align:"right",
+            layout:"vertical",
+            verticalAlign: "top",
+            x: 0,
+            y: 100,
+            itemMarginTop: 5,
+            itemMarginBottom: 5
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    distance:-30,
+                    formatter:function(){
+                        return '<b>'+this.y+'</b>';
+                    }
+                },
+                showInLegend: true
+            }
+        },
+            series: [{
+                name: name,
+                colorByPoint: true,
+                data: dataArray
+            }],
+        });
+      
+    }//end of function piecharts
+
+    function barchart(data,chartFor){
+
+      
+       //contruct array for  chart
+       var location=[];
+       var values=[];
+       for(var i in data.chartData){
+          location[i]=data.chartData[i]._id;
+          values[i]=parseFloat(data.chartData[i].y);
+       }
+
+
+       //set title and name
+       var title;
+           name;
+
+       if(chartFor=="funds"){
+            title="Locations Vs Funds Allocated";
+            name="Funds";
+       }else{
+            title="Locations Vs NumPeopleBenefited";
+            name="numPeopleBenefited";
+       }     
+
+
+       //generate column chart
+       $('#chart').highcharts({
+        chart: {
+            type: 'column',
+            backgroundColor:null
+        },
+        title: {
+            text: title
+        },
+        xAxis: {
+            categories: location,
+            crosshair: true
+        },
+        credits:{
+           text:""
+        },
+        colors:['#1e3547'],
+        yAxis: {
+            min: 0,
+            title: {
+                text: name
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y}</b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name:"Target",
+            data:values
+        }]
+    });
+
+    }
+</script>
+</html>

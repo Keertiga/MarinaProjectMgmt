@@ -25,7 +25,7 @@
 
             <li><a href="#">FAQ</a></li>
             <li><a href="#">About</a></li>
-            <li><a href="#">Log out</a></li>
+            <li><a href="/signout">Log out</a></li>
           </ul>
         </div>
       </div>
@@ -37,7 +37,7 @@
 
       <div class="jumbotron">
         <div class="container">
-        <p>Welcome Beamdaddy</p>
+        <p>Welcome</p>
         <p class="lead"></p>
 
         <!--<p><a class="btn btn-lg btn-success" href="#" role="button">Features Preview</a></p>-->
@@ -61,7 +61,8 @@
                <h3> Projects</h3>
              </a>
                <div class="list-group">
-                 <a href="/create" class="list-group-item">Create Project</a>
+
+                 <a href="/createProject" class="list-group-item">Create Project</a>
                  <hr>
                  <a href="#" class="list-group-item">Edit or Remove Projects</a> 
                </div>
@@ -76,7 +77,7 @@
                <div class="list-group">
                  <a href="/beneficiary" class="list-group-item">Add Benificiary Details</a>
                  <hr>
-                 <a href="#" class="list-group-item">Edit or Remove Benificiary Details</a>  
+                 <a href="/beneficiary/edit" class="list-group-item">Edit or Remove Benificiary Details</a>  
                  <hr>         
                  <a href="#" class="list-group-item">Import or Export</a>
                </div>
@@ -91,7 +92,7 @@
                <div class="list-group"> 
                   <a href="#" class="list-group-item">View Project Details</a>
                   <hr>
-                  <a href="#" class="list-group-item">View Analytics</a>  
+                  <a href="/analytics" class="list-group-item">View Analytics</a>  
                </div>
             </div>  
         </div><!-- /.col-md-4 --><!-- /.col-sm-4 -->
@@ -105,7 +106,8 @@
 
 
     </div> <!-- /container -->
-  <script src="\js\jquery.js"></script>
+  </body>
+    <script src="\js\jquery.js"></script>
   <script src="\js\bootstrap.min.js"></script>
   <script>
       $(document).ready(function(){
@@ -121,8 +123,6 @@
 
       });
   </script>
-  
-  </body>
 </html>
 
 

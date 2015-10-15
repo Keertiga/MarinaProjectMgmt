@@ -5,34 +5,11 @@
     <meta charset="utf-8">
 	<link rel='stylesheet' href='\css\bootstrap.min.css'/>
     <link rel='stylesheet' href='\css\analytics.css' />
- 
+    <link rel='stylesheet' href='\css\style.css' />
   </head>
    <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">Project Management</a>
-          <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>  
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav navbar-right ">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">Projects</a></li>
-            <li><a href="#">Locations</a></li>
-            <li><a href="#">Import/Export</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Log out</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <br></br>
-    <br></br>
-    <div class="container">
+
+    <div class="container-fluid">
       <div class="page-header">
        <h3 class="form-analytics-heading">Analytics Dashboard</h3>
       </div>
@@ -44,10 +21,8 @@
      <label for="design-project_category_label">
             ProjectCategory:
       </label>
-        <select class="form-control dropdown font_size" name="project_category_dropdown">
-        <option value="Education">Education</option>
-        <option value="Health">Health</option>
-        <option value="Food">Food</option>
+        <select class="form-control dropdown font_size" name="project_category" id="project_category">
+           <option>Select a category</option> 
         </select>
 
       <label for="design-project_name_label">
@@ -80,7 +55,27 @@
         </div>
         <button class="form-btn btn-lg btn-primary" type="submit">Submit</button>
         </form>
-        </div>      
-       
+        </div>         
   </body>
+    <script src="\js\jquery.js"></script>
+  <script src="\js\bootstrap.min.js"></script>
+  <script>
+      $(document).ready(function(){
+       $.ajax({
+              url:"http://localhost:3000/analytics/projectCategory",
+              type:"GET",
+              headers:{"Accept":"application/json;odata=verbose"},
+              success:function(data){
+                       for(var i in data){
+                          var item=$('<option>'+data[i].name+'</option>');
+                          $('#project_category').append(item);
+                      }
+              },
+              error:function(data){
+                alert("error");
+              }
+      });
+
+      });
+  </script>
 </html>
