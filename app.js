@@ -15,6 +15,7 @@ mongoose.connect(dbConfig.url);
 
 var routes = require('./routes').index(passport);
 var analytics=require('./routes/analytics');
+var beneficiary=require('./routes/beneficiary');
 require('./config/passport.js')(passport);
 
 
@@ -41,6 +42,7 @@ app.use(flash());
 
 app.use('/', routes); 
 app.use('/analytics', analytics);
+app.use('/beneficiary',beneficiary);
 
 
 

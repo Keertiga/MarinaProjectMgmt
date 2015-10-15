@@ -32,7 +32,7 @@
 
             <li><a href="#">FAQ</a></li>
             <li><a href="#">About</a></li>
-            <li><a href="#">Log out</a></li>
+            <li><a href="/signout">Log out</a></li>
           </ul>
         </div>
       </div>
@@ -125,7 +125,7 @@
         //For populating beneficiary details 
 
               $.ajax({
-                url:"../beneficiaryData",
+                url:"../beneficiary/data",
                 type:"GET",
                 headers:{"Accept":"application/json;odata=verbose"},
                 

@@ -60,10 +60,6 @@ var index=function(passport){
         res.redirect('/');
     });
 
-
-
-
-
     return router;
 }  
 

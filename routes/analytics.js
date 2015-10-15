@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var url=require('url');
 var querystring=require('querystring');
-var mongoose =require('mongoose');
 var isLoggedIn=require('./index').isLoggedIn;
 
 var projectCategory=require('../models/projectCategory.js');
