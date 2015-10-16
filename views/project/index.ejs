@@ -54,7 +54,7 @@
                         <label for="category" class=" control-label col-sm-4">Project Category</label>
                         <div class="col-sm-8">
                               <select class="form-control" name="category" id="category">
-                                      <option>Select a category</option>
+                                      <option value="">Select a category</option>
                               </select>
                         </div>
                     </div>
@@ -62,28 +62,28 @@
                     <div class="form-group">
                         <label for="name" class="control-label col-sm-4">Project Name</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="name" placeholder="Project Name" name="project">
+                            <input type="text" class="form-control" id="project" placeholder="Project Name" name="project">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="Desc" class="control-label col-sm-4">Project Description</label>
                         <div class="col-sm-8">
-                            <input id="desc" class="form-control" placeholder="Project Description" name="desc" required >
+                            <input type="text" id="desc" class="form-control" placeholder="Project Description" name="desc" required >
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="lead" class=" control-label col-sm-4">Project Lead</label>
                         <div class="col-sm-8">
-                            <input id="lead" class="form-control" placeholder="Name of Project Lead" name="lead" required >
+                            <input type="text" id="lead"  class="form-control" placeholder="Name of Project Lead" name="lead" required >
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="email" class=" control-label col-sm-4">Contact Email</label>
                         <div class="col-sm-8">
-                            <input id="email" class="form-control" placeholder="Contact Email id" name="email" required >
+                            <input type="email" id="email" class="form-control" placeholder="Contact Email id" name="email" required >
                         </div>
                     </div>
 
@@ -111,11 +111,11 @@
                         <label for="funds" class=" control-label col-sm-4 col-xs-12">Project Fund</label>
 
                         <div class="col-sm-6 col-xs-8">
-                             <input id="funds" class="form-control" placeholder="Project fund" name="funds">
+                             <input type="text" id="funds" class="form-control" placeholder="Project fund" name="funds">
                         </div>
 
                         <div class="col-sm-2 col-xs-4">
-                              <input type="text" id="funds" class="form-control" value="INR" name="currency">
+                              <input id="funds" class="form-control" value="INR" name="currency">
                         </div>
                     </div>
 
@@ -200,43 +200,61 @@
        
 
            //For submitting data
-           $('#submit').on('click',function(){
-              var selectedLoc=[];
-              $('#bootstrap-duallistbox-selected-list_ option').each(function(i,selected){
-                  selectedLoc[i] = $(selected).text();
-              });
+           $('#submit').on('click',function(e){
 
-              var locations=[];
+                      var refresh="false";
 
-              for(var i=0;i<selectedLoc.length;i++){
-                  var obj=new Object();
-                  obj.location=selectedLoc[i];
-                  locations.push(obj);
-              }
-              alert(JSON.stringify(locations));
-             
+                      var selectedLoc=[];
 
-              $.ajax({
-                  url:master_url+"changeavailableitems",
-                  type:"POST",
-                  data:{
-                      loadProds:1,
-                      Items:JSON.stringify(products)
-          },
-          dataType:"json",
-      success:function(data){
-      },
-      error:function(data){
-          var msg = $('<h3 class="msg">Submission is successful</h3>');
-          $('#btn').after(msg);
-          $('.msg').fadeOut(6000);
+                      //Getting selected locations
+                      $('#bootstrap-duallistbox-selected-list_ option').each(function(i,selected){
+                          selectedLoc[i] = $(selected).text();
+                      });
 
-      },
-      async:false
-  });*/
+                      var locations=[];
 
-        });
-     });
+                      //Forming JSON Array for locations
+                      for(var i=0;i<selectedLoc.length;i++){
+                          locations.push(selectedLoc[i]);
+                      }
+
+                      //Forming JSON object for form data to be sent to handle POST
+                      var formData=new Object;
+                      
+                      formData.category=$('option:selected', '#category').val();
+                      formData.project=$("#project").val();
+                      formData.desc=$("#desc").val();
+                      formData.lead=$("#lead").val();
+                      formData.start_date=$("#start-date").val();
+                      formData.end_date=$("#end-date").val();
+                      formData.locations=locations;
+                      formData.funds=$("#funds").val();
+                      formData.currency=$("#currency").val();
+                      formData.updated_at=Date.now();
+
+                      $.ajax({
+                            url:"../project/create",
+                            type:"POST",
+                            data:{
+                                loadProds:1,
+                                details:formData
+                                },
+                            dataType:"json",
+                            success:function(){
+                                refresh="true";
+                                $('form').find("input[type=text],input[type=email],select").val("");
+                             },
+                            error:function(){
+                            
+                             },
+                            async:false
+                        });
+
+                      if(refresh=="true")
+                           e.preventDefault();
+
+                   });
+                });
 
     </script>
 </html>

@@ -4,7 +4,6 @@ var url=require('url');
 var querystring=require('querystring');
 var isLoggedIn=require('./index').isLoggedIn;
 
-var projectCategory=require('../models/projectCategory.js');
 var projectDetails=require('../models/projectDetails.js');
 var benfDetails=require('../models/benfDetails.js');
 
@@ -30,21 +29,16 @@ router.get('/location',function(req,res){
 });
 
 
-//Fetches All Project Categories
-router.get('/projectCategory', function(req, res) {
-	projectCategory.find({},function(err,data){
-           res.json(data);
-	});
-});
-
 
 //Fetches Projects based on Project Category
 router.get('/projects', function(req, res) {
-	var reqBody=querystring.parse(url.parse(req.url).query);
+    var reqBody=querystring.parse(url.parse(req.url).query);
     projectDetails.find(reqBody,{name:'true'},function(err,data){
-    	  res.json(data);
+            res.json(data);
     });
 });
+
+
 
 //Fetches Location based on Project Category 
 router.get('/locations', function(req, res) {

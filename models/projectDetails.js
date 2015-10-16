@@ -4,18 +4,15 @@ var Schema = mongoose.Schema;
 // create a schema
 var ProjectSchema = new Schema({
   category: String,
-  name: String,
-  location:String,
-  description: String,
+  project: String,
+  desc: String,
   lead: String,
-  contact_email: String,
-  contact_number: String,
-  org_type: String,
   start_date: Date,
   end_date: Date,
   locations: Array,
-  total_funds: Number,
-  currency: String
+  funds: Number,
+  currency: String,
+  updated_at:Date
 },{collection:'project_details'});
 
 
