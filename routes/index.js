@@ -3,6 +3,11 @@
 var express = require('express');
 var router = express.Router();
 
+
+
+var projectCategory=require('../models/static.js').projectCategory;
+var locations=require('../models/static.js').locations;
+
 //function to check if user is logged in
 var isLoggedIn=function(req,res,next){
     if(req.isAuthenticated())
@@ -13,7 +18,6 @@ var isLoggedIn=function(req,res,next){
 
 //function to handle sign in/sign up features
 var index=function(passport){
-
 
     // GET login page
     router.get('/', function(req, res) {
@@ -58,6 +62,22 @@ var index=function(passport){
         console.log("here");
         req.logout();
         res.redirect('/');
+    });
+
+    
+    //Fetches All Project Categories
+    router.get('/projectCategory', function(req, res) {
+        projectCategory.find({},function(err,data){
+               res.json(data);
+        });
+    });
+
+
+    //Fetches All locations
+    router.get('/locations', function(req, res) {
+        locations.find({},function(err,data){
+               res.json(data);
+        });
     });
 
     return router;

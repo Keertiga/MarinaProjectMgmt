@@ -3,18 +3,7 @@ body {
   padding-bottom: 40px;
   background-color: #eee;
 }
-.form-horizontal
-{
-  vertical-align: center;
-}
-.center_div{
-    margin: 0 auto;
-    width:25%;
-}
-.form-control
-{
-  width: 500px;
-}
+
 .form-createproject
 .form-createproject-heading
  {
