@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+
+    <link rel='stylesheet' href='\css\bootstrap.min.css'/>
+    <link rel='stylesheet' href='\css\form.css' />
+
+ </head>
+
+  <body>
+
+   <!--code for navigation bar-->
+   <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Project Management</a>
+          <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>  
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right ">
+            <li class="active"><a href="/home">Home</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Log out</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>    
+
+      
+    <!-- Jumbotron -->
+    <div class="jumbotron">
+      <div class="container">
+        <h3 class="lead">Edit beneficiary details</h3> 
+        <p> To edit or remove beneficiary details</p>
+      </div>
+    </div>
+
+
+    <!--table of contents-->
+    <div class="container">
+      <table class="table table-hover" id="benf-details">
+        <thead>
+          <tr>  
+            <th>Category</th><th>Project Name</th><th>Location</th><th>Beneficiary Organization</th><th>Beneficiary Name</th><th>Funds</th><th>NumberOfBenefittedPeople</th><th>Personel</th><th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+              <!--Beneficiary data will be dynamically added here-->
+        </tbody>
+      </table>
+    </div>
+  </body>
+
+
+ <div class="modal fade" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Edit Beneficiary Details</h4>
+      </div>
+      <div class="modal-body">
+        <p><input type="text" class="input-sm" id="txtfname"/></p>
+        <p><input type="text" class="input-sm" id="txtlname"/></p>
+        <p><input type="text" class="input-sm" id="txtemail"/></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save</button>
+      </div>
+    </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
+    
+  <!--confirm modal for deletion-->
+  <div class="modal fade" id="confirmModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Delete the record</h4>
+        </div>
+
+        <div class="modal-body">
+          <p>
+            Deleting the selected row.Please confirm.
+          </p>
+          <!--Hidden field to store id of the record to be deleted-->
+          <input type="hidden" id="delete-id">
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="submit">Delete</button>
+        </div>
+
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+
+ 
+
+  <script src="\js\jquery.js"></script>
+  <script src="\js\bootstrap.min.js"></script>
+  <script type="text/javascript">
+
+
+    $(document).ready(function(){
+
+              //For populating beneficiary details in table format
+              $.ajax({
+                url:"../beneficiary/data",
+                type:"GET",
+                headers:{"Accept":"application/json;odata=verbose"},
+                
+                success:function(data){
+
+                   for(var i=0;i<data.length;i++){
+                          var tr;
+                          var deleteIcon;
+                          tr = $('<tr id='+data[i]._id+'/>');
+                          tr.append("<td>" + data[i].category + "</td>");
+                          tr.append("<td>" + data[i].projectName + "</td>");
+                          tr.append("<td>" + data[i].location + "</td>");
+                          tr.append("<td>" + data[i].group + "</td>");
+                          tr.append("<td>" + data[i].name + "</td>");
+                          tr.append("<td>" + data[i].funds + "</td>");
+                          tr.append("<td>" + data[i].numPeopleBenefited + "</td>");
+                          tr.append("<td>" + data[i].transOwner + "</td>");
+                          tr.append("<td>" + data[i].transDate + "</td>");
+
+                          deleteIcon=$(' <a href="#" id=trash_obj><span class="glyphicon confirm-delete glyphicon-trash"></a>');
+                          tr.append(deleteIcon);
+
+                          $('tbody').append(tr);    
+                      }
+                   
+                },
+                error:function(data){
+                    alert("error");
+                },
+                async:false
+             });
+
+              
+              //Displays modal window for deletion confirmation
+              $('.confirm-delete').on('click', function() {
+                     var id = $(this).closest('tr').attr('id');
+                     $("#confirmModal #delete-id").val(id);
+                     $('#confirmModal').modal('show');
+              });
+
+
+
+              //Handles deletion of the selected record
+              $('#submit').click(function() {
+                  
+                     //Getting id of the record to be deleted 
+                     var id =$("#confirmModal #delete-id").val();
+                    
+                     $.ajax({
+
+                            url: "../beneficiary/remove", 
+                            type:"POST",
+                            data:{
+                              loadProds:1,
+                              ID:id
+                            },
+                            dataType: "json",
+
+                            success: function(result){
+                                    //Constructing id to be deleted
+                                    var ID="#"+id;
+                                    $(ID).remove();
+                                    $('#confirmModal').modal('hide');
+                                    window.location.reload();
+                             },
+                             error:function(result){
+
+                             },
+                           async:false
+                        
+                      });
+                 
+
+          });
+
+            
+         
+         $('td').on('click',function(){
+          if ($(this).closest('td')) {
+             $("#myModal").modal("show"); 
+            };
+            $("#myModal").modal("show");
+            $("#txtfname").val($(this).closest('tr').children()[0].textContent);
+            $("#txtlname").val($(this).closest('tr').children()[1].textContent);
+            $("#txtemail").val($(this).closest('tr').children()[2].textContent);
+            });
+        
+           
+    });</script>
+
+</html>

@@ -91,7 +91,7 @@
 
             $('#project_name').append($('<option>Select a project</option>'));
             $.ajax({
-                url:"../analytics/projects",
+                url:"../projects",
                 type:"GET",
                 data:'category='+category,
                 headers:{"Accept":"application/json;odata=verbose"},

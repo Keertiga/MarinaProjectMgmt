@@ -78,7 +78,7 @@
             }
         });
 
-        //For populating projects dropdown
+        //For populating locations dropdown
         $('#project_category').on('change',function(){
 
             var category= $('option:selected', this).val();
@@ -91,7 +91,7 @@
 
             $('#location').append($('<option>Select a location</option>'));
             $.ajax({
-                url:"../analytics/locations",
+                url:"../locations",
                 type:"GET",
                 data:'category='+category,
                 headers:{"Accept":"application/json;odata=verbose"},

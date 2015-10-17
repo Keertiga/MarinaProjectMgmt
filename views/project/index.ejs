@@ -221,7 +221,7 @@
         //Validating funds field to accept numbers & decimal alone
          $("#funds").on('keydown', function (e) {
 
-            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57) && (e.which < 96 || e.which > 105) && e.which!=188 && e.which!=190 && e.which!=110  ) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57) && (e.which < 96 || e.which > 105) && e.which!=188 && e.which!=190 && e.which!=110 && e.which!=9  ) {
                   //display error message
                   $("#fundsError").html("Please enter valid amount").show().fadeOut(2000);
                   return false;
@@ -231,8 +231,8 @@
 
            //For submitting data
            $('#submit').on('click',function(e){
-                      alert("entered");
-                      var refresh="false";
+                     
+                    //  var refresh="false";
 
                       var selectedLoc=[];
 
@@ -271,7 +271,7 @@
                                 },
                             dataType:"json",
                             success:function(){
-                                refresh="true";
+                               // refresh="true";
                                 $('form').find("input[type=text],input[type=email],select").val("");
                              },
                             error:function(){

@@ -30,31 +30,6 @@ router.get('/location',function(req,res){
 
 
 
-//Fetches Projects based on Project Category
-router.get('/projects', function(req, res) {
-    var reqBody=querystring.parse(url.parse(req.url).query);
-
-    if(reqBody["category"]=="all")
-           reqBody={};
-
-    projectDetails.find(reqBody).distinct('name',function(err,data){
-            res.json(data);
-    });
-});
-
-
-
-//Fetches Location based on Project Category 
-router.get('/locations', function(req, res) {
-	var reqBody=querystring.parse(url.parse(req.url).query);
-    
-    if(reqBody["category"]=="all")
-           reqBody={};
-
-    projectDetails.find(reqBody).distinct('location',function(err,data){
-    	  res.json(data);
-    });
-});
 
 
 //get chart data for projects based on request parameters

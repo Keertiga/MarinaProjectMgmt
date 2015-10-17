@@ -1,227 +1,298 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Beneficiary creation</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <link rel='stylesheet' href='\css\bootstrap.min.css'/>
-<link rel='stylesheet' href='\css\projectcreate.css'/>
-   <script src="\js\jquery.js"></script>
-  <script src="\js\bootstrap.min.js"></script>
-   <!-- Load SCRIPT.JS which will create datepicker for input field  -->
-   <!--<script src="\js\datepicker.js"></script> -->
-  <!--script for showing gender and age for individual category -->
-   <script>
-  /*$(document).ready(function () {
-    $('#beneficiary_category').change(function (){
-    if($('#beneficiary_category').val()=='Individual') {
-        $('#benf_gend_label').show();
-        $('#benf_gend_val').show();
-        $('#benf_age_label').show();
-        $('#benf_age_val').show();
-    }
-    else {
-        $('#benf_gend_label').hide();
-        $('#benf_gend_val').hide();
-        $('#benf_age_label').hide();
-        $('#benf_age_val').hide();
-    }
-    });
-});*/ 
-//commented by prash
-   </script> 
+    <title>Project creation</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <style>
-        
-  .wrapper {
-  
-  position: absolute;
-  top: 40%;
-  left: 20%;
-  width: 100%;
-  
-  margin-top: -200px;
-  overflow-x: hidden;
-}
-.setwidth {
-  width: 200px;
-  overflow: hidden;
-}
+    <link href="css/bootstrap-duallistbox.min.css" rel="stylesheet" type="text/css" media="all">
+    <link rel='stylesheet' href='\css\bootstrap.min.css'/>
+    <link rel='stylesheet' href='\css\form.css'/>
+    <link rel='stylesheet' href='\css\jquery-ui.min.css'/>
 
-    </style>
- 
 </head>
 <body>
-
-<div class="container">
-      <div class="navbar navbar-inverse">
-         <div class="container-fluid">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="#">Beneficiary Details</a>
-          </div>
-          <ul class="nav navbar-nav navbar-right">
+    
+    <!-- code for navigation bar starts-->
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Project Management</a>
+          <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>  
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right ">
             <li class="active"><a href="/home">Home</a></li>
-            <li><a href="/createProject">Projects</a></li>
-            <li><a href="#">Locations</a></li>
-            <li><a href="#">Import/Export</a></li>
+            <li><a href="#">FAQ</a></li> 
             <li><a href="#">About</a></li>
             <li><a href="/signout">Log out</a></li>
           </ul>
         </div>
-</div>
-
-<div class="container">
-  
-<div class="wrapper"> 
-  
-  <form class="form-horizontal" role="form">
-    <h2 align="center">Beneficiary Details</h2>
-    <br/>
-    <div class="form-group">
-      <label for="BenefeciaryGroup" class=" control-label col-sm-2">Benefeciary Group:</label>
-   
-    <div class="col-sm-4"> 
-    <select class="form-control" id="BenefeciaryGroup" name="BenefeciaryGroup" required>
-  <option value="" selected="selected">Select an option</option>
-  <option value="school" id="location" >School</option>
-  <option value="college">College</option>
-  <option value="hospital" >Hospital</option>
-</select>
-  </div>
- </div>
- <div class="form-group">
-      <label for="BenefeciaryLoc" class=" control-label col-sm-2">Benefeciary Location:</label>
-   
-    <div class="col-sm-4"> 
-    <select class="form-control" id="BenefeciaryLocation" name="BenefeciaryLocation" required>
-  <option value="" selected="selected">Select an option</option>
-  <option value="chennai" id="location" >Chennai</option>
-  <option value="mumbai">Mumbai</option>
-  <option value="bangalore" >Bangalore</option>
-</select>
-  </div>
- </div>
-
- <div class="form-group">
-      <label for="beneficiaryCategory" class=" control-label col-sm-2">Benefeciary Category:</label>
-   
-    <div class="col-sm-4"> 
-    <select class="form-control" id="BenefeciaryCategory" name="BenefeciaryCategory" required>
-  <option value="" selected="selected">Select an option</option>
-  <option value="individual" id="location" >Individual</option>
-  <option value="organization">Organization</option>
-</select>
-  </div>
- </div>
-
- <div class="form-group">
-      <label for="gender" class=" control-label col-sm-2">Gender:</label>
-   
-    <div class="col-sm-3"> 
-    <select class="form-control" id="gender" name="gender" required>
-  <option value="" selected="selected">Select an option</option>
-  <option value="male" id="location" >Male</option>
-  <option value="female">Female</option>
-</select>
-  </div>
- </div>
-
-    <div class="form-group">
-       <label for="age" class="control-label col-sm-2">Age:</label>
-      <div class="col-sm-3">          
-         <input id="age" class="form-control" placeholder="Enter your Age" required >
       </div>
     </div>
-    
-<div class="form-group">
-       <label for="beneficiaryname" class=" control-label col-sm-2">Beneficiary Name:</label>
-      <div class="col-sm-3">
-       <input id="beneficiaryname" class="form-control" placeholder="Enter the Beneficiary Name" required >
+     <!--  code for navigation bar ends here-->
+
+    <div class="jumbotron">
+      <div class="container">
+        <h3 class="lead">Beneficiary Details</h3> 
+        <p> Add details for transactions done.All fields are mandatory</p>
       </div>
     </div>
 
-    <div class="form-group">
-       <label for="fundsallocated" class=" control-label col-sm-2">Funds Allocated:</label>
-      <div class="col-sm-3">
-        <input id="fundsallocated" class="form-control" placeholder="Enter the Funds Allocated" required >
-      </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <form  class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="category" class="control-label col-sm-4">Project Category</label>
+                        <div class="col-sm-8">
+                              <select class="form-control" name="category" id="category" required autofocus>
+                                    <option value="">Select a Category</option>
+                                    <option  value="all">All</option>
+                              </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="project_name" class="control-label col-sm-4">Project Name</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" name="project-name" id="project-name" required>
+                                 <option value="">Select a Project</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="location" class="control-label col-sm-4">Location</label>
+                        <div class="col-sm-8">
+                             <select class="form-control" name="location" id="location" required>
+                                 <option value="">Select a Location</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="type" class=" control-label col-sm-4">Beneficiary Type</label>
+                        <div class="col-sm-8">
+                              <select class="form-control" name="type" id="type" required>
+                                 <option value="">Select Individual / Organization</option>
+                                 <option>Individual</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name" class=" control-label col-sm-4">Beneficiary Name</label>
+                        <div class="col-sm-8">
+                            <input type="text" id="email" class="form-control" placeholder="Name of Beneficiary Org/Individual" name="name" required >
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="funds" class=" control-label col-sm-4 col-xs-12">Project Fund</label>
+
+                        <div class="col-sm-6 col-xs-8">
+                             <input type="text" id="funds" class="form-control" placeholder="Project fund" name="funds" required><span class="error" id="fundsError"></span>
+                        </div>
+
+                        <div class="col-sm-2 col-xs-4">
+                              <input id="funds" class="form-control" value="INR" name="currency" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">    
+                        <label for="benf-people" class=" control-label col-sm-4 col-xs-12">Num Of Benefitted People</label>
+                        <div class="col-xs-12 col-sm-8">
+                              <input type="text" id="benf-people" class="form-control" name="benf-people" required><span class="error" id="benfError"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">    
+                        <label for="trans-owner" class=" control-label col-sm-4 col-xs-12">Transaction Made By</label>
+                        <div class="col-xs-12 col-sm-8">
+                              <input type="text" id="trans-owner" class="form-control" name="trans-owner" required>
+                        </div>
+                    </div>
+
+                  
+                    
+                    <div class="form-group has-feedback">
+                        <label for="trans-date" class=" control-label col-sm-4 col-xs-12">Transaction Date</label>
+                        <div class="col-sm-8 col-xs-12">
+                            <input type= "text" id="trans-date" class=" form-control" placeHolder="Transaction Date" required>
+                            <i class="glyphicon glyphicon-calendar form-control-feedback"></i>
+                            <span class="error" id="dateError"></span>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-6 col-xs-12 col-xs-offset-3">
+                            <button class="btn btn-primary btn-lg" id="submit">Add Project</button>
+                        </div>
+                    </div>
+                </form>
+              </div>
+
+        </div>
     </div>
 
-    <div class="form-group">
-      <label for="numberofpeoplebenefited" class=" control-label col-sm-2">Number of People Benefited:</label>
-      <div class="col-sm-3">          
-       <input id="numberofpeoplebenefited" class="form-control" placeholder="Enter the Number of People Benefited" required >
-      </div>
-    </div>
-   
-    <div class="form-group"> 
-      <label for="transactiondate" class=" control-label col-sm-2">Transaction Date:</label>
-      <div class="col-sm-8">
-        <input type= "date" id="transactiondate" class="form-control-date">
-      </div>
-     </div> 
-<div class="form-group">
-       <label for="transactionowner" class=" control-label col-sm-2">Transaction Owner:</label>
-      <div class="col-sm-3">
-        <input id="transactionowner" class="form-control" placeholder="Enter the Transaction Owner" required >
-      </div>
-    </div>
-   <div class="form-group">        
-      <div class="col-sm-offset-2 col-sm-4">
-        <button type="submit" class="btn btn-primary btn-lg">Submit</button>
-      </div>
-    </div>
-  </form>
-</div>
-</div>
-</body>
-<script src="\js\jquery.js"></script> 
+    </body>
+    <script src="\js\jquery.js"></script> 
     <script src="\js\jquery-ui.js"></script> 
     <script src="\js\bootstrap.min.js"></script>
     <script src="\js\jquery.bootstrap-duallistbox.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function(){
-      // on submit
-      $('#submit').on('click',function(e){
 
-      alert("entered submit");
-         var formData=new Object;
-         var refresh=false;
-          formData.group=$('option:selected','#BenefeciaryGroup').val();
-          formData.location=$('option:selected','#BenefeciaryLocation').val();
-          formData.category=$('option:selected','#BenefeciaryCategory').val();
-          formData.name=$("#beneficiaryname").val();
-          formData.funds=$("#fundsallocated").val();
-          formData.numPeopleBenefited=$("#numberofpeoplebenefited").val();
-          formData.transDate=$("#transactiondate").val();
-          formData.transOwner=$("#transactionowner").val();
-          formData.gender=$('option:selected','#gender').val();
-          formData.age=$("#age").val();
+    <script type="text/javascript">
+    
+     $(document).ready(function(){
 
-      $.ajax({
 
-        url:"../beneficiary/create"
-        type:"POST",
-        data:{
-          loadProds:1,
-          details:formData
-         },
-        dataType:"json",
-        success:function(){
-          refresh="true";
-          alert("success");
-        },
-        error:function(){
-          alert("error");
-        },
-        async:false
-      }); // end of ajax call adding to db
+        //Date controls
+        $('#trans-date').datepicker().change(function(){
 
-       if(refresh=="true")
-          e.preventDefault();
-    }); // end of submit 
+        });
 
-  });
-</script>
+
+       //For populating project category dropdown
+        $.ajax({
+            url:"../projectCategory",
+            type:"GET",
+            headers:{"Accept":"application/json;odata=verbose"},
+            success:function(data){
+                for(var i in data){
+                    var item=$('<option>'+data[i].name+'</option>');
+                    $('#category').append(item);
+                }
+            },
+            error:function(data){
+                alert("error");
+            }
+        });
+
+
+        //For populating beneficiary type
+         $.ajax({
+            url:"../beneficiary/type",
+            type:"GET",
+            headers:{"Accept":"application/json;odata=verbose"},
+            success:function(data){
+                for(var i in data){
+                    var item=$('<option>'+data[i].type+'</option>');
+                    $('#type').append(item);
+                }
+            },
+            error:function(data){
+                alert("error");
+            }
+        });
+
+
+        //For populating projects dropdown based on project category
+        $('#category').on('change',function(){
+
+            var category= $('option:selected', this).val();
+
+            //resetting projects dropdown on category change
+            $('#project-name').empty();
+
+             //Populating Projects dropdown
+            $('#project-name').append($('<option>Select a project</option>'));
+            $.ajax({
+                url:"../projects",
+                type:"GET",
+                data:'category='+category,
+                headers:{"Accept":"application/json;odata=verbose"},
+                success:function(data){
+                    for(var i in data){
+                        var item=$('<option>'+data[i]+'</option>');
+                        $('#project-name').append(item);
+                    }
+                },
+                error:function(data){
+                    alert("error");
+                }
+              });
+        });
+
+       //For populating locations dropdown based on project selected
+        $('#project-name').on('change',function(){
+
+            var project_name= $('option:selected', this).val();
+           
+            //resetting  all fields on form upon category change
+            $('#location').empty();
+ 
+            $('#location').append($('<option>Select a location</option>'));
+            $.ajax({
+                url:"../locations",
+                type:"GET",
+                data:'name='+project_name,
+                headers:{"Accept":"application/json;odata=verbose"},
+                success:function(data){
+                    for(var i in data){
+                        var item=$('<option>'+data[i].location+'</option>');
+                        $('#location').append(item);
+                    }
+                },
+                error:function(data){
+                    alert("error");
+                }
+            });
+        });
+
+        //Validating funds and numBenefitted People field to accept numbers & decimal alone
+         $("#funds, #benf-people").on('keydown', function (e) {
+
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57) && (e.which < 96 || e.which > 105) && e.which!=188 && e.which!=190 && e.which!=110 && e.which!=9  ) {
+                  //display error message
+  
+                  $(this).closest('div').find('.error').html("Please enter correct value [digits Only]").show().fadeOut(2000);
+                  return false;
+            }
+        });
+
+
+           //For submitting data
+           $('#submit').on('click',function(e){
+                    
+                    var formData=new Object();
+                 
+                    formData.category=$('option:selected','#category').val();
+                    formData.projectName=$('option:selected','#project-name').val();
+                    formData.location=$('option:selected','#location').val();
+                    formData.type=$('option:selected','#type').val();
+                    formData.name=$('#name').val();
+                    formData.funds=$('#funds').val();
+                    formData.numPeopleBenefited=$('#benf-people').val();
+                    formData.transOwner=$('#trans-owner').val();
+                    formData.transDate=$('#trans-date').val();
+                    formData.updated_at=Date.now();
+
+                    $.ajax({
+                          url:"../beneficiary/create",
+                          type:"POST",
+                          data:{
+                              loadProds:1,
+                              details:formData
+                          },
+                          dataType:"json",
+                          success:function(){
+                              alert("success") ;
+                          },
+                          error:function(){
+                            
+                          },
+                            async:false
+                        });
+                     
+
+                   });
+                });
+
+    </script>
 </html>
