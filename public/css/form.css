@@ -20,8 +20,24 @@ body {
   width: 200px;
 }
 
+.error {
+   color: red;
+}
+.required:after{
+  content:" *";
+  color:#1e3547;
+}
 
 
+ .lead{
+   margin-top: 30px;
+   margin-bottom:10px;
+}
+
+.jumbotron p{
+  font-size:15px;
+  font-style: italic;
+}
 
 
 

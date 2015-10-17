@@ -33,7 +33,11 @@ router.get('/location',function(req,res){
 //Fetches Projects based on Project Category
 router.get('/projects', function(req, res) {
     var reqBody=querystring.parse(url.parse(req.url).query);
-    projectDetails.find(reqBody,{name:'true'},function(err,data){
+
+    if(reqBody["category"]=="all")
+           reqBody={};
+
+    projectDetails.find(reqBody).distinct('name',function(err,data){
             res.json(data);
     });
 });

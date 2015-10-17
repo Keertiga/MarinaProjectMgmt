@@ -15,6 +15,7 @@
         <label for="project_category" class="control-label">Project Category</label>
         <select class="form-control" name="project_category" id="project_category">
             <option>Select a category</option>
+            <option  value="all">All</option>
         </select>
     </div>
     <div>
@@ -96,7 +97,7 @@
                 headers:{"Accept":"application/json;odata=verbose"},
                 success:function(data){
                     for(var i in data){
-                        var item=$('<option>'+data[i].name+'</option>');
+                        var item=$('<option>'+data[i]+'</option>');
                         $('#project_name').append(item);
                     }
                 },
