@@ -1,26 +1,19 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="utf-8">
+  <title>Beneficiary creation</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
   <link rel='stylesheet' href='\css\bootstrap.min.css'/>
-  <link rel='stylesheet' href='\css\style.css' />
-  <link rel='stylesheet' href='\css\beneficiary.css' />
-   <!-- Load jQuery from Google's CDN -->
-    <!-- Load jQuery UI CSS  -->
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-    
-    <!-- Load jQuery JS -->
-    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-    <!-- Load jQuery UI Main JS  -->
-    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-    
-    <!-- Load SCRIPT.JS which will create datepicker for input field  -->
-   <script src="\js\datepicker.js"></script>
-
-   <!--script for showing gender and age for individual category -->
+<link rel='stylesheet' href='\css\projectcreate.css'/>
+   <script src="\js\jquery.js"></script>
+  <script src="\js\bootstrap.min.js"></script>
+   <!-- Load SCRIPT.JS which will create datepicker for input field  -->
+   <!--<script src="\js\datepicker.js"></script> -->
+  <!--script for showing gender and age for individual category -->
    <script>
-   $(document).ready(function () {
+  /*$(document).ready(function () {
     $('#beneficiary_category').change(function (){
     if($('#beneficiary_category').val()=='Individual') {
         $('#benf_gend_label').show();
@@ -35,124 +28,200 @@
         $('#benf_age_val').hide();
     }
     });
-});
-   </script>
+});*/ 
+//commented by prash
+   </script> 
+
+  <style>
+        
+  .wrapper {
+  
+  position: absolute;
+  top: 40%;
+  left: 20%;
+  width: 100%;
+  
+  margin-top: -200px;
+  overflow-x: hidden;
+}
+.setwidth {
+  width: 200px;
+  overflow: hidden;
+}
+
+    </style>
+ 
 </head>
 <body>
-  <div class="container">
+
+<div class="container">
       <div class="navbar navbar-inverse">
          <div class="container-fluid">
           <div class="navbar-header">
             <a class="navbar-brand" href="#">Beneficiary Details</a>
           </div>
           <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">Projects</a></li>
+            <li class="active"><a href="/home">Home</a></li>
+            <li><a href="/createProject">Projects</a></li>
             <li><a href="#">Locations</a></li>
             <li><a href="#">Import/Export</a></li>
             <li><a href="#">About</a></li>
             <li><a href="/signout">Log out</a></li>
           </ul>
         </div>
-  </div>
+</div>
 
-    <form class="form-horizontal" method="post" action="/updateBenificiary">
-        <div class="form-group">
-            <label for="beneficiaryGroup" class="control-label col-sm-6">Beneficiary Group</label>
-            <div class="col-sm-6">
-                <select name = "beneficiary_group">
-                <option>School</option>
-                <option>College</option>
-                <option>Hospital</option>
-              </select>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="beneficiaryLocation" class="control-label col-sm-6">Beneficiary Location</label>
-            <div class="col-sm-6">
-                <select name = "beneficiary_location">
-                <option>Tamilnadu</option>
-                <option>Kerala</option>
-                <option>Andhra Pradesh</option>
-              </select>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="beneficiaryCategory" class="control-label col-sm-6">Beneficiary Category</label>
-            <div class="col-sm-6">
-                <select name = "beneficiary_category" id="beneficiary_category">
-                <option>Select an option</option>
-                <option>Organization</option>
-                <option>Individual</option>
-              </select>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="beneficiaryGender" class="control-label col-sm-6" id="benf_gend_label" style='display:none;'>Gender</label>
-            <div class="col-sm-6">
-                <input type="text" name="beneficiary_gender" id="benf_gend_val" style='display:none;'>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="beneficiaryAge" class="control-label col-sm-6" id="benf_age_label" style='display:none;'>Age</label>
-            <div class="col-sm-6">
-                <input type="text" name="beneficiary_age" id="benf_age_val" style='display:none;'>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="beneficiaryName" class="control-label col-sm-6">Beneficiary Name</label>
-            <div class="col-sm-6">
-                <input type="text" name="beneficiary_name">
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="beneficiaryFundsAllocated" class="control-label col-sm-6">Funds Allocated</label>
-            <div class="col-sm-6">
-                <input type="text" name="beneficiary_fundsallocated">
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="benfNumPeopleBenefited" class="control-label col-sm-6">Number of People Benefited</label>
-            <div class="col-sm-6">
-                <input type="text" name="benf_numpeoplebenefited">
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="beneficaryTxnDate" class="control-label col-sm-6">Transaction Date</label>
-            <div class="col-sm-6">
-                <input type="text" name="beneficiary_txndate">
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="beneficaryTxnOwner" class="control-label col-sm-6">Transaction Owner</label>
-            <div class="col-sm-6">
-                <input type="text" name="beneficiary_txnowner">
-            </div>
-        </div>     
-
-        <div class="form-group">
-            <div class="col-sm-2">
-            </div>
-            <div class="col-sm-4 text-right">
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-            <div class="col-sm-4">
-                <button type="button" class="btn btn-primary">Cancel</button>
-            </div>
-            <div class="col-sm-2">
-            </div>
-        </div>
-    </form>
+<div class="container">
   
+<div class="wrapper"> 
+  
+  <form class="form-horizontal" role="form">
+    <h2 align="center">Beneficiary Details</h2>
+    <br/>
+    <div class="form-group">
+      <label for="BenefeciaryGroup" class=" control-label col-sm-2">Benefeciary Group:</label>
+   
+    <div class="col-sm-4"> 
+    <select class="form-control" id="BenefeciaryGroup" name="BenefeciaryGroup" required>
+  <option value="" selected="selected">Select an option</option>
+  <option value="school" id="location" >School</option>
+  <option value="college">College</option>
+  <option value="hospital" >Hospital</option>
+</select>
+  </div>
+ </div>
+ <div class="form-group">
+      <label for="BenefeciaryLoc" class=" control-label col-sm-2">Benefeciary Location:</label>
+   
+    <div class="col-sm-4"> 
+    <select class="form-control" id="BenefeciaryLocation" name="BenefeciaryLocation" required>
+  <option value="" selected="selected">Select an option</option>
+  <option value="chennai" id="location" >Chennai</option>
+  <option value="mumbai">Mumbai</option>
+  <option value="bangalore" >Bangalore</option>
+</select>
+  </div>
+ </div>
 
+ <div class="form-group">
+      <label for="beneficiaryCategory" class=" control-label col-sm-2">Benefeciary Category:</label>
+   
+    <div class="col-sm-4"> 
+    <select class="form-control" id="BenefeciaryCategory" name="BenefeciaryCategory" required>
+  <option value="" selected="selected">Select an option</option>
+  <option value="individual" id="location" >Individual</option>
+  <option value="organization">Organization</option>
+</select>
+  </div>
+ </div>
+
+ <div class="form-group">
+      <label for="gender" class=" control-label col-sm-2">Gender:</label>
+   
+    <div class="col-sm-3"> 
+    <select class="form-control" id="gender" name="gender" required>
+  <option value="" selected="selected">Select an option</option>
+  <option value="male" id="location" >Male</option>
+  <option value="female">Female</option>
+</select>
+  </div>
+ </div>
+
+    <div class="form-group">
+       <label for="age" class="control-label col-sm-2">Age:</label>
+      <div class="col-sm-3">          
+         <input id="age" class="form-control" placeholder="Enter your Age" required >
+      </div>
+    </div>
+    
+<div class="form-group">
+       <label for="beneficiaryname" class=" control-label col-sm-2">Beneficiary Name:</label>
+      <div class="col-sm-3">
+       <input id="beneficiaryname" class="form-control" placeholder="Enter the Beneficiary Name" required >
+      </div>
+    </div>
+
+    <div class="form-group">
+       <label for="fundsallocated" class=" control-label col-sm-2">Funds Allocated:</label>
+      <div class="col-sm-3">
+        <input id="fundsallocated" class="form-control" placeholder="Enter the Funds Allocated" required >
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="numberofpeoplebenefited" class=" control-label col-sm-2">Number of People Benefited:</label>
+      <div class="col-sm-3">          
+       <input id="numberofpeoplebenefited" class="form-control" placeholder="Enter the Number of People Benefited" required >
+      </div>
+    </div>
+   
+    <div class="form-group"> 
+      <label for="transactiondate" class=" control-label col-sm-2">Transaction Date:</label>
+      <div class="col-sm-8">
+        <input type= "date" id="transactiondate" class="form-control-date">
+      </div>
+     </div> 
+<div class="form-group">
+       <label for="transactionowner" class=" control-label col-sm-2">Transaction Owner:</label>
+      <div class="col-sm-3">
+        <input id="transactionowner" class="form-control" placeholder="Enter the Transaction Owner" required >
+      </div>
+    </div>
+   <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-4">
+        <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>
+</div>
 </body>
+<script src="\js\jquery.js"></script> 
+    <script src="\js\jquery-ui.js"></script> 
+    <script src="\js\bootstrap.min.js"></script>
+    <script src="\js\jquery.bootstrap-duallistbox.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+      // on submit
+      $('#submit').on('click',function(e){
+
+      alert("entered submit");
+         var formData=new Object;
+         var refresh=false;
+          formData.group=$('option:selected','#BenefeciaryGroup').val();
+          formData.location=$('option:selected','#BenefeciaryLocation').val();
+          formData.category=$('option:selected','#BenefeciaryCategory').val();
+          formData.name=$("#beneficiaryname").val();
+          formData.funds=$("#fundsallocated").val();
+          formData.numPeopleBenefited=$("#numberofpeoplebenefited").val();
+          formData.transDate=$("#transactiondate").val();
+          formData.transOwner=$("#transactionowner").val();
+          formData.gender=$('option:selected','#gender').val();
+          formData.age=$("#age").val();
+
+      $.ajax({
+
+        url:"../beneficiary/create"
+        type:"POST",
+        data:{
+          loadProds:1,
+          details:formData
+         },
+        dataType:"json",
+        success:function(){
+          refresh="true";
+          alert("success");
+        },
+        error:function(){
+          alert("error");
+        },
+        async:false
+      }); // end of ajax call adding to db
+
+       if(refresh=="true")
+          e.preventDefault();
+    }); // end of submit 
+
+  });
+</script>
 </html>
