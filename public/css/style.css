@@ -1,5 +1,5 @@
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: #f7f7f7;
 }
 
@@ -12,13 +12,6 @@ a:visited{
 	position: absolute;
   left: 50%;
   top: 50%; 
-}
-
-.footer {
-  padding-top: 40px;
-  padding-bottom: 40px;
-  margin-top: 40px;
-  border-top: 1px solid #eee;
 }
 
 .navbar{
@@ -63,9 +56,10 @@ hr{
 }
 
 .footer{
-  position: fixed;
-  left:50px;
-  bottom:0px;
+  position: absolute;
+  left:21%;
+  margin-top: 10%;
+
 }
 
 
@@ -73,7 +67,7 @@ hr{
      margin:10px 0px 0px 0px; 
 }
 .form-control{
-    position: relative;
+  position: relative;
   height: auto;
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
@@ -101,7 +95,7 @@ hr{
   }
   
  .lead{
-   margin-top: 30px;
+   margin-top: 10px;
    margin-bottom:10px;
 }
 
@@ -110,4 +104,55 @@ hr{
   font-style: italic;
 }
 
+.modal{
+  position: fixed;
+  margin-top:18%;
+}
 
+p{
+  text-align: center;
+  margin: 15px 0 30px;
+}
+
+.block{
+  display: inline-block;
+  margin-right: 15%;
+  width: 32%;
+}
+.btn-block{
+
+}
+
+.modal-btn{
+  margin: 5% 0 5% 20%;
+}
+
+#mail-action , #import-action{
+   margin:3% 10% 3% 10%;
+}
+
+#send-mail{
+  width:40%;
+  margin:4% 0 0 30%;
+}
+
+#import-data{
+  width:30%;
+  height: 80%;
+  margin:4% 0 0 35%;
+}
+#browse{
+    position: relative;
+    height: 108%;
+    margin-top: 9px;
+    width: 150%;
+}
+
+/*.modal-header{
+  min-height: 14px;
+  padding: 12px;
+  }
+
+ .bootstrap-dialog.type-primary .modal-header{
+     background-color: #1e3547;
+  }*/

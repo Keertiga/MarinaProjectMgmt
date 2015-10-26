@@ -36,16 +36,17 @@ var beneficiaryType=require('../models/static.js').beneficiaryType;
 
   //GET beneficiary data to be displayed
   router.get('/data',isLoggedIn,function(req, res) {
-    benfDetails.find({},function(err,data){
-             res.json(data);
-    });
+      benfDetails.find({},function(err,data){
+               res.json(data);
+      });
   });
 
   //DELETE beneficiary details
   router.post('/remove',function(req,res){
-   benfDetails.find({_id:req.body.ID}).remove().exec();
-   res.json("success");
+      benfDetails.find({_id:req.body.ID}).remove().exec();
+              res.json("success");
   });
+
 
 
 module.exports=router;

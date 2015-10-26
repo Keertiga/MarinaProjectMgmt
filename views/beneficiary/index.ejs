@@ -88,7 +88,7 @@
                     <div class="form-group">
                         <label for="name" class=" control-label col-sm-4">Beneficiary Name</label>
                         <div class="col-sm-8">
-                            <input type="text" id="email" class="form-control" placeholder="Name of Beneficiary Org/Individual" name="name" required >
+                            <input type="text" id="name" class="form-control" placeholder="Name of Beneficiary Org/Individual" name="name" required >
                         </div>
                     </div>
 
@@ -262,16 +262,18 @@
                     
                     var formData=new Object();
                  
-                    formData.category=$('option:selected','#category').val();
-                    formData.projectName=$('option:selected','#project-name').val();
-                    formData.location=$('option:selected','#location').val();
-                    formData.type=$('option:selected','#type').val();
-                    formData.name=$('#name').val();
-                    formData.funds=$('#funds').val();
-                    formData.numPeopleBenefited=$('#benf-people').val();
-                    formData.transOwner=$('#trans-owner').val();
-                    formData.transDate=$('#trans-date').val();
-                    formData.updated_at=Date.now();
+                    formData.Category=$('option:selected','#category').val();
+                    formData.ProjectName=$('option:selected','#project-name').val();
+                    formData.Location=$('option:selected','#location').val();
+                    formData.Type=$('option:selected','#type').val();
+                    formData.Name=$('#name').val();
+                    formData.Funds=$('#funds').val();
+                    formData.NumPeopleBenefited=$('#benf-people').val();
+                    formData.TransOwner=$('#trans-owner').val();
+                    formData.TransDate=$('#trans-date').val();
+                    formData.Updated_at=Date.now();
+
+                    alert(JSON.stringify(formData));
 
                     $.ajax({
                           url:"../beneficiary/create",

@@ -90,7 +90,7 @@ var index=function(passport){
 
 
     //Fetches All locations
-    router.get('/locations', function(req, res) {
+    router.get('/AllLocations', function(req, res) {
         locations.find({},function(err,data){
                res.json(data);
         });

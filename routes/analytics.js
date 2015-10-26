@@ -72,11 +72,10 @@ router.get('/getLocationData', function(req, res) {
         query.push({$group:{ _id:"$projectName",y:{$sum:"$funds"}}});
    	else
     	query.push({$group:{ _id:"$projectName",y:{$sum:"$numPeopleBenefited"}}});
-    
 
      //hit db
      benfDetails.aggregate(query,function(err,data){
-    	 res.json({chartData:data}); 
+        res.json({chartData:data}); 
      });
     
 });
