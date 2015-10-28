@@ -36,7 +36,7 @@ router.get('/location',function(req,res){
 router.get('/getProjectData', function(req, res) {
 
 	 //parse request data
-    var reqBody=querystring.parse(url.parse(req.url).query);
+    var reqBody=querystring.parse(url.parse(req.url).query);    
     var data=JSON.parse(reqBody.FormData);
 
     //contruct query to project location,sum of funds/benefitted people group by location
@@ -72,11 +72,10 @@ router.get('/getLocationData', function(req, res) {
         query.push({$group:{ _id:"$projectName",y:{$sum:"$funds"}}});
    	else
     	query.push({$group:{ _id:"$projectName",y:{$sum:"$numPeopleBenefited"}}});
-    
 
      //hit db
      benfDetails.aggregate(query,function(err,data){
-    	 res.json({chartData:data}); 
+        res.json({chartData:data}); 
      });
     
 });

@@ -54,11 +54,6 @@ var index=function(passport){
     });
 
 
-    //GET Create Project Page
-    router.get('/createProject',isLoggedIn,function(req, res) {
-        res.render('createProject');
-    });
-
 
     //Handle logout functionality
     router.get('/signout',function(req,res){
@@ -80,6 +75,8 @@ var index=function(passport){
     router.get('/projects', function(req, res) {
         var reqBody=querystring.parse(url.parse(req.url).query);
 
+        console.log(reqBody);
+
         if(reqBody["category"]=="all")
                reqBody={};
 
@@ -90,20 +87,21 @@ var index=function(passport){
 
 
     //Fetches All locations
-    router.get('/locations', function(req, res) {
+    router.get('/AllLocations', function(req, res) {
         locations.find({},function(err,data){
                res.json(data);
         });
     });
 
-    //Fetches Location based on Project Category 
+    //Fetches Location based on Project Category and Projects
     router.get('/locations', function(req, res) {
         var reqBody=querystring.parse(url.parse(req.url).query);
-        
-        if(reqBody["category"]=="all")
+
+        if(reqBody["category"]=="all" || reqBody["name"]=="all")
                reqBody={};
 
-        projectDetails.find(reqBody).distinct('location',function(err,data){
+        projectDetails.find(reqBody).distinct('locations',function(err,data){
+              console.log(data);
               res.json(data);
         });
     });

@@ -8,20 +8,23 @@ var passport=require('passport');
 var session=require('express-session');
 var flash=require('connect-flash');
 
+
 //Connect to db ProjectMgmt
 var mongoose=require('mongoose');
-var dbConfig=require('./config/db.js')
-mongoose.connect(dbConfig.url);
+var config=require('./config')
+mongoose.connect(config.url);
 
 var routes = require('./routes').index(passport);
 var analytics=require('./routes/analytics');
 var beneficiary=require('./routes/beneficiary');
 var project=require('./routes/project');
+var reports=require('./routes/reporting.js');
 require('./config/passport.js')(passport);
 
 
 
 var app = express();
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -45,7 +48,7 @@ app.use('/', routes);
 app.use('/analytics', analytics);
 app.use('/beneficiary',beneficiary);
 app.use('/project',project);
-
+app.use('/reports',reports);
 
 
 

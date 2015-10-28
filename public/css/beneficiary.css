@@ -1,0 +1,53 @@
+.row {
+  padding-top: 20px;
+}
+.jumbotron{
+  background-color:#1e3547;
+  padding: 20px;
+  text-align: left;
+  color: #fff;
+}
+
+body {
+  padding-top: 20px;
+  padding-bottom: 40px;
+  background-color: #eee;
+  overflow-x:hidden;
+}
+
+
+.modal-dialog{
+	width:40%;
+	margin-top: 6%;
+}
+
+
+ .lead{
+   margin-top: 30px;
+   margin-bottom:10px;
+}
+
+.jumbotron p{
+  font-size:15px;
+  font-style: italic;
+}
+
+
+#export{
+	 float: right;
+  margin-top: 3px;
+  width: 150px;
+}
+
+#submit{
+	margin: 3% 0 3% 35%;
+	width:150px;
+}
+.error {
+   color: red;
+}
+
+#trash{
+  position:relative;
+  top: 8px;
+}

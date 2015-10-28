@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+
+  <link rel='stylesheet' href='\css\bootstrap.min.css'/>
+   <link rel='stylesheet' href='\css\style.css' />
+  </head>
+  <body>  
+
+  <!--Modal window for initial import/export option-->
+  <div  id="modal">
+    <p>Select one of the options to proceed</p>
+     <div class="modal-btn">
+        <div class="block">
+            <a href="/reports/export"class="btn btn-primary btn-block" id="export">Export</a>
+        </div>
+        <div class="block">
+             <a class="btn btn-warning btn-block" id="import">Import</a>
+        </div>
+     </div>
+  </div>
+
+  <!--Modal window after export to display mailing option-->
+  <div id="after-export" class="list-group">
+      <p> Do you wish to mail exported data? </p>
+      <div class="modal-btn">
+        <div class="block">
+            <a class="btn btn-primary btn-block" id="mail-yes">Yes</a>
+        </div>
+        <div class="block">
+             <a class="btn btn-warning btn-block" data-dismiss="modal" id="mail-no">No</a>
+        </div>
+      </div>
+  </div>
+
+  <!--Modal window to capture email id and perform send mail-->
+  <div id="mail-action" class="list-group">
+     <form class="form"  method="GET" action='/reports/sendmail/BeneficiaryDetails.xls'>
+
+        <input type="email" class="form-control" name="email" id="email" placeholder="Enter Email Address" required>
+        <input type="hidden" value="beneficiary" name="type">
+   
+        <button class="btn btn-block btn-primary" id="send-mail" data-dismiss="modal">Send Now</button> 
+     
+     </form>
+
+  </div>
+
+
+  <!--Modal Window to display Browse file option and perform file import-->
+  <div class="list-group" id="import-action">
+      <form class="form" method="POST" action="/reports/upload" enctype="multipart/form-data">
+
+        <div class="list-group"> 
+              <input type="file"  id="file" name="file" >
+        </div>
+
+        <div class="input-group">
+            <input type="text" class="form-control" name="helper-file" id="helper-file" placeholder="Select a file to upload" required>
+            <span class="input-group-btn">
+                  <button type="button" class="btn btn-primary" id="browse" onclick=$('#file').click()>Browse</button>
+            </span>
+        </div>
+         <button class="btn btn-block btn-primary" id="import-data" data-dismiss="modal">Import data</button> 
+      </form>
+  </div>
+
+  <script src="\js\jquery.js"></script>
+  <script src="\js\bootstrap.min.js"></script>
+  <script type="text/javascript">
+        
+        $(document).ready(function(){
+
+             //Hides import & export buttons and displays export options
+             $("#export").click(function(){
+              
+                   $('#modal').hide();
+                   $('#after-export').show();
+
+             });
+
+             //Hides import/export buttons and displays import options
+             $("#import").click(function(){
+              
+                   $('#modal').hide();
+                   $('#import-action').show();
+
+             });
+
+             //Displays send mail options
+             $('#mail-yes').click(function(){
+   
+                   $('#after-action').hide();
+                   $('#mail-action').show();
+
+             });
+
+ 
+             //Populate the file name
+             $('#file').on('change',function(){
+
+                   //Split file name alone from path
+
+                   var fileName=$(this).val();
+                   var index=fileName.lastIndexOf('\\');
+                   fileName=fileName.substr(index+1);
+                   $('#helper-file').val(fileName);
+
+             });  
+
+        });
+  </script>
+  </html>
