@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+
+    <link rel='stylesheet' href='\css\bootstrap.min.css'/>
+      <link rel='stylesheet' href='\css\jquery-ui.min.css'/>
+     <link rel='stylesheet' href='\css\beneficiary.css' />
+  </head>
+  <body>
+  		<div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <form  class="form-horizontal" role="form">
+                    <input type="hidden" id="edit-id" name="edit-id"> 
+                    <div class="form-group">
+                        <label for="project_category" class="control-label col-sm-4">Project Category</label>
+                        <div class="col-sm-6">
+                              <select class="form-control" name="project_category" id="project_category" required autofocus>
+                                   
+                              </select>
+                        </div>
+                    </div>
+ 
+                    <div class="form-group">
+                        <label for="project_name" class="control-label col-sm-4">Project Name</label>
+                        <div class="col-sm-6">
+                            <select class="form-control" name="project_name" id="project_name" required>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="location" class="control-label col-sm-4">Location</label>
+                        <div class="col-sm-6">
+                             <select class="form-control" name="location" id="location" required>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="type" class=" control-label col-sm-4">Beneficiary Type</label>
+                        <div class="col-sm-6">
+                            <select class="form-control" name="type" id="type" required>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name" class=" control-label col-sm-4">Beneficiary Name</label>
+                        <div class="col-sm-6">
+                            <input type="text" id="name" class="form-control" placeholder="Name of Beneficiary Org/Individual" name="name" required >
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="funds" class=" control-label col-sm-4 col-xs-12">Project Fund</label>
+
+                        <div class="col-sm-4 col-xs-8">
+                             <input type="text" id="funds" class="form-control" placeholder="Project fund" name="funds" required><span class="error" id="fundsError"></span>
+                        </div>
+
+                        <div class="col-sm-2 col-xs-4">
+                              <input id="funds" class="form-control" value="INR" name="currency" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">    
+                        <label for="benf-people" class=" control-label col-sm-4 col-xs-12">Num Of Benefitted People</label>
+                        <div class="col-xs-12 col-sm-6">
+                              <input type="text" id="benf-people" class="form-control" name='benf-people' required><span class="error" id="benfError"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">    
+                        <label for="trans-owner" class=" control-label col-sm-4 col-xs-12">Transaction Made By</label>
+                        <div class="col-xs-12 col-sm-6">
+                              <input type="text" id="trans-owner" class="form-control" name='trans-owner'required>
+                        </div>
+                    </div>
+
+                  
+                    
+                    <div class="form-group has-feedback">
+                        <label for="trans-date" class=" control-label col-sm-4 col-xs-12">Transaction Date</label>
+                        <div class="col-sm-6 col-xs-12">
+                            <input type= "text" id="trans-date" class=" form-control" placeHolder="Transaction Date" required>
+                            <i class="glyphicon glyphicon-calendar form-control-feedback"></i>
+                            <span class="error" id="dateError"></span>
+                        </div>
+                    </div>
+
+                 <div class="form-group">
+                     <button class="btn btn-primary" id="submit">Update</button>                       
+                 </div>
+                </form>
+              </div>
+
+        </div>
+    </div>
+  </body>
+
+  <script src="\js\jquery.js"></script> 
+  <script src="\js\jquery-ui.js"></script> 
+  <script src="\js\bootstrap.min.js"></script>
+  <script type="text/javascript">
+
+  	$(document).ready(function(){	
+
+             //Date controls
+              $('#trans-date').datepicker().change(function(){
+
+              });
+
+              
+             //For populating project category dropdown
+              $.ajax({
+                  url:"../projectCategory",
+                  type:"GET",
+                  headers:{"Accept":"application/json;odata=verbose"},
+                  success:function(data){
+                      for(var i in data){
+                          var item=$('<option>'+data[i].name+'</option>');
+                          $('#project_category').append(item);
+                      }
+                  },
+                  error:function(data){
+                      alert("error");
+                  }
+              });
+
+             //For populating beneficiary type on load of page
+               $.ajax({
+                  url:"../beneficiary/type",
+                  type:"GET",
+                  headers:{"Accept":"application/json;odata=verbose"},
+                  success:function(data){
+                      for(var i in data){
+                          var item=$('<option>'+data[i].type+'</option>');
+                          $('#type').append(item);
+                      }
+                  },
+                  error:function(data){
+                      alert("error");
+                  }
+              });
+
+
+          //For populating projects dropdown based on project category
+          $('#project_category').on('change',function(){
+                
+              var category= $('option:selected', this).val();
+
+              //resetting projects dropdown on category change
+              $('#project_name').empty();
+
+               //Populating Projects dropdown
+              $('#project_name').append($('<option>Select a project</option>'));
+              $.ajax({
+                  url:"../projects",
+                  type:"GET",
+                  data:'category='+category,
+                  headers:{"Accept":"application/json;odata=verbose"},
+                  success:function(data){
+                      for(var i in data){
+                          var item=$('<option>'+data[i]+'</option>');
+                          $('#project_name').append(item);
+                      }
+                  },
+                  error:function(data){
+                      alert("error");
+                  }
+                });
+          });
+
+
+        //For populating locations dropdown based on project selected
+        $('#project_name').on('change',function(){
+
+            var project_name= $('option:selected', this).val();
+           
+            //resetting  all fields on form upon category change
+            $('#location').empty();
+ 
+            $('#location').append($('<option>Select a location</option>'));
+            $.ajax({
+                url:"../locations",
+                type:"GET",
+                data:'name='+project_name,
+                headers:{"Accept":"application/json;odata=verbose"},
+                success:function(data){
+                    
+                    for(var i in data){
+                        var item=$('<option>'+data[i]+'</option>');
+                        $('#location').append(item);
+                    }
+                },
+                error:function(data){
+                    alert("error");
+                }
+            });
+        });
+
+        //Validating funds and numBenefitted People field to accept numbers & decimal alone
+         $("#funds, #benf-people").on('keydown', function (e) {
+
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57) && (e.which < 96 || e.which > 105) && e.which!=188 && e.which!=190 && e.which!=110 && e.which!=9  ) {
+                  //display error message
+  
+                  $(this).closest('div').find('.error').html("Please enter correct value [digits Only]").show().fadeOut(2000);
+                  return false;
+            }
+        });
+
+
+        //Update edited details   
+        $('#submit').on('click',function(e){
+                    var id =$("#edit-id").val();
+                    var formData=new Object();
+                    formData.ID=id;
+                    formData.Category=$('option:selected','#project_category').val();
+                    formData.ProjectName=$('option:selected','#project_name').val();
+                    formData.Location=$('option:selected','#location').val();
+                    formData.Type=$('option:selected','#type').val();
+                    formData.Name=$('#name').val();
+                    formData.Funds=parseFloat($('#funds').val());
+                    formData.NumPeopleBenefited=parseFloat($('#benf-people').val());
+                    formData.TransOwner=$('#trans-owner').val();
+                    formData.TransDate=$('#trans-date').val();
+                    formData.Updated_at=Date.now();
+
+                    $.ajax({
+                          url:"../beneficiary/update",
+                          type:"POST",
+                          data:{
+                              loadProds:1,
+                              details:formData
+                          },
+                          dataType:"json",
+                          success:function(){
+                               window.location.reload();
+                          },
+                          error:function(){
+                            
+                          },
+                            async:false
+                        });
+                     
+
+                   });
+
+
+});
+
+  </script>
+</html> 

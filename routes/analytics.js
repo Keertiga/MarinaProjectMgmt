@@ -36,7 +36,7 @@ router.get('/location',function(req,res){
 router.get('/getProjectData', function(req, res) {
 
 	 //parse request data
-    var reqBody=querystring.parse(url.parse(req.url).query);
+    var reqBody=querystring.parse(url.parse(req.url).query);    
     var data=JSON.parse(reqBody.FormData);
 
     //contruct query to project location,sum of funds/benefitted people group by location

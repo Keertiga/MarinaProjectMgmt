@@ -4,9 +4,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
 
-    <link rel='stylesheet' href='\css\bootstrap.min.css'/>
-    <link rel='stylesheet' href='\css\form.css' />
-       <link type="text/css" rel="stylesheet" href="path_to/simplePagination.css"/>
+    <link rel='stylesheet' href='\css\bootstrap.min.css'/>  
+    <link rel='stylesheet' href='\css\beneficiary.css' />
+    <link type="text/css" rel="stylesheet" href="path_to/simplePagination.css"/>
 
  </head>
 
@@ -61,22 +61,19 @@
   </body>
 
 
- <div class="modal fade" id="myModal">
+ <!--Update modal to edit beneficiary details-->
+ <div class="modal fade" id="editModal">
   <div class="modal-dialog">
     <div class="modal-content">
+
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title">Edit Beneficiary Details</h4>
       </div>
-      <div class="modal-body">
-        <p><input type="text" class="input-sm" id="txtfname"/></p>
-        <p><input type="text" class="input-sm" id="txtlname"/></p>
-        <p><input type="text" class="input-sm" id="txtemail"/></p>
+
+      <div class="modal-body" id="main-content">
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save</button>
-      </div>
+
     </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
@@ -115,6 +112,7 @@
 
   <script src="\js\jquery.js"></script>
   <script src="\js\bootstrap.min.js"></script>
+  <script src="\js\bootstrap-modal.min.js"></script>
 
   <script type="text/javascript">
 
@@ -145,7 +143,7 @@
                           tr.append("<td>" + data[i].TransOwner + "</td>");
                           tr.append("<td>" + data[i].TransDate + "</td>");
 
-                          deleteIcon=$(' <a href="#" id=trash_obj><span class="glyphicon confirm-delete glyphicon-trash"></a>');
+                          deleteIcon=$(' <a href="#" id=trash><span class="glyphicon confirm-delete glyphicon-trash"></a>');
                           tr.append(deleteIcon);
 
                           $('tbody').append(tr);    
@@ -200,64 +198,105 @@
                       });
               });
 
+    
+
+
+
+         $('td').on('click',function(){
+
+              //store the selected row & get the id
+              var self=$(this);
+              var id = $(this).closest('tr').attr('id');
+              $("#editModal #edit-id").val(id);
+
+              //load the update div
+              $('#main-content').load('/beneficiary/update');
+
+              //Set keyboard value for ESC key to work
+              $('#editModal').modal({
+                     keyboard:true
+              });
+
+              $('#editModal').modal('show');
+
+              //On show of update modal window set the values from selected row 
+              $("#editModal").on('shown.bs.modal',function(e){
+
+                       var element=self.closest('tr').children();
+
+                       var category=element[0].textContent;
+                       var project_name=element[1].textContent;
+                       var location=element[2].textContent;
+                       var type=element[3].textContent;
+                       var name=element[4].textContent;
+                       var funds=element[5].textContent;
+                       var benf_people=element[6].textContent;
+                       var trans_owner=element[7].textContent;
+                       var trans_date=element[8].textContent;
+
+                       $("#project_category").val(category);
+
+                       setProjects(category,project_name);
+                       setLocations(project_name,location);
+
+                       $("#type").val(type);
+                       $("#name").val(name);
+                       $("#funds").val(funds);
+                       $("#benf-people").val(benf_people);
+                       $("#trans-owner").val(trans_owner);
+                       $("#trans-date").val(trans_date);
+                       $("#edit-id").val(id);
+              });
               
-              /*Handles click of export button
-              $('#export').click(function(){
-              
-                    $.ajax({
-                        
-                          url:"../beneficiary/data",
-                          type:GET,
-                          headers:"Accept:application/json;odata:verbose",
-                          success:function(data){
-
-                          },
-                          error:function(data){
-
-                          }
-
-                    });
-              });*/
-
-//Pagination script
-
-  $('#benf-details tbody').after('<div id="nav"></div>');
-            var rowsShown = 10;
-            var rowsTotal = $('#benf-details tbody tr').length;
-            var numPages = rowsTotal/rowsShown;
-            for(i = 0;i < numPages;i++) {
-                var pageNum = i + 1;
-                $('#nav').append('<a href="#" rel="'+i+'">'+pageNum+'</a> ');
-            }
-            $('#benf-details tbody tr').hide();
-            $('#benf-details tbody tr').slice(0, rowsShown).show();
-            $('#nav a:first').addClass('active');
-            $('#nav a').bind('click', function(){
- 
-                $('#nav a').removeClass('active');
-                $(this).addClass('active');
-                var currPage = $(this).attr('rel');
-                var startItem = currPage * rowsShown;
-                var endItem = startItem + rowsShown;
-                $('#benf-details tbody tr').css('opacity','0.0').hide().slice(startItem, endItem).
-                        css('display','table-row').animate({opacity:1}, 300);
             });
 
 
+         //Utility to get projects based upon project category
+         function setProjects(category,project_name){
+              $('#project_name').html("");
 
-            
-         
-         $('td').on('click',function(){
-          if ($(this).closest('td')) {
-             $("#myModal").modal("show"); 
-            };
-            $("#myModal").modal("show");
-            $("#txtfname").val($(this).closest('tr').children()[0].textContent);
-            $("#txtlname").val($(this).closest('tr').children()[1].textContent);
-            $("#txtemail").val($(this).closest('tr').children()[2].textContent);
+              $.ajax({
+                url:"../projects",
+                type:"GET",
+                data:'category='+category,
+                headers:{"Accept":"application/json;odata=verbose"},
+                success:function(data){
+                    for(var i in data){
+                        var item=$('<option>'+data[i]+'</option>');
+                        $('#project_name').append(item);
+                    }
+                     $("#project_name").val(project_name);
+
+                },
+                error:function(data){
+                    alert("error");
+                }
+              });
+
+          }
+
+          //Utility to get projects based upon project category
+          function setLocations(project,location){
+
+             $('#location').html("");
+             $.ajax({
+                url:"../locations",
+                type:"GET",
+                data:"name="+project,
+                headers:{"Accept":"application/json;odata=verbose"},
+                success:function(data){
+                    for(var i in data){
+                        var item=$('<option>'+data[i]+'</option>');
+                        $('#location').append(item);
+                    }
+                    $("#location").val(location);
+                },
+                error:function(data){
+                    alert("error");
+                }
             });
         
-           
+            }
     });</script>
 
 </html>

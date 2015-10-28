@@ -80,7 +80,6 @@
                         <div class="col-sm-8">
                               <select class="form-control" name="type" id="type" required>
                                  <option value="">Select Individual / Organization</option>
-                                 <option>Individual</option>
                             </select>
                         </div>
                     </div>
@@ -132,7 +131,7 @@
 
                     <div class="form-group">
                         <div class="col-sm-offset-6 col-xs-12 col-xs-offset-3">
-                            <button class="btn btn-primary btn-lg" id="submit">Add Project</button>
+                            <button class="btn btn-primary btn-lg" id="submit">Add Details</button>
                         </div>
                     </div>
                 </form>
@@ -234,8 +233,9 @@
                 data:'name='+project_name,
                 headers:{"Accept":"application/json;odata=verbose"},
                 success:function(data){
+                    
                     for(var i in data){
-                        var item=$('<option>'+data[i].location+'</option>');
+                        var item=$('<option>'+data[i]+'</option>');
                         $('#location').append(item);
                     }
                 },
@@ -262,18 +262,16 @@
                     
                     var formData=new Object();
                  
-                    formData.Category=$('option:selected','#category').val();
                     formData.ProjectName=$('option:selected','#project-name').val();
                     formData.Location=$('option:selected','#location').val();
                     formData.Type=$('option:selected','#type').val();
                     formData.Name=$('#name').val();
-                    formData.Funds=$('#funds').val();
-                    formData.NumPeopleBenefited=$('#benf-people').val();
+                    formData.Funds=parseFloat($('#funds').val());
+                    formData.NumPeopleBenefited=parseFloat($('#benf-people').val());
                     formData.TransOwner=$('#trans-owner').val();
                     formData.TransDate=$('#trans-date').val();
                     formData.Updated_at=Date.now();
 
-                    alert(JSON.stringify(formData));
 
                     $.ajax({
                           url:"../beneficiary/create",

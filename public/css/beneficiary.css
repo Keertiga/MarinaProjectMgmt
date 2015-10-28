@@ -15,18 +15,10 @@ body {
   overflow-x:hidden;
 }
 
-#export{
-  float: right;
-  margin-top: 3px;
-  width: 150px;
-}
 
-.error {
-   color: red;
-}
-.required:after{
-  content:" *";
-  color:#1e3547;
+.modal-dialog{
+	width:40%;
+	margin-top: 6%;
 }
 
 
@@ -41,3 +33,21 @@ body {
 }
 
 
+#export{
+	 float: right;
+  margin-top: 3px;
+  width: 150px;
+}
+
+#submit{
+	margin: 3% 0 3% 35%;
+	width:150px;
+}
+.error {
+   color: red;
+}
+
+#trash{
+  position:relative;
+  top: 8px;
+}
