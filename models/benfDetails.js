@@ -3,16 +3,16 @@ var Schema = mongoose.Schema;
 
 // create a schema
 var BenfDetailsSchema = new Schema({
-  category: String,
-  projectName:String,
-  location: String,
-  type: String,
-  name: String,
-  funds: Number,
-  numPeopleBenefited:Number,
-  transOwner: String,
-  transDate: String,
-  updated_at:String
+  Category: String,
+  ProjectName:String,
+  Location: String,
+  Type: String,
+  Name: String,
+  Funds: Number,
+  NumPeopleBenefited:Number,
+  TransOwner: String,
+  TransDate: String,
+  Updated_At:String
  
 
 },{collection:'benf_details'});

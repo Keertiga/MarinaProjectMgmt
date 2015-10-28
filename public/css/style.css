@@ -1,7 +1,14 @@
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: #f7f7f7;
+  font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #FFFFFF;
+  
 }
+
+.navbar-home{
+  background-color: #FFFFFF;
+  color: #000000;
+}
+
 
 a:visited{
   text-decoration: none;
@@ -14,17 +21,6 @@ a:visited{
   top: 50%; 
 }
 
-.footer {
-  padding-top: 40px;
-  padding-bottom: 40px;
-  margin-top: 40px;
-  border-top: 1px solid #eee;
-}
-
-.navbar{
-  background-color: #f7f7f7;
-  color: #fff;
-} 
 
 .list-group-item{
    border:none;
@@ -39,9 +35,15 @@ hr{
 
 .jumbotron{
   background-color:#1e3547;
+
   padding: 70px;
   text-align: left;
   color: #fff;
+   margin: 0 auto;
+    width: 100%;
+    
+    color: #fff;
+    height: 105px;
 }
 
 .list-group
@@ -62,18 +64,13 @@ hr{
     text-align: center;
 }
 
-.footer{
-  position: fixed;
-  left:50px;
-  bottom:0px;
-}
 
 
 .control-label{
      margin:10px 0px 0px 0px; 
 }
 .form-control{
-    position: relative;
+  position: relative;
   height: auto;
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
@@ -101,13 +98,110 @@ hr{
   }
   
  .lead{
-   margin-top: 30px;
-   margin-bottom:10px;
+   margin-top: 5px;
+   margin-bottom:0px;
+
 }
 
 .jumbotron p{
   font-size:15px;
   font-style: italic;
+
+}
+
+.modal{
+  position: fixed;
+  margin-top:18%;
+}
+
+p{
+  text-align: center;
+  margin: 15px 0 30px;
+}
+
+.block{
+  display: inline-block;
+  margin-right: 15%;
+  width: 32%;
+}
+.btn-block{
+
+}
+
+.modal-btn{
+  margin: 5% 0 5% 20%;
+}
+
+#mail-action , #import-action{
+   margin:3% 10% 3% 10%;
+}
+
+#send-mail{
+  width:40%;
+  margin:4% 0 0 30%;
+}
+
+#import-data{
+  width:30%;
+  height: 80%;
+  margin:4% 0 0 35%;
+}
+#browse{
+    position: relative;
+    height: 108%;
+    margin-top: 9px;
+    width: 150%;
+}
+
+.footer{
+  position: fixed;
+  font-color: #FFFFFF;
+  left:0px;
+  bottom:0px;
+  background-color: #303030;
+
+  width:100%;
 }
 
 
+footer {
+  margin-top: 10px;
+  padding-top: 10px;
+    left:0px;
+  bottom:0px;
+  background-color: #303030;
+  border-top: 1px solid #ddd;
+  color: #e2e2e2;
+}
+footer hr {
+  border-top: none;
+  border-bottom: 1px solid #666;
+}
+footer a {
+  color: #ccc;
+}
+footer a:hover {
+  color: #fff;
+}
+footer h5 {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+  color: #fff;
+}
+
+
+.home-panel{
+  
+  padding-top: 50px;
+  
+}
+
+/*.modal-header{
+  min-height: 14px;
+  padding: 12px;
+  }
+
+ .bootstrap-dialog.type-primary .modal-header{
+     background-color: #1e3547;
+  }*/

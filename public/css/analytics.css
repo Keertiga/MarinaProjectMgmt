@@ -56,13 +56,10 @@ label{
 }
 
 iframe{
-  width:100%;
+  width: 100%;
   height: 750px;
 }
 
-iframe::-webkit-scrollbar { 
-    display: none; 
-}
 .center{
   position: absolute;
   left: 32%;
@@ -96,6 +93,8 @@ form{
   left: 75%;
   top:23%;
 }
+
+
 #chart{
   position: absolute;
   top:40%;
@@ -107,3 +106,8 @@ form{
   left: 50%;
   top: 50%; 
 }
+ .lead{
+   margin-top: 30px;
+   margin-bottom:20px;
+}
+
