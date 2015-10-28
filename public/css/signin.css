@@ -1,14 +1,79 @@
 body {
   padding-top: 40px;
   padding-bottom: 40px;
-  background-color: #eee;
+  background-color: #FFFFFF;
+ /* background-image: url('../images/Doodle.bmp');*/
 }
+
+@font-face {
+  font-family: KGTangledUpInYou;
+  src: url('../../fonts/KGTangledUpInYou.ttf');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: KGTangledUpInYou2;
+  src: url('../../fonts/KGTangledUpInYou2.ttf');
+  font-weight: bold;
+}
+
+.home-icon{
+list-style-image: url('../../icons/Project_Icon.jpg');
+}
+
+
+
+.bg-header H1{
+      
+      font-family: "KGTangledUpInYou";
+      text-align:center;
+      font-size: 100px;
+
+    }
+
+.bg-header H2{
+
+  font-family: "KGTangledUpInYou2";
+      text-align:center;
+      font-size: 80px;
+
+    }
+
+.navbar-home{
+  background-color: #FFFFFF;
+}
+
+
+
+
+.bg-panel{
+
+  padding:250px 0;
+  padding-right: 70x;
+
+  text-align:center;
+  color: #FFFFFF;
+   background-image: url('../images/panel_BG.jpg');
+
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+   
+  
+}
+
+
+    
+
+
 
 .form-signin {
   max-width: 460px;
   padding: 15px;
   margin: 0 auto;
   margin-top: 100px;
+   background-color: #FFFFFF;
 }
 .form-signin .form-signin-heading,
 .form-signin .checkbox {
@@ -51,4 +116,40 @@ body {
   width:40%;
   margin-left: 28%;
   margin-bottom: 5%;
+}
+
+.footer{
+  position: fixed;
+  font-color: #FFFFFF;
+  left:0px;
+  bottom:0px;
+  background-color: #303030;
+  width:100%;
+}
+
+
+footer {
+  margin-top: 30px;
+  padding-top: 30px;
+    left:0px;
+  bottom:0px;
+  background-color: #303030;
+  border-top: 1px solid #ddd;
+  color: #e2e2e2;
+}
+footer hr {
+  border-top: none;
+  border-bottom: 1px solid #666;
+}
+footer a {
+  color: #ccc;
+}
+footer a:hover {
+  color: #fff;
+}
+footer h5 {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+  color: #fff;
 }
