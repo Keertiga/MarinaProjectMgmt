@@ -10,11 +10,11 @@
   <body>  
 
 
- <div class="navbar navbar-default navbar-fixed-top navbar-home">
+ <div class="navbar navbar-default navbar-fixed-top navbar-home" >
       <div class="container">
         <div class="navbar-header">
 
-          <a class="navbar-brand" href="#"><span class="home-icon"></span>Project Management</a>
+          <a class="navbar-brand" href="#"> Marina Project Management</a>
       
         </div>  
         <div class="collapse navbar-collapse">
@@ -40,9 +40,9 @@
       </span>
       
 
-       <button class="btn btn-primary btn-lg   " type="submit" data-toggle="modal" data-target="#login">Log In</button>
+       <button class="btn btn-primary btn-lg" id="login_btn" type="submit" data-toggle="modal" data-target="#login">Log In</button>
                         
-    <button class="btn btn-default btn-lg  " type="submit" data-toggle="modal" data-target="#signup">Sign Up</button>
+    <button class="btn btn-default btn-lg" id="signup_btn" type="submit" data-toggle="modal" data-target="#signup">Sign Up</button>
 
     </div>
 </header>
@@ -67,7 +67,7 @@
           </label>
         </div>
         
-        <button class="form-btn btn-lg btn-primary" type="submit">Log In</button>
+        <button  class="form-btn btn-lg btn-primary" id="login_btn" type="submit">Log In</button>
        
       </form>
     </div>
@@ -77,7 +77,7 @@
     <!--Sign Up-->
      <div class="modal fade" id="signup" role="dialog">
     <div class="modal-dialog">
-      <form class="form-signin" action="/register" method="post">
+      <form class="form-signin" action="/register" method="post" >
       <h2 class="form-signin-heading"> Sign Up</h2>
         <label for="email" class="form-label">Your Email address</label>
         <input type="email" id="email" class="form-control" placeholder="Email address" name="email" required autofocus>
@@ -91,11 +91,18 @@
         <label for="confirmPassword" class="form-label">Confirm password</label>
         <input type="password" id="confirmPassword" class="form-control" placeholder="Password" name="confirmPassword" required>
 
-        <button class="form-btn btn-lg btn-primary" type="submit">Register</button>
+        <button class="form-btn btn-lg btn-primary" id="signup_btn" type="submit">Register</button>
         
       </form>
     </div>
  </div>
+
+  <div class="container">
+    <h2 class="ti" align="center">Designed for everyone, everywhere.</h2>
+    <p  class="lead" align="center">Marina enables project management faster and easier. It's made for organizations of all skill levels, devices of all shapes, and projects of all sizes.</p>
+</div>
+
+
 
 
    <footer class="footer">
@@ -118,6 +125,8 @@
 
  <script src="\js\jquery.js"></script>
   <script src="\js\bootstrap.min.js"></script>
+
+
 
 
   <!--Script for Animation-->

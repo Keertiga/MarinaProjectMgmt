@@ -41,6 +41,7 @@ list-style-image: url('../../icons/Project_Icon.jpg');
 
 .navbar-home{
   background-color: #FFFFFF;
+  color: #000000;
 }
 
 
@@ -48,7 +49,7 @@ list-style-image: url('../../icons/Project_Icon.jpg');
 
 .bg-panel{
 
-  padding:250px 0;
+  padding:150px 0;
   padding-right: 70x;
 
   text-align:center;
@@ -124,13 +125,14 @@ list-style-image: url('../../icons/Project_Icon.jpg');
   left:0px;
   bottom:0px;
   background-color: #303030;
+
   width:100%;
 }
 
 
 footer {
-  margin-top: 30px;
-  padding-top: 30px;
+  margin-top: 10px;
+  padding-top: 10px;
     left:0px;
   bottom:0px;
   background-color: #303030;
@@ -152,4 +154,27 @@ footer h5 {
   font-size: 13px;
   font-weight: bold;
   color: #fff;
+}
+
+.ti{
+position: relative;
+padding-top: 60px;
+}
+
+#login_btn{
+
+    color: #fff;
+    background-color: #55acee;
+    background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.05));
+    border: 1px solid #3b88c3;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.15);
+
+}
+#signup_btn{
+
+    background-color: #ffac33;
+    background-image: linear-gradient(#ffcc4d,#ffac33);
+    border-color: #f1a02a;
+    color: #292f33;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.5);
 }
