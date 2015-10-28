@@ -7,6 +7,7 @@ var ProjectSchema = new Schema({
   name: String,
   desc: String,
   lead: String,
+  email:String,
   start_date: Date,
   end_date: Date,
   locations: Array,

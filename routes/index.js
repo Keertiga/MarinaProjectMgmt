@@ -84,6 +84,8 @@ var index=function(passport){
                reqBody={};
 
         projectDetails.find(reqBody).distinct('name',function(err,data){
+            if(err)
+                {console.log(err);}
                 res.json(data);
         });
     });
@@ -95,6 +97,8 @@ var index=function(passport){
                res.json(data);
         });
     });
+
+
 
     //Fetches Location based on Project Category 
     router.get('/locations', function(req, res) {
