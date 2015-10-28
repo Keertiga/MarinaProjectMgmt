@@ -124,7 +124,7 @@
     
 
     <script src="\js\jquery.twbsPagination.js"></script>
-
+     <script src="\js\jquery.twbsPagination.min.js"></script>
 
 
     <script type="text/javascript">
@@ -417,25 +417,26 @@
 
                                                 
                                                 var locarr = location.split(',')
-                                               
+                                                      
 
                                                          for(var i in data){
+                                                            alert(data[i]);
                                                          
                                                          if(locarr.length === 0)
                                                          {
                                                                  
-                                                                   var item=$('<option>'+data[i].location+'</option>');
+                                                                   var item=$('<option>'+data[i]+'</option>');
                                                                   $('#locations').append(item);
                                                              
                                                           }
                                                           else{
                                                                if($.inArray(data[i].location, locarr)>-1)
                                                                  {
-                                                                var item=$('<option selected="selected">'+data[i].location+'</option>');
+                                                                var item=$('<option selected="selected">'+data[i]+'</option>');
                                                                  $('#locations').append(item);
                                                                }
                                                                else{
-                                                                   var item=$('<option>'+data[i].location+'</option>');
+                                                                   var item=$('<option>'+data[i]+'</option>');
                                                                   $('#locations').append(item);
                                                                }
 
