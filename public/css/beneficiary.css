@@ -46,11 +46,7 @@ background-image: url('../images/bg.png');
 }
 
 
-#export{
-	 float: right;
-  margin-top: 3px;
-  width: 150px;
-}
+
 
 #submit{
 	margin: 3% 0 3% 35%;
@@ -65,6 +61,7 @@ background-image: url('../images/bg.png');
   top: 8px;
 }
 
+<<<<<<< HEAD
 .footer{
   position: fixed;
   font-color: #FFFFFF;
@@ -113,3 +110,62 @@ footer h5 {
 
 }
 
+=======
+.left{
+   position: absolute;
+   top: 25%;
+   left:22%;
+   width: 20%; 
+  }
+
+.right{
+    position: absolute;
+    top: 25%;
+    left: 46%;
+    width: 20%;
+  }
+
+  #filter-action{
+  position: absolute;
+  width:8%;
+  left: 68%;
+  top:28%;
+}
+
+#hide-filter{
+  position: absolute;
+  width:8%;
+  left: 68%;
+  top:34%;
+}
+
+
+
+
+.benf-details-filter{
+    position: relative;
+    top: 160px; 
+}
+
+.filter-visible
+{
+  display:none;
+  margin-bottom:30px;
+
+}
+
+
+.block{
+  position: relative;
+  left: 75%;
+  width: 90%;
+}
+
+#export,#filter-option{
+  width:150px;
+}
+#hide-filter{
+  float:right;
+  width: 150px;
+}
+>>>>>>> e2559188a78aa76ec8bee3886c8d5d562afe7b0c

@@ -41,16 +41,17 @@ router.get('/getProjectData', function(req, res) {
 
     //contruct query to project location,sum of funds/benefitted people group by location
     var query=[];
-    query.push({$match:{"projectName":data["Name"]}});
+    query.push({$match:{"ProjectName":data["Name"]}});
 
     if(data["Param"]=="funds")
-        query.push({$group:{ _id:"$location",y:{$sum:"$funds"}}});
+        query.push({$group:{ _id:"$Location",y:{$sum:"$Funds"}}});
    	else
-    	query.push({$group:{ _id:"$location",y:{$sum:"$numPeopleBenefited"}}});
+    	query.push({$group:{ _id:"$Location",y:{$sum:"$NumPeopleBenefited"}}});
     
 
      //hit db
      benfDetails.aggregate(query,function(err,data){
+         console.log("project data"+JSON.stringify(data));
     	 res.json({chartData:data}); 
      });
     
@@ -63,18 +64,22 @@ router.get('/getLocationData', function(req, res) {
 	 //parse request data
     var reqBody=querystring.parse(url.parse(req.url).query);
     var data=JSON.parse(reqBody.FormData);
+    console.log(data);
 
     //contruct query to project location,sum of funds/benefitted people group by location
     var query=[];
-    query.push({$match:{"location":data["location"]}});
+    query.push({$match:{"Location":data["Location"]}});
 
     if(data["Param"]=="funds")
-        query.push({$group:{ _id:"$projectName",y:{$sum:"$funds"}}});
+        query.push({$group:{ _id:"$ProjectName",y:{$sum:"$Funds"}}});
    	else
-    	query.push({$group:{ _id:"$projectName",y:{$sum:"$numPeopleBenefited"}}});
+    	query.push({$group:{ _id:"$ProjectName",y:{$sum:"$NumPeopleBenefited"}}});
+
+    console.log(query);
 
      //hit db
      benfDetails.aggregate(query,function(err,data){
+        console.log("location data"+JSON.stringify(data));
         res.json({chartData:data}); 
      });
     

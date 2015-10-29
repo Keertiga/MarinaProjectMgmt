@@ -12,12 +12,12 @@
   		<div class="container">
         <div class="row">
             <div class="col-md-8">
-                <form  class="form-horizontal" role="form">
-                    <input type="hidden" id="edit-id" name="edit-id"> 
+                <form  class="form-horizontal" role="form" method="POST" action="/beneficiary/update">
+                    <input type="hidden" id="edit-id" name="id"> 
                     <div class="form-group">
                         <label for="project_category" class="control-label col-sm-4">Project Category</label>
                         <div class="col-sm-6">
-                              <select class="form-control" name="project_category" id="project_category" required autofocus>
+                              <select class="form-control" name="category" id="project_category" required autofocus>
                                    
                               </select>
                         </div>
@@ -26,7 +26,7 @@
                     <div class="form-group">
                         <label for="project_name" class="control-label col-sm-4">Project Name</label>
                         <div class="col-sm-6">
-                            <select class="form-control" name="project_name" id="project_name" required>
+                            <select class="form-control" name="project" id="project_name" required>
                             </select>
                         </div>
                     </div>
@@ -55,28 +55,28 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="funds" class=" control-label col-sm-4 col-xs-12">Project Fund</label>
+                        <label for="fund" class=" control-label col-sm-4 col-xs-12">Project Fund</label>
 
                         <div class="col-sm-4 col-xs-8">
-                             <input type="text" id="funds" class="form-control" placeholder="Project fund" name="funds" required><span class="error" id="fundsError"></span>
+                             <input type="text" id="fund" class="form-control" placeholder="Project fund" name="funds" required><span class="error" id="fundsError"></span>
                         </div>
 
                         <div class="col-sm-2 col-xs-4">
-                              <input id="funds" class="form-control" value="INR" name="currency" required>
+                              <input id="currency" class="form-control" value="INR" name="currency" required>
                         </div>
                     </div>
 
                     <div class="form-group">    
                         <label for="benf-people" class=" control-label col-sm-4 col-xs-12">Num Of Benefitted People</label>
                         <div class="col-xs-12 col-sm-6">
-                              <input type="text" id="benf-people" class="form-control" name='benf-people' required><span class="error" id="benfError"></span>
+                              <input type="text" id="benf-people" class="form-control" name='people' required><span class="error" id="benfError"></span>
                         </div>
                     </div>
 
                     <div class="form-group">    
                         <label for="trans-owner" class=" control-label col-sm-4 col-xs-12">Transaction Made By</label>
                         <div class="col-xs-12 col-sm-6">
-                              <input type="text" id="trans-owner" class="form-control" name='trans-owner'required>
+                              <input type="text" id="trans-owner" class="form-control" name='owner'required>
                         </div>
                     </div>
 
@@ -85,7 +85,7 @@
                     <div class="form-group has-feedback">
                         <label for="trans-date" class=" control-label col-sm-4 col-xs-12">Transaction Date</label>
                         <div class="col-sm-6 col-xs-12">
-                            <input type= "text" id="trans-date" class=" form-control" placeHolder="Transaction Date" required>
+                            <input type= "text" id="trans-date" class=" form-control" name="date" placeHolder="Transaction Date" required>
                             <i class="glyphicon glyphicon-calendar form-control-feedback"></i>
                             <span class="error" id="dateError"></span>
                         </div>
@@ -203,7 +203,7 @@
         });
 
         //Validating funds and numBenefitted People field to accept numbers & decimal alone
-         $("#funds, #benf-people").on('keydown', function (e) {
+         $("#fund, #benf-people").on('keydown', function (e) {
 
             if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57) && (e.which < 96 || e.which > 105) && e.which!=188 && e.which!=190 && e.which!=110 && e.which!=9  ) {
                   //display error message
@@ -212,43 +212,6 @@
                   return false;
             }
         });
-
-
-        //Update edited details   
-        $('#submit').on('click',function(e){
-                    var id =$("#edit-id").val();
-                    var formData=new Object();
-                    formData.ID=id;
-                    formData.Category=$('option:selected','#project_category').val();
-                    formData.ProjectName=$('option:selected','#project_name').val();
-                    formData.Location=$('option:selected','#location').val();
-                    formData.Type=$('option:selected','#type').val();
-                    formData.Name=$('#name').val();
-                    formData.Funds=parseFloat($('#funds').val());
-                    formData.NumPeopleBenefited=parseFloat($('#benf-people').val());
-                    formData.TransOwner=$('#trans-owner').val();
-                    formData.TransDate=$('#trans-date').val();
-                    formData.Updated_at=Date.now();
-
-                    $.ajax({
-                          url:"../beneficiary/update",
-                          type:"POST",
-                          data:{
-                              loadProds:1,
-                              details:formData
-                          },
-                          dataType:"json",
-                          success:function(){
-                               window.location.reload();
-                          },
-                          error:function(){
-                            
-                          },
-                            async:false
-                        });
-                     
-
-                   });
 
 
 });
