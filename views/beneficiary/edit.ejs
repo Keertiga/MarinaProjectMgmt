@@ -12,13 +12,13 @@
 
   <body>
 
-   <!--code for navigation bar-->
+     <!--code for navigation bar-->
    <div class="navbar navbar-default navbar-fixed-top navbar-home" >
       <div class="container">
         <div class="navbar-header">
 
           <a class="navbar-brand" href="/home"> Marina Project Management</a>
-      <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+       <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -29,7 +29,7 @@
             <li class="active"><a href="#">About</a></li>
             <li><a href="#">FAQ</a></li>
             <li><a href="#">Contact Us</a></li>
-             <li><a href="/signout">Log out</a></li>
+             <li><a href="/signout">Log Out</a></li>
             
            
             
@@ -37,87 +37,31 @@
         </div>
       </div>
     </div>
-
       
-   <div class="jumbotron">
+    <!-- Jumbotron -->
+    <div class="jumbotron">
       <div class="container">
         <h3 class="lead">Edit Beneficiary Details</h3> 
         
       </div>
     </div>
 
-<<<<<<< HEAD
-
-<!--Panel for Displaying Report Data -->
-
-<div class="container beneficiary">
-    <div class="panel panel-default " >
+    
+    
+  <div class="container beneficiary">
+    
+         <div class="panel panel-default beneficiary_panel" >
 
         <div class="panel-body">
-
-        
-
-    <!--table of contents-->
-    
-      <a class="btn btn-primary" href='../reports/export' id="export" on>Export</a>
-      <table class="table table-hover" id="benf-details">
-        <thead>
-          <tr>  
-            <th>Category</th><th>Project Name</th><th>Location</th><th>Beneficiary Organization</th><th>Beneficiary Name</th><th>Funds</th><th>Benefitted People</th><th>Personnel</th><th>Date</th>
-          </tr>
-        </thead>
-        <tbody>
-              <!--Beneficiary data will be dynamically added here-->
-        </tbody>
-      </table>
-
-      
-
-    </div>
-  </body>
-
-
- <!--Update modal to edit beneficiary details-->
- <div class="modal fade" id="editModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Edit Beneficiary Details</h4>
-      </div>
-
-      <div class="modal-body" id="main-content">
-      </div>
-
-    </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-
-
-=======
->>>>>>> e2559188a78aa76ec8bee3886c8d5d562afe7b0c
-    
-    
-    <div class="container">
-         
-        <!--Filter and export buttons-->
-        <div class="block">
-             <a class="btn btn-primary"  id="filter-option" >Filter</a>
-             <a class="btn btn-primary" href='../reports/export' id="export" >Export</a>
-        </div>
-<<<<<<< HEAD
-
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
-</div>
-</div>
-=======
+          <!--Filter and export buttons-->
+          <div class="block">
+               <a class="btn btn-primary"  id="filter-option" >Filter</a>
+               <a class="btn btn-primary" href='../reports/export' id="export" >Export</a>
+          </div>
       
       
       <!--Hidden filter block-->
-       <div id="filter" class="filter-visible">
+        <div id="filter" class="filter-visible">
             
             <form class="form">
 
@@ -159,18 +103,24 @@
             </form>
           </div>
 
+         
+
             <!--table of contents-->
             <table class="table table-hover" id="benf-details">
               <thead>
                 <tr>  
-                  <th>Category</th><th>Project Name</th><th>Location</th><th>Beneficiary Organization</th><th>Beneficiary Name</th><th>Funds</th><th>NumberOfBenefittedPeople</th><th>Personel</th><th>Date</th>
+                  <th>Category</th><th>Project Name</th><th>Location</th><th>Beneficiary Organization</th><th>Beneficiary Name</th><th>Funds</th><th>Benefitted People</th><th>Personnel</th><th>Date</th>
                 </tr>
               </thead>
               <tbody>
                     <!--Beneficiary data will be dynamically added here-->
               </tbody>
             </table>
+     </div>
           </div>
+          </div>
+
+    
         </body>
 
 
@@ -219,7 +169,6 @@
                   </div>
               </div>
           </div>
->>>>>>> e2559188a78aa76ec8bee3886c8d5d562afe7b0c
 
 
  
@@ -572,8 +521,7 @@
 
     </script>
 
-
-    <!-- Site footer -->
+     <!-- Site footer -->
      
      <footer class="footer">
      

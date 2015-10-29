@@ -61,7 +61,6 @@ background-image: url('../images/bg.png');
   top: 8px;
 }
 
-<<<<<<< HEAD
 .footer{
   position: fixed;
   font-color: #FFFFFF;
@@ -107,11 +106,10 @@ footer h5 {
 
 .beneficiary{
   padding-top: 50px;
-
+padding-bottom: 50px;
 }
-
-=======
 .left{
+
    position: absolute;
    top: 25%;
    left:22%;
@@ -151,13 +149,14 @@ footer h5 {
 {
   display:none;
   margin-bottom:30px;
+  
 
 }
 
 
 .block{
   position: relative;
-  left: 75%;
+  left: 70%;
   width: 90%;
 }
 
@@ -168,4 +167,4 @@ footer h5 {
   float:right;
   width: 150px;
 }
->>>>>>> e2559188a78aa76ec8bee3886c8d5d562afe7b0c
+
