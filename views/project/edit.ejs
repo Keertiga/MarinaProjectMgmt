@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>View Projects</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="\css\bootstrap-duallistbox.min.css" rel="stylesheet" type="text/css" media="all">
+    <link rel='stylesheet' href='\css\bootstrap.min.css'/>
+    <link rel='stylesheet' href='\css\jquery-ui.min.css'/>
+    <link rel='stylesheet' href='\css\form.css'/>
+    <link rel='stylesheet' href='\css\viewproject.css' />
+    <link rel='stylesheet' href='\css\bootstrap-theme.min.css' />
+
+    <script src="\js\jquery.js"></script>
+    <script src="\js\bootstrap.min.js"></script>
+    <script src="\js\jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+
+
+
+</head>
+<body>
+
+
+ <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Project Management</a>
+          <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>  
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right ">
+            <li class="active"><a href="#">Home</a></li>
+
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="/signout">Log out</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+       
+
+      
+      <!-- Jumbotron -->
+
+      <div class="jumbotron">
+        <div class="container">
+       <h3 class="lead">Project Details</h3> 
+       <div  id="messagediv" class="col-md-8 col-md-offset-6">
+        <h3 id="messagevalue" style="align:center"></h3>
+       </div>
+              
+              <!--<p><a class="btn btn-lg btn-success" href="#" role="button">Features Preview</a></p>-->
+        </div>
+      </div>
+
+<div class="container">
+<div class="row">
+  <div class="col-sm-3">
+    <div class="sidebar-nav">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+            <span class="sr-only">Project Details</span>
+          </button>
+          <span class="visible-xs navbar-brand">Sidebar menu</span>
+        </div>
+        <div class="navbar-collapse id="sidebar" collapse sidebar-navbar-collapse">
+
+          <ul id="projectlist" class="nav navbar-nav pagination-sm">  
+    
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+  </div>
+
+ 
+
+<div  id="mainprojectcontent" class="row">
+
+  <!-- Action form start   -->              
+                 <div class="dropdown" style="float:right">
+                      <a href="#" data-toggle="dropdown" class="dropdown-toggle">Action <b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                          <li ><a id="projectedit" href="#">Edit</a></li>
+                          <li ><a  id="projectdelete" href="#">Delete</a></li>
+                      </ul>
+                  </div>
+   <!-- Action form end -->
+
+<div id="viewcontent" class="col-sm-8 panel panel-default">
+<!-- sample form -->
+
+
+</div>
+
+</div>
+<!-- pagination end-->
+<div>
+    <ul id='pagination-proj'></ul>
+</div>
+    <!-- pagination end-->
+
+</div>
+</div>
+
+
+</body>
+
+    
+  <script src="\js\jquery.js"></script> 
+    <script src="\js\jquery-ui.js"></script> 
+    <script src="\js\bootstrap.min.js"></script>
+    <script src="\js\jquery.bootstrap-duallistbox.min.js"></script>
+    <script src="\js\jquery.quick.pagination.min.js"></script>
+    <script src="\js\jquery.quick.pagination.js"></script>
+    
+
+    <script src="\js\jquery.twbsPagination.js"></script>
+     <script src="\js\jquery.twbsPagination.min.js"></script>
+
+
+    <script type="text/javascript">
+    
+     $(document).ready(function(){
+
+           
+
+
+// To get the count
+           var rcount = 1;
+
+      
+                  $.ajax({
+                        
+                         url:"../project/count",
+                              type:"GET",
+                              data:'category=all',
+                              headers:{"Accept":"application/json;odata=verbose"},
+                              success:function(data){
+
+                                      // for pagination
+
+
+
+
+                                           var rcount =data;
+                                           var pcount = (parseInt(rcount%10)===0)?(parseInt(rcount/10)):(parseInt(rcount/10) +1);
+                                           var visiblecount = (pcount>5)?5:pcount;
+                                           var pagcount =10;
+
+                                            $('#pagination-proj').twbsPagination({
+                                            totalPages: pcount,
+                                              visiblePages: visiblecount,
+                                              onPageClick: function (event, page) {
+                                                 
+                                                 $.ajax({
+                                                        url:"../projects",
+                                                        type:"GET",
+                                                        data:'category=all',
+                                                        headers:{"Accept":"application/json;odata=verbose"},
+                                                        success:function(data){
+                                                          
+                                                          if(data.length === 0)
+                                                          {
+                                                             var item=$('<li><a href="#">No Results</a></li><hr/>');
+                                                                $('#projectlist').append(item);
+                                                          }
+                                                          else
+                                                          {
+                                                            $('#projectlist li').each(function(){
+                                                                $(this).remove();
+
+                                                            });
+                                                            $('hr').each(function(){
+                                                                $(this).remove();
+
+                                                            });
+
+                                                          
+                                                          
+                                                            for(var i in data){
+                                                              
+                                                                if(i > ((page-1)*pagcount) && i <= (((page-1)*pagcount) + pagcount))
+                                                                {
+
+                                                                      var item=$('<li><a href="#">'+data[i]+'</a></li><hr/>');
+                                                                     $('#projectlist').append(item);
+                                                                    //  alert(data[i]);
+                                                              }
+                                                            }
+
+                                                            //To load the first recoord by default
+                                                              $('#viewcontent').load('/project/view',function(){
+                                                               
+                                                              $.ajax({
+                                                                    url:"../project/data",
+                                                                    type:"GET",
+                                                                    data:"name="+data[0],
+                                                                    headers:{"Accept":"application/json;odata=verbose"},
+                                                                    success:function(data){
+                                                                         
+                                                                        for(var i in data){
+                                                                          $('#category').text(data[i].category);
+                                                                          $('#name').text(data[i].name);
+                                                                          $('#desc').text(data[i].desc);
+                                                                          $('#lead').text(data[i].lead);
+                                                                          $('#email').text(data[i].email);
+                                                                          $('#locations').text(data[i].locations);  
+                                                                          $('#date').text(data[i].start_date+"to"+data[i].end_date);
+                                                                          $('#funds').text(data[i].funds);
+                                                                        }
+                                                                       
+                                                                      
+                                                                    },
+                                                                    error:function(data){
+                                                                        alert("error");
+                                                                    }
+                                                               });
+                                                            });
+
+                                                             
+                                                          } 
+                                                        },
+                                                        error:function(data){
+                                                            alert("error");
+                                                        }
+                                                      });
+
+                                          }
+                                      });
+
+                                      //for pagination end
+
+                              
+                              
+                              },
+                              error:function(data){
+                                  
+                                  alert("error");
+                              }
+
+                         });
+          
+//to get the count end
+
+
+
+
+
+
+
+
+
+
+
+//Pagination fist time
+//Pagination first time end
+
+
+//Date controls
+        $('#start-date , #end-date').datepicker().change(function(){
+             $('.error').hide();
+             isDateValid($(this));
+        });
+
+
+
+
+
+        //Start and end date validations
+        function isDateValid(dateObject){
+             var start_date=new Date($('#start-date').val()).getTime();
+             var end_date=new Date($('#end-date').val()).getTime();
+
+
+            if( dateObject.attr('id')=="end-date" && isNaN(start_date)){
+                $("#startDateError").html("Please give the start date too").show();
+             }
+
+             if(start_date>end_date){
+                $("#endDateError").html("End date falls before start date").show();
+            }
+        }
+
+   
+
+
+               
+                $("#projectlist").on('click','li',function(){
+
+                       
+                       var project_name=$(this).text();
+
+                        // Load the content and then populate the data
+                        $('#viewcontent').load('/project/view');
+                        $.ajax({
+                              url:"../project/data",
+                              type:"GET",
+                              data:"name="+project_name,
+                              headers:{"Accept":"application/json;odata=verbose"},
+                              success:function(data){
+                                   
+                                  for(var i in data){
+                                    $('#category').text(data[i].category);
+                                    $('#name').text(data[i].name);
+                                    $('#desc').text(data[i].desc);
+                                    $('#lead').text(data[i].lead);
+                                    $('#email').text(data[i].email);
+                                    $('#locations').text(data[i].locations);  
+                                    $('#date').text(data[i].start_date+"to"+data[i].end_date);
+                                    $('#funds').text(data[i].funds);
+                                  }
+                                 
+                                 
+                              },
+                              error:function(data){
+                                  alert("error");
+                              }
+                         });
+                       
+                       $('#projectedit').removeClass('hidden');
+                });
+
+
+                $('#viewcontent').load('/project/view');
+
+
+                $("#projectedit").on('click',function(e){
+                    
+                    var cat = $("#category").text();
+
+                    var pro = $("#name").text();
+                    
+                    var desc= $("#desc").text();
+                    var lead= $("#lead").text();
+                    var email= $("#email").text();
+                    var location = $("#locations").text();
+
+                    var pdate = ($("#date").text()).split("to");
+
+                    var funds = $("#funds").text();
+
+
+
+                        $('#viewcontent').load('/project/editform',function(){
+
+
+                                      $('#name').val(pro);
+                                      $('#desc').val(desc);
+                                      $('#lead').val(lead);
+                                      $('#email').val(email);
+                                     // $('#locations').val(location);
+                                     
+                                      $('#funds').val(funds);
+
+                                      if(pdate.length===0){
+                                         
+                                      }
+                                      else{
+                                            //prepopulates the Date picker with the Existing value
+                                            var sdate =new Date(pdate[0]);                            
+                                             
+                                            if (!isNaN(sdate)){
+                                              ssdate = sdate.getFullYear()+'-' + (sdate.getMonth()+1) + '-'+sdate.getDate();
+                                              $('#start-date').val(ssdate);
+                                              }                       
+                                            var edate =new Date(pdate[1]);
+                                               
+                                            if(!isNaN(edate)){
+                                              eedate=edate.getFullYear()+'-' + (edate.getMonth()+1) + '-'+edate.getDate(); 
+                                              $('#end-date').val(eedate);
+                                            }
+                                            //$('#end-date').val(edate);
+                                       }
+
+
+                                          //For populating project category dropdown
+                                          $.ajax({
+                                                    url:"../projectCategory",
+                                                    type:"GET",
+                                                    headers:{"Accept":"application/json;odata=verbose"},
+                                                    success:function(data){
+                                                       
+                                                       for(var i in data){
+                                                            if(data[i].name == cat){
+                                                            var item=$('<option selected>'+data[i].name+'</option>');
+                                                            }
+                                                            else
+                                                            {
+                                                              var item=$('<option>'+data[i].name+'</option>');
+                                                            }
+                                                            $('#category').append(item);
+                                                        
+                                                        }
+                                                    },
+                                                    error:function(data){
+                                                        alert("error");
+                                                    }
+                                                });
+                      //Load loc
+
+
+                                                  //For populating locations list
+                                          $.ajax({
+                                                url:"../locations",
+                                                type:"GET",
+                                                headers:{"Accept":"application/json;odata=verbose"},
+                                                success:function(data){
+
+                                                
+                                                var locarr = location.split(',')
+                                                      
+
+                                                         for(var i in data){
+                                                          
+                                                         
+                                                         if(locarr.length === 0)
+                                                         {
+                                                                 
+                                                                   var item=$('<option>'+data[i]+'</option>');
+                                                                  $('#locations').append(item);
+                                                             
+                                                          }
+                                                          else{
+                                                               if($.inArray(data[i], locarr)>-1)
+                                                                 {
+                                                                var item=$('<option selected="selected">'+data[i]+'</option>');
+                                                                 $('#locations').append(item);
+                                                               }
+                                                               else{
+                                                                   var item=$('<option>'+data[i]+'</option>');
+                                                                  $('#locations').append(item);
+                                                               }
+
+                                                          }
+
+                                                        }
+                                                  },
+                                                error:function(data){
+                                                     alert("error");
+                                                 },
+                                                async:false
+                                           });
+
+                                    //For handling location list events
+                                               $('#locations').bootstrapDualListbox({
+                                                    bootstrap2compatible    : false,
+                                                    preserveselectiononmove : false,            // 'all' / 'moved' / false
+                                                    moveonselect            : true,             // true/false (forced true on androids, see the comment later)
+                                                    initialfilterfrom       : '',               // string, filter selectables list on init
+                                                    initialfilterto         : '',               // string, filter selected list on init
+                                                    helperselectnamepostfix     : '_helper',    // 'string_of_postfix' / false
+                                                    infotext: 'Showing all {0}',// text when all options are visible / false for no info text
+                                                    infotextfiltered        : '<span class="label label-warning">Filtered</span> {0} from {1}',// when not all of the options are visible due to the filter
+                                                    selectorminimalheight   : 100,
+                                                    showfilterinputs        : true,
+                                                    filterplaceholder       : 'Filter',
+                                                    filtertextclear         : 'show all',
+                                                    nonselectedlistlabel    : '',            // 'string', false
+                                                    selectedlistlabel       : '',            // 'string', false
+                                                    filteronvalues          : false             // filter by selector's values, boolean
+                                           });
+
+                                  //load loc end
+
+
+
+
+                        });
+
+
+
+
+                          $('#projectedit').addClass('hidden');
+
+                        
+                     });
+                
+          $("#projectdelete").on('click',function(e){
+
+             var r = confirm("Click ok to delete the Project");
+                if (r == true) {
+                   
+                
+
+            var formData=new Object;
+              
+             formData.name=$("#name").text();  
+             
+              $.ajax({
+                            url:"../project/delete",
+                            type:"POST",
+                            data:{
+                                loadProds:1,
+                                details:formData
+                                },
+                            dataType:"json",
+                            success:function(data){
+                         var messagevalue= "Selected Project is deleted successfully"; // incase if we want to append any ID 
+                        $("#messagevalue").text(messagevalue);
+                        setTimeout(function() {
+                          $('#messagediv').fadeOut('fast');
+                          location.reload();
+                                }, 2000); 
+
+                              $('form').find("input[type=text],input[type=email],select").val("");                            
+                              },
+                          error:function(){
+
+                            
+                             },
+                            async:false
+                        });
+                       
+                        $("#mainprojectcontent").load();
+
+                      } else {
+
+
+          
+                     }
+                   
+                    // location.reload();
+                 
+
+               });
+
+
+        });
+  </script>
+
+</html>
+
