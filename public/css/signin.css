@@ -2,7 +2,7 @@ body {
   padding-top: 40px;
   padding-bottom: 40px;
   background-color: #FFFFFF;
- /* background-image: url('../images/Doodle.bmp');*/
+  background-image: url('../images/body_panel.png');
 }
 
 @font-face {
@@ -143,11 +143,13 @@ padding-top: 60px;
 .footer{
   position: fixed;
   font-color: #FFFFFF;
+  font-size: 14px;
   left:0px;
   bottom:0px;
   background-color: #303030;
 
   width:100%;
+    height: 5%
 }
 
 
@@ -163,6 +165,10 @@ footer {
 footer hr {
   border-top: none;
   border-bottom: 1px solid #666;
+}
+footer  p{
+  text-align: left;
+  
 }
 footer a {
   color: #ccc;
