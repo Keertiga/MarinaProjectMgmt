@@ -50,7 +50,7 @@ var index=function(passport){
 
     //GET home page
     router.get('/home',isLoggedIn,function(req, res) {
-        res.render('home');
+        res.render('home',{username:req.session.passport.user});
     });
 
      router.get('/about',isLoggedIn,function(req, res) {
@@ -68,7 +68,6 @@ var index=function(passport){
 
     //Handle logout functionality
     router.get('/signout',function(req,res){
-        console.log("here");
         req.logout();
         res.redirect('/');
     });
