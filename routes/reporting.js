@@ -49,7 +49,7 @@ var template=require('../config/template.js');
   router.get('/sendmail/:filename',function(req,res){
 
           var reqBody=querystring.parse(url.parse(req.url).query);
-                
+
           var email=reqBody.email;
           var fileName=req.params.filename;
           var templateType;

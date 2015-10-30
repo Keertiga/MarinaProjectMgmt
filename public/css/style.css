@@ -1,6 +1,7 @@
 body {
   font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: #FFFFFF;
+  background-image: url('../images/body_panel.png');
   
 }
 
@@ -34,8 +35,8 @@ hr{
 
 
 .jumbotron{
-  background-color:#0B2526;
-
+    background-color:#185151;
+background-image: url('../images/bg.png');
   padding: 70px;
   text-align: left;
   color: #fff;
@@ -44,6 +45,7 @@ hr{
     
     color: #fff;
     height: 105px;
+
 }
 
 .list-group

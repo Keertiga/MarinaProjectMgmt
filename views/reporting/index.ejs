@@ -42,7 +42,7 @@
         <input type="email" class="form-control" name="email" id="email" placeholder="Enter Email Address" required>
         <input type="hidden" value="beneficiary" name="type">
    
-        <button class="btn btn-block btn-primary" id="send-mail" data-dismiss="modal">Send Now</button> 
+        <button class="form-btn btn btn-block btn-primary" id="send-mail">Send Now</button> 
      
      </form>
 
@@ -63,7 +63,7 @@
                   <button type="button" class="btn btn-primary" id="browse" onclick=$('#file').click()>Browse</button>
             </span>
         </div>
-         <button class="btn btn-block btn-primary" id="import-data" data-dismiss="modal">Import data</button> 
+         <button class="btn btn-block btn-primary" id="import-data">Import data</button> 
       </form>
   </div>
 
@@ -92,7 +92,7 @@
              //Displays send mail options
              $('#mail-yes').click(function(){
    
-                   $('#after-action').hide();
+                   $('#after-export').hide();
                    $('#mail-action').show();
 
              });
