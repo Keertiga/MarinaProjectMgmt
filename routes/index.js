@@ -53,6 +53,17 @@ var index=function(passport){
         res.render('home',{username:req.session.passport.user});
     });
 
+     router.get('/about',isLoggedIn,function(req, res) {
+        res.render('about');
+    });
+
+      router.get('/contact',isLoggedIn,function(req, res) {
+        res.render('contact');
+    });
+      router.get('/faq',isLoggedIn,function(req, res) {
+        res.render('faq');
+    });
+
 
 
     //Handle logout functionality
