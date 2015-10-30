@@ -7,8 +7,10 @@ body {
 
 .navbar-home{
   background-color: #FFFFFF;
-  
+   
   color: #000000;
+
+  
 }
 
 
@@ -124,7 +126,13 @@ background-image: url('../images/bg.png');
 
 p{
   text-align: center;
+
+
   }
+
+
+
+
 
 .block{
   display: inline-block;
@@ -219,3 +227,8 @@ footer h5 {
  .bootstrap-dialog.type-primary .modal-header{
      background-color: #1e3547;
   }*/
+
+
+li.aboutus {
+   margin:0 0 10px 0;   
+}
