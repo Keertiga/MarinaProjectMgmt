@@ -9,7 +9,7 @@
     <link rel='stylesheet' href='\css\analytics.css' />
 </head>
 <body>
-<div>
+<div class="input-form">
   <form method="get" action="/generateChart">
     <div id="left">
     <div>
@@ -44,25 +44,45 @@
         </select>
     </div>
     </div>
-    <button class="form-btn btn-lg btn-primary" type="Submit" id="submit">Submit</button>
+    <button class="form-btn btn  btn-primary" type="Submit" id="submit">Submit</button>
+
   </form>
+   
+    <!--button to be showed after chart load-->
+    <button class="btn btn-warning list-group" id="metrics" >Change Metrics</button>
 </div>
-<!--<div class="container center">
-    <div class="row">
-        <div class="col-md-2"></div>-->
-        <div class="center" id="chart"></div>
-   <!--     <div class="col-md-2"></div>
+
+<!--chart will be loaded here-->
+<div class="center" id="chart"></div>
+
+
+<!--buttons to go back to form and change metrics(mobile only)-->
+<div class="mobile-btn list-group">
+    <div class="mobile-block">
+        <button class="btn btn-primary btn-block" id="change-metrics">Change Metrics</button>
+     </div>
+    <div class="mobile-block">
+        <button class="btn btn-warning btn-block" id="back">Go Back</a>
     </div>
-</div>-->
+</div>
+
+
+
+
+
+</div>
 
 </body>
 <script src="\js\jquery.js"></script>
 <script src="\js\bootstrap.min.js"></script>
 <script src="\js\highcharts.js"></script>
 <script src="\js\highcharts-3d.js"></script>
+<script src="\js\Highcharts\js\modules\exporting.js"></script>
 <script>
     $(document).ready(function(){
 
+        
+        var chart;
         //For populating project category dropdown
         $.ajax({
             url:"../projectCategory",
@@ -111,14 +131,32 @@
         //On submit
         $('#submit').click(function(){
            
+             //Hide form after options submit for mobile
              if($(window).width()<588 ){
+
                 $('form').hide();
-            }else{
+                $('.mobile-btn').show();
+
+                var type=$('option:selected', '#chart_type').val();
+                if(type=="bar")
+                    $('#change-metrics').hide();
+
+             }else{
+
+                //Move form fields to top
                 $('#left').addClass('left');
                 $('#right').addClass('right');
                 $(this).removeClass('form-btn');
                 $(this).addClass('up-btn');
-            }
+
+                //Display change metrics for pie chart alone
+                var type=$('option:selected', '#chart_type').val();
+                if(type=="pie")
+                   $('#metrics').show();
+                else
+                   $('#metrics').hide();
+
+              }
             
             var formData=new Object();
             formData.Location= $('option:selected', '#location').val();
@@ -134,11 +172,16 @@
                     FormData: JSON.stringify(formData)
                 },
                 success:function(data){
-                   if(formData.ChartType=="pie"){
-                       piechart(data,formData.Param);
-                   }else{
-                       barchart(data,formData.Param);
-                   }
+                  //set default metrics and generate chart
+                   var formatter="point";
+                   generateChart(formData.ChartType,data,formData.Param,formatter);
+
+                   //On click of change metrics,toggle metrics and generate chart        
+                   $('#metrics ,#change-metrics').on('click',function(){
+                         formatter=(formatter=="point")?"percentage":"point";
+                         generateChart(formData.ChartType,data,formData.Param,formatter);
+                   });
+
                 },
                 error:function(data){
                     alert("error");
@@ -152,7 +195,24 @@ x
 
     });
 
-    function piechart(data,chartFor){
+      //Utility for generating charts
+      function generateChart(type,data,param,format){
+
+        var formatter={};
+
+        //set point and percentage formatter for pie chart
+        formatter["point"]='{series.name}- <b>{point.y}</b>';
+        formatter["percentage"]='{series.name}- <b>{point.percentage:.1f}%</b>';
+
+
+        if(type=="pie"){
+            piechart(data,param,formatter[format]);
+        }else{
+            barchart(data,param,formatter[format]);
+        }
+    }
+
+    function piechart(data,chartFor,format){
        
        //contruct array for pie chart
        var dataArray=[];
@@ -191,16 +251,7 @@ x
            text:title
         },
         tooltip: {
-            pointFormat: '{series.name}: <b>{point.y}</b>'
-        },
-        legend: {
-            align:"right",
-            layout:"vertical",
-            verticalAlign: "top",
-            x: 0,
-            y: 100,
-            itemMarginTop: 5,
-            itemMarginBottom: 5
+            pointFormat: format.split('-')[1]
         },
         plotOptions: {
             pie: {
@@ -209,9 +260,7 @@ x
                 dataLabels: {
                     enabled: true,
                     distance:-30,
-                    formatter:function(){
-                        return '<b>'+this.y+'</b>';
-                    }
+                    format:format.split('-')[1]
                 },
                 showInLegend: true
             }
@@ -225,7 +274,7 @@ x
       
     }
 
-     function barchart(data,chartFor){
+     function barchart(data,chartFor,format){
 
       
        //contruct array for  chart
@@ -274,10 +323,7 @@ x
             }
         },
         tooltip: {
-            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                '<td style="padding:0"><b>{point.y}</b></td></tr>',
-            footerFormat: '</table>',
+            pointFormat: format,
             shared: true,
             useHTML: true
         },
@@ -288,7 +334,7 @@ x
             }
         },
         series: [{
-            name:"Target",
+            name:name,
             data:values
         }]
     });

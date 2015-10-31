@@ -8,6 +8,7 @@ var mongoose  =require('mongoose');
 var projectDetails=require('../models/projectDetails.js')
 var benfDetails=require('../models/benfDetails.js');
 var beneficiaryType=require('../models/static.js').beneficiaryType;
+var activity=require('../models/activity.js');
 
 
   //GET create beneficiary page
@@ -29,19 +30,46 @@ var beneficiaryType=require('../models/static.js').beneficiaryType;
 
   //Handle POST for adding beneficiary details
   router.post('/create',function(req,res){
+        
+        //Find category based on the project
+        projectDetails.find({name:req.body.project}).distinct('category',function(err,category){
 
-    var details=req.body.details;   
-    projectDetails.find({name:details.ProjectName}).distinct('category',function(err,category){
-            details["Category"]=category[0];
-              benfDetails.collection.insert(details,function(err){
-           if(err)
-             throw err;
-           res.json("succedd");
-      });
+                //Contstruct data to be inserted
+                var data={
+                        Category:category[0],
+                        ProjectName:req.body.project,
+                        Location:req.body.location,
+                        Type:req.body.type,
+                        Name:req.body.name,
+                        Funds:parseFloat(req.body.funds),
+                        NumPeopleBenefited:parseFloat(req.body.people),
+                        TransOwner:req.body.owner,
+                        TransDate:req.body.date
+                }
                 
+                //Insert into data store
+                benfDetails.collection.insert(data,function(err){  
+                     if(err)
+                        res.json(err);
+                     res.redirect(req.get('referer'));
+                 });
+          });
+
+        //Data formation for activity log
+        var log={
+           username:req.session.passport.user,
+           date:new Date(),
+           type:'Added Beneficiary Details',
+           activityname:req.body.project
+        }
+        
+        //Insert into activity data store
+        activity.collection.insert(log,function(err){
+            if(err)
+              res.json(err);
         });
-    
-  });
+   });
+
 
   //GET beneficiary data to be displayed
   router.get('/data',isLoggedIn,function(req, res) {
@@ -64,15 +92,74 @@ var beneficiaryType=require('../models/static.js').beneficiaryType;
 
   //Handle POST for beneficairy update
   router.post('/update',function(req,res){
-      var id = mongoose.Types.ObjectId(req.body.details.ID);
 
-      benfDetails.collection.update({_id:id},req.body.details,function(err){
+
+       //Contstruct data to be inserted
+        var data={
+              Category:req.body.category,
+              ProjectName:req.body.project,
+              Location:req.body.location,
+              Type:req.body.type,
+              Name:req.body.name,
+              Funds:parseFloat(req.body.funds),
+              NumPeopleBenefited:parseFloat(req.body.people),
+              TransOwner:req.body.owner,
+              TransDate:req.body.date
+          }
+      var id = mongoose.Types.ObjectId(req.body.id);
+
+      benfDetails.collection.update({_id:id},data,function(err){
             if(err)
               throw err;
             res.json("success");
       });
+      
+      //Data formation for activity log
+      var log={
+           username:req.session.passport.user,
+           date:new Date(),
+           type:'updated Beneficiary Details',
+           activityname:req.body.project
+        }
+        
+        //Insert into activity data store
+        activity.collection.insert(log,function(err){
+            if(err)
+              res.json(err);
+        });
+
   });
 
+
+ //GET beneficiary details after filtering options
+ router.get('/filter',function(req,res){
+      
+      var reqBody=querystring.parse(url.parse(req.url).query);  
+      var filters=JSON.parse(reqBody.filters);
+
+      //Constructing query if filters are selected
+      var query={};
+
+      if(filters["Funds"]!="0") 
+         query.Funds={ $gt:parseFloat( filters["Funds"])};
+
+      if(filters["Category"]!="")
+        query.Category=filters["Category"];
+
+      if(filters["Project"]!="")
+        query.ProjectName=filters["Project"];
+
+      if(filters["Location"]!="")
+        query.Location=filters["Location"];
+
+     
+      //Getting the data based on the filter
+      benfDetails.find(query,function(err,data){
+         console.log(data); 
+         res.json(data);
+      });
+
+ });
 
 
 module.exports=router;

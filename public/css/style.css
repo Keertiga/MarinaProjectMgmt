@@ -1,12 +1,16 @@
 body {
-  font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 15px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: #FFFFFF;
+   background-image: url('../images/body_panel.png');
   
 }
 
 .navbar-home{
   background-color: #FFFFFF;
+  
   color: #000000;
+
+  
 }
 
 
@@ -34,8 +38,10 @@ hr{
 
 
 .jumbotron{
-  background-color:#1e3547;
+  
 
+  background-color:#185151;
+background-image: url('../images/bg.png');
   padding: 70px;
   text-align: left;
   color: #fff;
@@ -44,7 +50,10 @@ hr{
     
     color: #fff;
     height: 105px;
+
 }
+
+
 
 .list-group
 {
@@ -98,14 +107,16 @@ hr{
   }
   
  .lead{
+  
    margin-top: 5px;
    margin-bottom:0px;
-
+  
 }
 
 .jumbotron p{
   font-size:15px;
   font-style: italic;
+
 
 }
 
@@ -116,8 +127,18 @@ hr{
 
 p{
   text-align: center;
-  margin: 15px 0 30px;
-}
+  }
+
+
+  }
+
+.modal-radio{
+   text-align: center;
+   margin-top: 3%;
+   margin-bottom: 3%
+ }
+
+
 
 .block{
   display: inline-block;
@@ -159,8 +180,9 @@ p{
   left:0px;
   bottom:0px;
   background-color: #303030;
-
+ font-size: 14px;
   width:100%;
+  height: 5%
 }
 
 
@@ -180,6 +202,11 @@ footer hr {
 footer a {
   color: #ccc;
 }
+
+footer  p{
+  text-align: left;
+  
+}
 footer a:hover {
   color: #fff;
 }
@@ -194,6 +221,7 @@ footer h5 {
 .home-panel{
   
   padding-top: 50px;
+  padding-bottom: 50px;
   
 }
 
@@ -205,3 +233,8 @@ footer h5 {
  .bootstrap-dialog.type-primary .modal-header{
      background-color: #1e3547;
   }*/
+
+
+li.aboutus {
+   margin:0 0 10px 0;   
+}

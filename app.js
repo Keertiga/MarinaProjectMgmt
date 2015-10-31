@@ -18,8 +18,9 @@ var routes = require('./routes').index(passport);
 var analytics=require('./routes/analytics');
 var beneficiary=require('./routes/beneficiary');
 var project=require('./routes/project');
-var reports=require('./routes/reporting.js');
 var profile=require('./routes/profile');
+var reports=require('./routes/reporting');
+
 require('./config/passport.js')(passport);
 
 
