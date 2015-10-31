@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>View Projects</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="\css\bootstrap-duallistbox.min.css" rel="stylesheet" type="text/css" media="all">
+    <link rel='stylesheet' href='\css\bootstrap.min.css'/>
+    <link rel='stylesheet' href='\css\jquery-ui.min.css'/>
+    <link rel='stylesheet' href='\css\form.css'/>
+    <link rel='stylesheet' href='\css\viewproject.css' />
+
+    <script src="\js\jquery.js"></script>
+    <script src="\js\bootstrap.min.js"></script>
+
+</head>
+<body>
+
+
+  <!-- sample form -->
+
+
+  <div class="row">
+
+  <!-- sample form  end-->
+
+
+
+              <div class="col-md-10 col-md-offset-1" border="solid">
+                  <form  class="form-horizontal" role="form">
+
+                    <hr/>
+                   <!-- for cont info-->
+                  <div >
+                  <h4 align="left">Contact Information</h4>
+                      <div class="form-group">
+                           <label for="email" class=" control-label col-sm-4">Email id:</label>
+                                <div class="col-sm-8">
+                                  <p class="pnav" id="email">sample@gmail.com</p> 
+                               </div>
+                        </div>
+
+                         <div class="form-group">
+                              <label for="mobile" class=" control-label col-sm-4 col-xs-12 ">Phone No:</label>                      
+                                     <div class="col-sm-4 col-xs-8">
+                                              <input type="text" class="form-control" id="mobile"  name="mobile" placeholder="Phone Number">
+                                      </div>                        
+                            </div>
+
+                  </div>
+                   <!-- for General info end-->
+                   <hr/>
+
+                   <div align="left">
+                  <h4 >Personel Information</h4>
+
+                 <div class="form-group required">
+                      <label for="fname" class="control-label col-sm-4 ">First Name:</label>
+                      <div class="col-sm-8">
+                             <p class="hidden" id="userid"></p>
+                           <input type="text" class="form-control" id="fname"  name="fname" required>
+                      </div>
+                  </div>
+
+                     <div class="form-group required">
+                      <label for="lname" class="control-label col-sm-4 ">Last Name:</label>
+                      <div class="col-sm-8">
+                           <input type="text" class="form-control" id="lname"  name="fname" required>
+                      </div>
+                  </div>
+
+                   <div class="form-group">
+                      <label for="DOB" class=" control-label col-sm-4">Date of Birth:</label>
+                      <div class="col-sm-8">
+                             <input type= "text" id="DOB" class="form-control date-picker" placeHolder="Date of Birth">
+                              <i class="glyphicon glyphicon-calendar form-control-feedback"></i>
+                      </div>
+                  </div>
+                  
+
+                  <div class="form-group">
+                      <label for="gender" class="control-label col-sm-4 ">Gender:</label>
+                      <div class="col-sm-8">
+                         <select class="form-control" name="category" id="gender" required>
+                           <option value="Male">Male</option>
+                           <option value="Female">Female</option>
+                         </select>
+                      </div>
+                  </div>
+
+
+                 <div class="form-group">
+                          <label for="role" class="control-label col-sm-4">Role:</label>
+                          <div class="col-sm-8">
+                           <input type="text" id="role"  class="form-control" name="role">    
+                          </div>
+                      </div>
+
+
+
+              
+
+                      <div class="form-group">    
+                          <label for="city" class=" control-label col-sm-4 col-xs-12">City:</label>
+                          <div class="col-xs-12 col-sm-8">
+                                <input type="text" id="city"  class="form-control" name="city">  
+                          </div>
+                      </div>
+
+                      <div class="form-group ">
+                          <label for="country" class=" control-label col-sm-4 col-xs-12">Country:</label>
+                          <div class="col-sm-6 col-xs-8">
+                            <select class="form-control" name="country" id="country">
+                                      <option value="">Select a Country</option>
+                                      <option value="India">India</option>
+                                      <option value="USA">United States</option>
+                              </select>
+                        </div>
+                      </div>
+
+                      <div class="form-group ">
+                          <label for="state" class=" control-label col-sm-4 col-xs-12">State:</label>
+                          <div class="col-sm-6 col-xs-8">
+                            <select class="form-control" name="state" id="state"  placeholder="Select a State">
+                                      <option id="stateid" value="">Select a State</option>
+                              </select>
+                          </div>
+                      </div>
+
+
+
+
+                   <div class="form-group hidden">
+                    <label for="state" class=" control-label col-sm-4 col-xs-12">Profile Picture:</label>
+                    <div class="col-sm-6 col-xs-8">
+                     <form id="uploadForm"
+                                enctype="multipart/form-data"
+                                action="/api/photos"
+                                method="post">
+                            <input type="file" id="userPhotoInput" name="userPhoto" />
+                          </form>
+                        </div>
+                    </div>
+
+                     <div class="form-group">
+                        <div class="col-sm-offset-6 col-xs-12 col-xs-offset-">
+                            <button class="btn btn-primary btn-mg" id="updateprofile">Update</button>
+                        </div>
+                    </div>
+
+                  </div>
+                  <hr/>
+
+                   <!-- for general info end-->
+
+
+</div>
+</div>
+
+</body>
+
+
+<script src="\js\jquery.js"></script> 
+<script src="\js\jquery-ui.js"></script> 
+<script src="\js\bootstrap.min.js"></script>
+<script src="\js\jquery.bootstrap-duallistbox.min.js"></script>
+<script type="text/javascript">
+    
+$(document).ready(function(){
+
+  //For date control
+  $(".date-picker").datepicker();
+ 
+ //on click of update profile
+     $('#updateprofile').on('click',function(e){
+              e.preventDefault();
+              //Forming JSON object for form data to be sent to handle POST
+              var formData=new Object;
+          
+            
+              formData.userid=$("#userid").val();
+              formData.fname=$("#fname").val();
+              formData.lname=$("#lname").val();
+              formData.gender=$("#gender").val();
+              formData.DOB=$("#DOB").val();
+              formData.mobile=$("#mobile").val();
+              formData.email=$("#email").val();
+              formData.city=$("#city").val();
+              formData.state=$("#state").val();
+              formData.role=$("#role").val();
+              formData.country=$("#country").val();
+              formData.updated_at=Date.now();
+
+
+              $.ajax({
+                    url:"../profile/update",
+                    type:"POST",
+                    data:{
+                        loadProds:1,
+                        details:formData
+                        },
+                    dataType:"json",
+                    success:function(){
+                     $('#popupprofile').removeClass('hidden');
+                      window.setTimeout(function(){location.reload()},2000)
+                    },
+                     error:function(data){
+                           alert("error");
+                      },
+                      async:false
+                });
+
+       });
+
+
+
+      $('#country').on('change',function(e){
+          country_state();
+      });
+
+// This is for onload;
+      country_state();
+
+//function to load state based on country
+function country_state(){
+
+ var country = $('#country').val();
+
+  $('#state option').each(function(){
+       $(this).remove();
+  });
+
+      states_india = "Andhra Pradesh|Arunachal Pradesh|Assam|Bihar|Chhattisgarh|Goa|Gujarat|Haryana|Himachal Pradesh|Jammu and Kashmir|Jharkhand|Karnataka|Kerala|Madhya Pradesh|Maharashtra|Manipur|Meghalaya|Mizoram|Nagaland|Odisha(Orissa)|Punjab|Rajasthan|Sikkim|Tamil Nadu|Tripura|Uttar Pradesh|Uttarakhand|West Bengal";
+
+      states_usa = "Alabama|Alaska|Arizona|Arkansas|California|Colorado|Connecticut|Delaware|Florida|Georgia|Hawaii|Idaho|Illinois|Indiana|Iowa|ansas|Kentucky|Louisiana|Maine|Maryland|Massachusetts|Michigan|Minnesota|Mississippi|Missouri|Montana|Nebraska|Nevada|New Hampshire|New Jersey|New Mexico|New York|North Carolina|North Dakota|Ohio|Oklahoma|Oregon|Pennsylvania|Rhode Island|South Carolina|South Dakota|Tennessee|Texas|Utah|Vermont|Virginia|Washington|West Virginia|Wisconsin|Wyoming";
+
+            if(country === 'USA'){
+                   var states = states_usa.split('|');
+                    for(var i=0; i<states.length; i++)
+                    {
+                          var item=$('<option>'+states[i]+'</option>');  
+                          $('#state').append(item);
+                    }
+            }
+            else if(country === 'India'){
+                     var states = states_india.split('|');
+                    for(var i=0; i<states.length; i++)
+                    {
+                          var item=$('<option>'+states[i]+'</option>');  
+                          $('#state').append(item);
+                    }
+            }
+            else{
+               var item=$('<option>Select a State</option>');  
+                          $('#state').append(item);
+            }
+}
+
+
+
+ });
+
+  </script>
+
+ </html>
+

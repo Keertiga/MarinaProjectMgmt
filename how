@@ -1,0 +1,107 @@
+[33mcommit 2b96b75015ac9b86b4ddaba655403d2b02715577[m
+Merge: d5e7b02 0d95957
+Author: varalakshmi <vara2504@gmail.com>
+Date:   Thu Sep 10 18:59:02 2015 +0530
+
+    lazy cp changes
+
+[33mcommit 0d959576ad0bbbfa3535a850f2ceac675dd18fa3[m
+Merge: 55910ac 84898fc
+Author: keraj <keraj@paypal.com>
+Date:   Thu Sep 10 12:47:41 2015 +0530
+
+    Merge remote-tracking branch 'origin/develop' into develop
+    
+    Conflicts:
+    	views/home.ejs
+
+[33mcommit 55910acdc7c3d982792cc37713e37f461cfe1504[m
+Merge: 90f02ca 26ec545
+Author: keraj <keraj@paypal.com>
+Date:   Thu Sep 10 12:40:35 2015 +0530
+
+    Merge remote-tracking branch 'origin/develop' into develop
+
+[33mcommit 84898fc732c57a4dd466d5d90f08e7bb3ff02e35[m
+Author: RoobhiniRajendran <rorajendran@paypal.com>
+Date:   Thu Sep 10 12:38:42 2015 +0530
+
+    Adding analytics file
+
+[33mcommit 90f02cae71193115983dd149a865f162874984d5[m
+Author: keraj <keraj@paypal.com>
+Date:   Thu Sep 10 10:26:28 2015 +0530
+
+    Adding features to home page and creating schema for user ,project and beneficiary details
+    
+    Adding features to home page and creatingschema for user ,project and
+    beneficiary details
+
+[33mcommit 26ec54593746e9d8eb322f95715b7f9f4486a140[m
+Author: Vaishnavi <s.vaishnavi92@gmail.com>
+Date:   Wed Sep 9 10:54:33 2015 +0530
+
+    Added Beneficiary details. Have added the jquery toggling between Organization and Individual
+
+[33mcommit d5e7b028ae678fe385fecc84bb7f70b9611aaf30[m
+Merge: 6ce00bb 6d29c04
+Author: varalakshmi <vara2504@gmail.com>
+Date:   Mon Sep 7 17:45:33 2015 +0530
+
+    Merge remote-tracking branch 'keeraj/develop' into develop
+    
+    Conflicts:
+    	app.js
+    	package.json
+    	routes/index.js
+
+[33mcommit 6ce00bbda345b08836f4debc865ff40415ee7782[m
+Author: unknown <vakumar@L-MAA-25004306.paypalcorp.com>
+Date:   Mon Sep 7 17:00:42 2015 +0530
+
+    lazy Push 1 vara
+
+[33mcommit 983ab4733c22d7eb86041e5baa48782b64c6cf9c[m
+Merge: 1bcb3af 6d29c04
+Author: Vaishnavi <s.vaishnavi92@gmail.com>
+Date:   Sun Sep 6 15:12:08 2015 +0530
+
+    Merge branch 'develop' of https://github.com/Keertiga/MarinaProjectMgmt into develop
+    
+    Conflicts:
+    	app.js
+
+[33mcommit 1bcb3af5e17eaa29565f1cfed01c99010bcc78a3[m
+Author: Vaishnavi <s.vaishnavi92@gmail.com>
+Date:   Sun Sep 6 14:56:54 2015 +0530
+
+    Added Beneficiary files
+
+[33mcommit 6d29c04e563ca468644a15e3c784a6dbbd55cdfc[m
+Author: Keertiga <keertiga.raj@gmail.com>
+Date:   Sun Sep 6 12:31:21 2015 +0530
+
+    Create README.md
+
+[33mcommit a7c755b8e9eadc8d0cf65fcc1fba30219a821459[m
+Author: keraj <keraj@paypal.com>
+Date:   Sun Sep 6 12:27:51 2015 +0530
+
+    Refactoring routes and adding navigation bar
+    
+    Refactoring routes and adding navigation bar
+
+[33mcommit ff8ea64d543a5e80be24fcb0e12cf745975aa8fc[m
+Author: keraj <keraj@paypal.com>
+Date:   Thu Aug 27 10:48:24 2015 +0530
+
+    Initial framework for project
+    
+    Created login, register and home page using node js with express
+    framework
+
+[33mcommit 3f4e45009f5bcd12d62aee1e39e134813cf017c4[m
+Author: keraj <keraj@paypal.com>
+Date:   Thu Aug 27 10:31:13 2015 +0530
+
+    :circus_tent: Added .gitattributes & .gitignore files

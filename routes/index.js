@@ -27,6 +27,7 @@ var index=function(passport){
         res.render('index', { title: 'Project Management' });
     });
 
+
     // Handle POST signin
     router.post('/signin',passport.authenticate('signin',{
         successRedirect:'/home',
@@ -52,6 +53,7 @@ var index=function(passport){
     router.get('/home',isLoggedIn,function(req, res) {
         res.render('home');
     });
+
 
 
 

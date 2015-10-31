@@ -25,6 +25,17 @@
 <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <form  class="form-horizontal" role="form">
+                 
+
+                    <div class="form-group">
+                          
+                          <div class="col-sm-8">
+                             <h3 align="center" class="pnav" id="name">Project Name</h3>
+                          </div>
+                      </div>
+            <hr/>
+
+
                     <div class="form-group required">
                         <label for="category" class="control-label col-sm-4 ">Project Category:</label>
                         <div class="col-sm-8">
@@ -34,12 +45,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="name" class="control-label col-sm-4 ">Project Name:</label>
-                        <div class="col-sm-8">
-                          <input type="text" class="form-control" id="name"  name="project" required>
-                        </div>
-                    </div>
+
 
                     <div class="form-group">
                         <label for="Desc" class="control-label col-sm-4">Project Description:</label>
@@ -129,7 +135,8 @@
      $(document).ready(function(){
 
 
-
+  //For date control
+  $(".date-picker").datepicker();
 
 //Date controls
         $('#start-date , #end-date').datepicker().change(function(){
@@ -162,9 +169,10 @@
 
 
 
- //For submitting data
+        //For submitting data
            $('#saveproject').on('click',function(e){
                      
+                     e.preventDefault();
                     //  var refresh="false";
 
                      var selectedLoc=[];
@@ -210,8 +218,8 @@
                             success:function(){
                                // refresh="true";
                                var pro_name = $("#name").val();
-// load after save
- // Load the content and then populate the data
+      // load after save
+      // Load the content and then populate the data
                         $('#viewcontent').load('/project/view',function(){
 
                         $.ajax({
@@ -241,8 +249,14 @@
                          });
 
 
-});
-// load after save end
+                        });
+                        // load after save end
+                        var messagevalue= "Project has been Updated successfully"; // incase if we want to append any id
+                        $("#messagevalue").text(messagevalue);
+                        $('#popupproject').removeClass('hidden');
+                        window.setTimeout(function(){
+                          $('#popupproject').addClass('hidden');
+                        },3000)
 
 
 
