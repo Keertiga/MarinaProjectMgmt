@@ -7,12 +7,10 @@ var querystring=require('querystring');
 var isLoggedIn=require('./index').isLoggedIn;
 
 var projectDetails=require('../models/projectDetails.js');
-<<<<<<< HEAD
 var projectCategory=require('../models/static.js').projectCategory;
-=======
 var activity=require('../models/activity.js');
 
->>>>>>> 7a0d7416f7a2d907267b516b7990ec035019b14f
+
 	//Handle POST to create project page
 	router.get('/',isLoggedIn,function(req,res){
 		res.render('project');
@@ -105,8 +103,7 @@ var activity=require('../models/activity.js');
     router.get('/editform',isLoggedIn,function(req, res) {
                     res.render('project/editform');
       });
-<<<<<<< HEAD
-    //Handle POST to create project
+
 	 router.post('/create',function(req,res){
 	 	 console.log("create"+req.body.details);
 	      projectDetails.collection.insert(req.body.details,function(err){
@@ -136,10 +133,6 @@ var activity=require('../models/activity.js');
 
       });
 
-
-=======
-   
->>>>>>> 7a0d7416f7a2d907267b516b7990ec035019b14f
 
 
 module.exports=router;
