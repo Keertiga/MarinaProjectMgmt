@@ -8,6 +8,7 @@ var mongoose  =require('mongoose');
 var projectDetails=require('../models/projectDetails.js')
 var benfDetails=require('../models/benfDetails.js');
 var beneficiaryType=require('../models/static.js').beneficiaryType;
+var activity=require('../models/activity.js');
 
 
   //GET create beneficiary page
@@ -49,11 +50,26 @@ var beneficiaryType=require('../models/static.js').beneficiaryType;
                 //Insert into data store
                 benfDetails.collection.insert(data,function(err){  
                      if(err)
-                        throw err;
-                     res.json("succedd");
+                        res.json(err);
+                     res.redirect(req.get('referer'));
                  });
           });
+
+        //Data formation for activity log
+        var log={
+           username:req.session.passport.user,
+           date:new Date(),
+           type:'Added Beneficiary Details',
+           activityname:req.body.project
+        }
+        
+        //Insert into activity data store
+        activity.collection.insert(log,function(err){
+            if(err)
+              res.json(err);
+        });
    });
+
 
   //GET beneficiary data to be displayed
   router.get('/data',isLoggedIn,function(req, res) {
@@ -97,6 +113,21 @@ var beneficiaryType=require('../models/static.js').beneficiaryType;
               throw err;
             res.json("success");
       });
+      
+      //Data formation for activity log
+      var log={
+           username:req.session.passport.user,
+           date:new Date(),
+           type:'updated Beneficiary Details',
+           activityname:req.body.project
+        }
+        
+        //Insert into activity data store
+        activity.collection.insert(log,function(err){
+            if(err)
+              res.json(err);
+        });
+
   });
 
 

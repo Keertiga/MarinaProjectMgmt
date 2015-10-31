@@ -12,7 +12,7 @@ var BenfDetailsSchema = new Schema({
   NumPeopleBenefited:Number,
   TransOwner: String,
   TransDate: String,
-  Updated_At:String
+  Updated_at:String
  
 
 },{collection:'benf_details'});

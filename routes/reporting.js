@@ -66,6 +66,8 @@ var template=require('../config/template.js');
 
           
           sendmail(email,subject,content,fileName);
+
+          res.redirect(req.get('referer'));
             
   });
 
@@ -93,10 +95,13 @@ var template=require('../config/template.js');
 
                   //Read the converted json file and insert into data store
                   fs.readFile('./files/Beneficiary-out.json','utf8',function(err,data){
-                        benfDetails.collection.insertMany(JSON.parse(data),function(err){
-                              if(err)
-                                throw err;
-                        });
+
+                        if(data!=""){
+                              benfDetails.collection.insertMany(JSON.parse(data),function(err){
+                                    if(err)
+                                      throw err;
+                              });
+                         }
 
                   });
 
