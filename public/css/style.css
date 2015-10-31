@@ -238,3 +238,29 @@ footer h5 {
 li.aboutus {
    margin:0 0 10px 0;   
 }
+
+#recentActivityDetails{
+  padding-top:500px;
+  overflow:auto;
+  padding-bottom: 600px;
+
+}
+
+#recentActivity{
+ background-color: #FFFFFF;
+  
+}
+
+.btn-recentActivities {
+    padding:10px 15px;
+    border:1px solid #185151;
+    background-color:transparent;
+    color:#185151;
+    font-family:Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight:400;
+    font-size:16px
+}
+.btn-recentActivities:hover {
+    color:#fff;
+    background-color:#185151
+}
