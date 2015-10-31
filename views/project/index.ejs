@@ -40,15 +40,14 @@
      <!--  code for navigation bar ends here-->
 
     <div class="jumbotron">
-      <div class="container">
+      <div class="container" id="header">
         <h3 class="lead">Create a New Project</h3> 
        </div>
     </div>
 
 
     <div class="container beneficiary">
-    <div class="panel panel-default beneficiary_panel" >
-
+      <div class="panel panel-default beneficiary_panel" >
         <div class="panel-body">
 
     
@@ -67,7 +66,7 @@
                     <div class="form-group">
                         <label for="name" class="control-label col-sm-4 required">Project Name</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="project" placeholder="Project Name" name="project" required>
+                            <input type="text" class="form-control" id="project" placeholder="Project Name" name="project" required><span class="error" id="projectError"></span>
                         </div>
                     </div>
 
@@ -93,9 +92,10 @@
                     </div>
 
                     <div class="form-group">    
-                        <label for="locations" class=" control-label col-sm-4 col-xs-12">Locations</label>
+                        <label for="locations" class=" control-label col-sm-4 col-xs-12 required">Locations</label>
                         <div class="col-xs-12 col-sm-8">
-                                <select multiple="multiple" size="10" id="locations"></select> 
+                              <select multiple="multiple" size="10" id="locations"></select> 
+                              <span class="error" id="locationsError"></span>
                         </div>
                     </div>
 
@@ -135,11 +135,10 @@
                     </div>
                 </form>
               </div>
-
+            </div><!--row-->
+          </div>
         </div>
-        </div>
-        </div>
-        </div>
+      </div><!--container-->
 
 
     </body>
@@ -241,17 +240,59 @@
         });
 
 
+         //Check if entered project exists in this category already
+         $('#project').focusout(function(){
+
+               var category=$('option:selected', '#category').val();
+               var project=$(this).val();
+
+               $.ajax({
+                url:"../projects",
+                type:"GET",
+                data:'category='+category,
+                headers:{"Accept":"application/json;odata=verbose"},
+                success:function(data){
+
+                    //Loop through projects json
+                    $(data).each(function(index,element){
+
+                            //Display error
+                            if(project==element){
+                                  $("#projectError").html("  Project already exists in selected category").show();
+                                  return false;
+                            }
+
+                            //Remove error
+                            $("#projectError").html("");  
+                    });
+
+                    
+                },
+                error:function(data){
+                    alert("error");
+                }
+              });
+               
+
+         });
+
+
            //For submitting data
            $('#submit').on('click',function(e){
                      
-                    //  var refresh="false";
-
                       var selectedLoc=[];
 
                       //Getting selected locations
                       $('#bootstrap-duallistbox-selected-list_ option').each(function(i,selected){
                           selectedLoc[i] = $(selected).text();
                       });
+
+                      if(selectedLoc.length==0){
+                            $("#locationsError").html("  Please select locations").show();
+                      }else{
+                            $("#locationsError").html("");  
+                      }
+
 
                       var locations=[];
 
@@ -267,25 +308,25 @@
                       formData.name=$("#project").val();
                       formData.desc=$("#desc").val();
                       formData.lead=$("#lead").val();
-                       formData.email=$("#email").val();
+                      formData.email=$("#email").val();
                       formData.start_date=$("#start-date").val();
                       formData.end_date=$("#end-date").val();
                       formData.locations=locations;
                       formData.funds=$("#funds").val();
                       formData.currency=$("#currency").val();
-                      formData.updated_at=Date.now();
+                      formData.updated_at=new Date();
 
                       $.ajax({
                             url:"../project/create",
                             type:"POST",
                             data:{
-                                loadProds:1,
                                 details:formData
                                 },
                             dataType:"json",
                             success:function(){
-                               // refresh="true";
-                                $('form').find("input[type=text],input[type=email],select").val("");
+                                  refresh="false";
+                                  var msg = $('<h3 class="submitMsg">Submission is successful</h3>');
+                                  $('#header').append(msg);
                              },
                             error:function(){
                             
@@ -293,8 +334,6 @@
                             async:false
                         });
 
-                      /*if(refresh=="true")
-                           e.preventDefault();*/
 
                    });
                 });

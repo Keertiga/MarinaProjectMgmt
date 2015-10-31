@@ -111,7 +111,18 @@
       <div class="container">
         <div class="well">
           <h2>Recent Activity</h2>
-          <h5>You dont have any recent activities yet. Recent activities user has done is given here.</h5>
+         <!-- <h5>You dont have any recent activities yet. Recent activities user has done is given here.</h5>-->
+
+          <table class="table table-hover" id="benf-details">
+              <thead>
+                <tr>  
+                  <th>Date of Activity</th><th>Activity Type</th><th>Activity Name</th>
+                </tr>
+              </thead>
+              <tbody>
+                    <!--Beneficiary data will be dynamically added here-->
+              </tbody>
+            </table>
         </div>
       </div> 
 
@@ -151,7 +162,36 @@
             $(this).closest('.thumbnail').find('img').removeClass('blur');
         });
 
+
+        //Loading recent activity
+        $.ajax({
+                url:"../activities",
+                type:"GET",
+                headers:{"Accept":"application/json;odata=verbose"},
+                
+                success:function(data){
+
+                    for(var i=0;i<data.length;i++){
+                          var tr;                          
+                          var date=data[i].date;
+
+                          tr=$("<tr>");
+                          tr.append("<td>" + date.slice(0,10) + "</td>");
+                          tr.append("<td>" + data[i].type + "</td>");
+                          tr.append("<td>" + data[i].activityname + "</td>");
+                        
+                          $('tbody').append(tr);    
+                      }
+                   
+                },
+                error:function(data){
+                    alert("error");
+                },
+                async:false
+             });
+
          
+         //On click of import/export option
          $('#report').on('click',function(){
              var modalWindow=new BootstrapDialog({
                   message:$('<div></div>').load('/reports')
