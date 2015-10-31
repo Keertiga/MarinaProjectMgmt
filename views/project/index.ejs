@@ -17,9 +17,8 @@
      <div class="navbar navbar-default navbar-fixed-top navbar-home" >
       <div class="container">
         <div class="navbar-header">
-
           <a class="navbar-brand" href="/home"> Marina Project Management</a>
-      <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -30,9 +29,7 @@
             <li><a href="/about">About</a></li>
             <li><a href="/faq">FAQ</a></li>
             <li><a href="/contact">Contact Us</a></li>
-             <li><a href="/signout">Log Out</a></li>
-           
-            
+            <li><a href="/signout">Log Out</a></li>            
           </ul>
         </div>
       </div>
@@ -55,7 +52,7 @@
             <div class="col-md-8 col-md-offset-2">
                 <form  class="form-horizontal" role="form">
                     <div class="form-group required">
-                        <label for="category" class="control-label col-sm-4 required">Project Category</label>
+                        <label for="category" class="control-label col-sm-4">Project Category</label>
                         <div class="col-sm-8">
                               <select class="form-control" name="category" id="category" required autofocus>
                                       <option value="">Select a category</option>
@@ -64,14 +61,14 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="name" class="control-label col-sm-4 required">Project Name</label>
+                        <label for="name" class="control-label col-sm-4">Project Name</label>
                         <div class="col-sm-8">
                             <input type="text" class="form-control" id="project" placeholder="Project Name" name="project" required><span class="error" id="projectError"></span>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="Desc" class="control-label col-sm-4 required">Project Description</label>
+                        <label for="Desc" class="control-label col-sm-4">Project Description</label>
                         <div class="col-sm-8">
                             <input type="text" id="desc" class="form-control" placeholder="Project Description" name="desc" required >
                         </div>
@@ -80,19 +77,19 @@
                     <div class="form-group">
                         <label for="lead" class=" control-label col-sm-4">Project Lead</label>
                         <div class="col-sm-8">
-                            <input type="text" id="lead"  class="form-control" placeholder="Name of Project Lead" name="lead">
+                            <input type="text" id="lead"  class="form-control" placeholder="Name of Project Lead" name="lead" required>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="email" class=" control-label col-sm-4 required">Contact Email</label>
+                        <label for="email" class=" control-label col-sm-4">Contact Email</label>
                         <div class="col-sm-8">
                             <input type="email" id="email" class="form-control" placeholder="Contact Email id" name="email" required >
                         </div>
                     </div>
 
                     <div class="form-group">    
-                        <label for="locations" class=" control-label col-sm-4 col-xs-12 required">Locations</label>
+                        <label for="locations" class=" control-label col-sm-4 col-xs-12">Locations</label>
                         <div class="col-xs-12 col-sm-8">
                               <select multiple="multiple" size="10" id="locations"></select> 
                               <span class="error" id="locationsError"></span>
@@ -115,7 +112,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="funds" class=" control-label col-sm-4 col-xs-12 required">Project Fund</label>
+                        <label for="funds" class=" control-label col-sm-4 col-xs-12">Project Fund</label>
 
                         <div class="col-sm-6 col-xs-8">
                              <input type="text" id="funds" class="form-control" placeholder="Project fund" name="funds" required><span class="error" id="fundsError"></span>
@@ -139,6 +136,14 @@
           </div>
         </div>
       </div><!--container-->
+
+     <!-- Site footer -->
+     
+     <footer class="footer">
+        <div class="container"> 
+          <p> PayPal &copy; Powered By Marina</p>
+        </div>
+     </footer>
 
 
     </body>
@@ -289,6 +294,7 @@
 
                       if(selectedLoc.length==0){
                             $("#locationsError").html("  Please select locations").show();
+                            return false;
                       }else{
                             $("#locationsError").html("");  
                       }
@@ -324,9 +330,7 @@
                                 },
                             dataType:"json",
                             success:function(){
-                                  refresh="false";
-                                  var msg = $('<h3 class="submitMsg">Submission is successful</h3>');
-                                  $('#header').append(msg);
+                                 
                              },
                             error:function(){
                             
@@ -341,15 +345,5 @@
     </script>
 
 
-     <!-- Site footer -->
-     
-     <footer class="footer">
-     
-        <div class="container">
-        
-        <p> PayPal &copy; Powered By Marina</p>
-        
-        </div>
-
-      </footer>
+ 
 </html>

@@ -42,19 +42,25 @@ var activity=require('../models/activity.js');
 
 	  });
 
-    
+     
+    //Handle POST to update project 
 	router.post('/update',function(req,res){
-		console.log(req.body.details);
-		projectDetails.collection.update({'name':req.body.details.name},req.body.details,function(err){
+
+		var id={
+			category:req.body.details.category,
+			name:req.body.details.name
+
+		}
+		projectDetails.collection.update(id,req.body.details,function(err){
 			 if(err)
 	            res.json(err);
 	        res.json("Project Updated");
-
 		});
 
 	});
 
-
+   
+    //Handle POST to delete a project
 	router.post('/delete',function(req,res){
 		console.log(req.body.details);
 		projectDetails.collection.remove({'name':req.body.details.name},function(err){
@@ -66,22 +72,23 @@ var activity=require('../models/activity.js');
 
 	});
 
-	//GET data to be displayed
+	//GET project data to be displayed
 	router.get('/data',isLoggedIn,function(req, res) {
     
       var reqBody=querystring.parse(url.parse(req.url).query);
+      console.log(reqBody);
 
 	  projectDetails.find(reqBody,function(err,data){
 	           res.json(data);
 	  });
 	});
 
-	//Get Project details to view
+	//GET edit/delete project details page
     router.get('/edit',isLoggedIn,function(req, res) {
-                    res.render('project/edit');
-      });
+               res.render('project/edit');
+    });
 
-	//Get the record count
+	//Get the projects count
     router.get('/count',isLoggedIn,function(req, res) {
     	console.log("At count");
     	var reqBody=querystring.parse(url.parse(req.url).query);
@@ -91,15 +98,16 @@ var activity=require('../models/activity.js');
     	});
      });
 
-    //Get Project details to view
+    //GET Project details in view mode
     router.get('/view',isLoggedIn,function(req, res) {
                     res.render('project/view');
-      });
+     });
 
+    
+    //GET Project Details in edit mode
     router.get('/editform',isLoggedIn,function(req, res) {
-                    res.render('project/editform');
+                    res.render('project/update');
       });
-
 
   
       //Get Add project Category/Location form
@@ -107,20 +115,17 @@ var activity=require('../models/activity.js');
              res.render('project/addCategoryLoc');
       });
 
-      // Project Category/Location to view
+
+      //Handle POST to add category
       router.post('/addCategoryLoc',function(req,res){
-   
-   			
-      	projectCategory.collection.insert({name:req.body.projectCategory},function(err){
-	          if(err)
-	              res.json(err);
-	          res.json("Project Category Created");
-	    });
+   	
+	      	projectCategory.collection.insert({name:req.body.projectCategory},function(err){
+		          if(err)
+		              res.json(err);
+		          res.json("Project Category Created");
+		    });
 
-
-
-
-      });
+});
 
 
 

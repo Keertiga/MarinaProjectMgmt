@@ -97,7 +97,7 @@ var index=function(passport){
         if(reqBody["category"]=="all")
                reqBody={};
 
-        projectDetails.find(reqBody).distinct('name',function(err,data){
+        projectDetails.find(reqBody).distinct('name').exec({_id:'asc'},function(err,data){
             if(err)
                 {console.log(err);}
                 res.json(data);
