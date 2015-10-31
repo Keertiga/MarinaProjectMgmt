@@ -27,6 +27,22 @@ var index=function(passport){
         res.render('index', { title: 'Project Management' });
     });
 
+    //Handle About before and after login
+    router.get('/about',function(req, res) {
+        res.render('about');
+    });
+
+    //Handle Contact before and after login
+      router.get('/contact',function(req, res) {
+        res.render('contact');
+    });
+
+    //Handle FAQ before and after login
+      router.get('/faq',function(req, res) {
+        res.render('faq');
+    });
+
+
     // Handle POST signin
     router.post('/signin',passport.authenticate('signin',{
         successRedirect:'/home',
@@ -52,18 +68,6 @@ var index=function(passport){
     router.get('/home',isLoggedIn,function(req, res) {
         res.render('home',{username:req.session.passport.user});
     });
-
-     router.get('/about',isLoggedIn,function(req, res) {
-        res.render('about');
-    });
-
-      router.get('/contact',isLoggedIn,function(req, res) {
-        res.render('contact');
-    });
-      router.get('/faq',isLoggedIn,function(req, res) {
-        res.render('faq');
-    });
-
 
 
     //Handle logout functionality

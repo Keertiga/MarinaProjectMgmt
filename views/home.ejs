@@ -10,6 +10,8 @@
   </head>
   <body>
 
+
+ <!--code for navigation bar-->
      <div class="navbar navbar-default navbar-fixed-top navbar-home" >
       <div class="container">
         <div class="navbar-header">
@@ -26,7 +28,7 @@
             <li><a href="/about">About</a></li>
             <li><a href="/faq">FAQ</a></li>
             <li><a href="/contact">Contact Us</a></li>
-             <li><a href="/signout">Log out</a></li>
+             <li><a href="/signout">Log Out</a></li>
            
             
           </ul>
@@ -34,7 +36,7 @@
       </div>
     </div>
        
-
+ <!--code for navigation bar ends here-->
       
       <!-- Jumbotron -->
 
@@ -58,7 +60,9 @@
 
                  <a href="/project" class="list-group-item">Create Project</a>
                  <hr>
-                 <a href="/project/edit" class="list-group-item">Edit or Remove Projects</a> 
+                 <a href="/project/edit" class="list-group-item">Edit or Delete Projects</a> 
+                  <hr>
+                 <a href="#" class="list-group-item" id="addCategory">Add Project Category/Location</a> 
                </div>
             </div>
           </div><!-- /.col-md-4 --><!-- /.col-sm-4 -->
@@ -71,7 +75,7 @@
                <div class="list-group">
                  <a href="/beneficiary" class="list-group-item">Add Details</a>
                  <hr>
-                 <a href="/beneficiary/edit" class="list-group-item">Edit or Remove Details</a>  
+                 <a href="/beneficiary/edit" class="list-group-item">Edit or Delete Details</a>  
                  <hr>         
                  <a href="#" class="list-group-item" id="report">Import/Export</a>
                </div>
@@ -153,6 +157,15 @@
                   message:$('<div></div>').load('/reports')
               });
              BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_PRIMARY] = 'Generate Reports';
+             modalWindow.open();
+         });
+
+         $('#addCategory').on('click',function(){
+          
+             var modalWindow=new BootstrapDialog({
+                  message:$('<div></div>').load('/project/addCategoryLoc')
+              });
+             BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_PRIMARY] = 'Add Category/Location';
              modalWindow.open();
          });
 

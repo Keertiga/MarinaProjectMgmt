@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+
+  <link rel='stylesheet' href='\css\bootstrap.min.css'/>
+   <link rel='stylesheet' href='\css\style.css' />
+  </head>
+  <body>  
+
+  <!--Modal window for initial import/export option-->
+  <div  id="modal">
+    <p>Select one of the options you would like to add</p>
+     <div class="modal-radio">
+        <label class="radio-inline">
+          <input type="radio" name="addcategory" id="addCategory">Category</label>
+        <label class="radio-inline">
+          <input type="radio" name="addcategory" id="addLocation">Location</label>
+      </div>
+  </div>
+
+  <!--Modal window after Selecting Category-->
+  <div id="after-category" class="list-group">
+     <form class="form"  method="POST" action='/project/addCategoryLoc'>
+        <input type="text" class="form-control" name="projectCategory" id="projectCategory" placeholder="Add Project Category" required>
+        <button class="form-btn btn btn-block btn-primary" id="submit" type="submit">Add</button> 
+     </form>
+
+  </div>
+
+   <!--Modal window after Selecting Location-->
+  <div id="after-location" class="list-group">
+     <form class="form"  method="POST" action='/project/addLocation'>
+        <input type="text" class="form-control" name="projectLocation" id="projectLocation" placeholder="Add Project Location" required>
+         <input type="hidden" value="addLocation" name="location">
+        <button class="form-btn btn btn-block btn-primary" id="submit" type="submit">Add</button> 
+     </form>
+
+  </div>
+
+   <!--Display Success Message after Adding Project Category/Location-->
+  <div id="success-message" class="list-group">
+     <div class="alert alert-success" role="alert">Added Successfully!!</div>
+  </div>
+
+
+  <script src="\js\jquery.js"></script>
+  <script src="\js\bootstrap.min.js"></script>
+  <script type="text/javascript">
+        
+        $(document).ready(function(){
+
+
+
+             //Hides category & location radio buttons and displays Add Category button
+             $("input:radio[id=addCategory]").click(function(){
+              
+                   $('#modal').hide();
+                   $('#after-category').show();
+
+             });
+
+
+
+              //Hides category & location radio buttons and displays Add Location button
+             $("input:radio[id=addLocation]").click(function(){
+              
+                   $('#modal').hide();
+                   $('#after-location').show();
+
+             });
+
+             
+
+                 
+
+        
+
+    
+
+
+
+        });
+
+
+        
+
+  </script>
+  </html>
