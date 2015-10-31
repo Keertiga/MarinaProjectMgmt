@@ -38,6 +38,8 @@ background-image: url('../images/bg.png');
 
 
 .error {
+      position: relative;
+    top: 2px;
    color: red;
 }
 .required:after{
@@ -121,15 +123,10 @@ footer h5 {
 }
 
 
-
 .beneficiary{
   padding-top: 50px;
   padding-bottom: 50px;
 
-}
-
-.panel-bg{
-  background-image: url('../images/body_panel.png');
 }
 
 

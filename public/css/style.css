@@ -7,7 +7,7 @@ body {
 
 .navbar-home{
   background-color: #FFFFFF;
-   
+  
   color: #000000;
 
   
@@ -127,6 +127,7 @@ background-image: url('../images/bg.png');
 
 p{
   text-align: center;
+  }
 
 
   }
