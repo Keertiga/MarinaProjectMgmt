@@ -28,7 +28,7 @@ var activity=require('../models/activity.js');
 
         //Data formation for activity log
         var log={
-        	 username:req.session.passport.user,
+        	 username:req.session.passport.user.name,
         	 date:req.body.details.updated_at,
         	 type:'Project Creation',
         	 activityname:req.body.details.name
@@ -59,23 +59,19 @@ var activity=require('../models/activity.js');
 		console.log(req.body.details);
 		projectDetails.collection.remove({'name':req.body.details.name},function(err){
 			 if(err)
-	            res.json(err);
-	        
+	            res.json(err);     
 
 		});
 		res.json("Project Deleted");
 
 	});
 
-	//GET beneficiary data to be displayed
+	//GET data to be displayed
 	router.get('/data',isLoggedIn,function(req, res) {
     
-     console.log("here");
       var reqBody=querystring.parse(url.parse(req.url).query);
 
-      console.log("reqBody"+reqBody);
 	  projectDetails.find(reqBody,function(err,data){
-	  	      console.log(data);
 	           res.json(data);
 	  });
 	});
@@ -104,14 +100,7 @@ var activity=require('../models/activity.js');
                     res.render('project/editform');
       });
 
-	 router.post('/create',function(req,res){
-	 	 console.log("create"+req.body.details);
-	      projectDetails.collection.insert(req.body.details,function(err){
-	          if(err)
-	              res.json(err);
-	          res.json("Project Created");
-	      });
-	  });
+
   
       //Get Add project Category/Location form
       router.get('/addCategoryLoc',isLoggedIn,function(req, res) {

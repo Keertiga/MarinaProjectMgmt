@@ -3,11 +3,10 @@ var Schema = mongoose.Schema;
 
 // create a schema
 var ProfileSchema = new Schema({
-  userid:String,
   lname:String,
   fname: String,
   gender: String,
-  DOB: Date,
+  DOB: String,
   mobile: String,
   email:String,
   role: String,
