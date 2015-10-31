@@ -39,7 +39,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(session({secret: 'mySecretKey'}));
+app.use(session({secret: 'mySecretKey',
+                 saveUninitialized:true,
+                 resave:true         
+               }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());

@@ -57,7 +57,7 @@ var activity=require('../models/activity.js');
 
         //Data formation for activity log
         var log={
-           username:req.session.passport.user,
+           username:req.session.passport.user.name,
            date:new Date(),
            type:'Added Beneficiary Details',
            activityname:req.body.project
@@ -72,7 +72,7 @@ var activity=require('../models/activity.js');
 
 
   //GET beneficiary data to be displayed
-  router.get('/data',isLoggedIn,function(req, res) {
+  router.get('/data',function(req, res) {
       benfDetails.find({}).exec({_id:'asc'},function(err,data){
            res.json(data);
       });
@@ -80,7 +80,6 @@ var activity=require('../models/activity.js');
 
   //DELETE beneficiary details
   router.post('/remove',function(req,res){
-     console.log(req.body.ID);
       benfDetails.find({_id:req.body.ID}).remove().exec();
               res.json("success");
   });
@@ -116,7 +115,7 @@ var activity=require('../models/activity.js');
       
       //Data formation for activity log
       var log={
-           username:req.session.passport.user,
+           username:req.session.passport.user.name,
            date:new Date(),
            type:'updated Beneficiary Details',
            activityname:req.body.project
@@ -155,7 +154,6 @@ var activity=require('../models/activity.js');
      
       //Getting the data based on the filter
       benfDetails.find(query,function(err,data){
-         console.log(data); 
          res.json(data);
       });
 

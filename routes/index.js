@@ -67,7 +67,8 @@ var index=function(passport){
 
     //GET home page
     router.get('/home',isLoggedIn,function(req, res) {
-        res.render('home',{username:req.session.passport.user});
+        var user=req.session.passport.user;
+        res.render('home',{user:user});
     });
 
 
@@ -90,7 +91,6 @@ var index=function(passport){
     router.get('/projects', function(req, res) {
         var reqBody=querystring.parse(url.parse(req.url).query);
 
-        console.log(reqBody);
 
         if(reqBody["category"]=="all")
                reqBody={};
@@ -128,7 +128,8 @@ var index=function(passport){
     //fetches activity log for the user
     router.get('/activities',isLoggedIn,function(req,res){
 
-          var name=req.session.passport.user;
+
+          var name=req.session.passport.user.name;
 
           //Retrieve data based on the logged in user
           activity.find({username:name}).sort({_id:'desc'}).limit(5).exec(function(err,data){

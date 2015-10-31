@@ -16,7 +16,12 @@ var isValidPassword=function(user,password){
 module.exports=function(passport){
 
   passport.serializeUser(function(user,done){
-      done(null,user.name);
+      //set user name and email in session
+      var data={
+        name:user.name,
+        email:user.email
+      }
+      done(null,data);
   });
 
 
@@ -26,6 +31,8 @@ module.exports=function(passport){
          });
   });
 
+
+  //For register 
   passport.use('register',new localStrategy({ 
         usernameField:'email',
         passwordField:'password',
@@ -59,6 +66,7 @@ module.exports=function(passport){
      })
 ); 
 
+  //For login 
   passport.use('signin',new localStrategy({ 
         usernameField:'email',
         passwordField:'password',
