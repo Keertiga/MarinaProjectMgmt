@@ -54,5 +54,18 @@
     display: none;
 }
 
+.colldiv{
+  padding-top:30px !important
+}
+.highlight {
+    background-color: LightGray;
+    font-weight: bold;
+}
 
+
+}
+
+hr {
+    margin: 1px;
+    width: 50%;
 }

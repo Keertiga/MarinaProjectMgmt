@@ -9,164 +9,95 @@
       <link rel='stylesheet' href='\css\bootstrap.min.css'/>
       <link rel='stylesheet' href='\css\jquery-ui.min.css'/>
       <link rel='stylesheet' href='\css\form.css'/>
-      <link rel='stylesheet' href='\css\viewproject.css' />
+      <link rel='stylesheet' href='\css\profile.css' />
       <link rel='stylesheet' href='\css\bootstrap-theme.min.css' />
-
-      <script src="\js\jquery.js"></script>
-      <script src='\js\bootstrap.min.js'></script>
-      <script src="\js\jquery.min.js"></script>
-      
-
-
-
   </head>
   <body>
-
-
-         
-
-  <!-- sample form -->
-
-
-  <div class="row">
-
-  <!-- sample form  end-->
-
-
-
-              <div class="col-md-10 col-md-offset-1" border="solid">
-                  <form  class="form-horizontal" role="form">
-                    <hr/>
-                   <!-- for cont info-->
-                  <div >
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1" border="solid">
+          <form  class="form-horizontal" role="form">
+              <div >
                   <h4 align="left">Contact Information</h4>
-                      <div class="form-group">
-                           <label for="email" class=" control-label col-sm-4">Email id:</label>
-                                <div class="col-sm-8">
-                                     <p class="pnav" id="email">sample@gmail.com</p> 
-                                 </div>
-                        </div>
-
-                         <div class="form-group">
-                              <label for="mobile" class=" control-label col-sm-4 col-xs-12 ">Phone No:</label>                      
-                                     <div class="col-sm-4 col-xs-8">
-                                               <p class="pnav" id="mobile">Not Available</p>
-                                      </div>                        
-                            </div>
-
+                  <hr>
+                  <div class="form-group">
+                      <label for="email" class=" control-label col-sm-4">Email id:</label>
+                         <div class="col-sm-8">
+                              <p class="pnav" id="email"><%=user.email%></p> 
+                          </div>
                   </div>
-                   <!-- for General info end-->
-                   <hr/>
 
-                   <div align="left">
+                  <div class="form-group">
+                        <label for="mobile" class=" control-label col-sm-4 col-xs-12 ">Phone No:</label>                      
+                            <div class="col-sm-4 col-xs-8">
+                                <p class="pnav" id="mobile">Not Available</p>
+                            </div>                        
+                  </div>
+              </div>
+    
+              <div>
                   <h4 >Personel Information</h4>
+                  <hr>
+                  <div class="form-group required">
+                      <label for="fname" class="control-label col-sm-4 ">First Name:</label>
+                      <div class="col-sm-8">
+                          <p class="hidden" id="userid"></p>
+                          <p class="pnav" id="fname">Not Available</p>
+                      </div>
+                  </div>
 
-                                       <div class="form-group required">
-                                            <label for="fname" class="control-label col-sm-4 ">First Name:</label>
-                                            <div class="col-sm-8">
-                                                  <p class="hidden" id="userid"></p>
-                                                 <p class="pnav" id="fname">Not Available</p>
-                                            </div>
-                                        </div>
+                  <div class="form-group required">
+                        <label for="lname" class="control-label col-sm-4 ">Last Name:</label>
+                        <div class="col-sm-8">
+                            <p class="pnav" id="lname">Not Available</p>
+                        </div>
+                  </div>
 
-                                           <div class="form-group required">
-                                            <label for="lname" class="control-label col-sm-4 ">Last Name:</label>
-                                            <div class="col-sm-8">
-                                                 <p class="pnav" id="lname">Not Available</p>
-                                            </div>
-                                        </div>
+                  <div class="form-group">
+                        <label for="DOB" class=" control-label col-sm-4">Date of Birth:</label>
+                        <div class="col-sm-8">
+                            <p class="pnav" id="DOB">Not Available</p> 
+                        </div>
+                  </div>                     
 
-                                         <div class="form-group">
-                                            <label for="DOB" class=" control-label col-sm-4">Date of Birth:</label>
-                                            <div class="col-sm-8">
-                                                <p class="pnav" id="DOB">Not Available</p> 
-                                            </div>
-                                        </div>
-                                        
+                  <div class="form-group">
+                        <label for="gender" class="control-label col-sm-4 ">Gender:</label>
+                        <div class="col-sm-8">
+                            <p class="pnav" id="gender">Not Available</p>
+                        </div>               
+                  </div>
 
-                                        <div class="form-group">
-                                            <label for="gender" class="control-label col-sm-4 ">Gender:</label>
-                                            <div class="col-sm-8">
-                                               <p class="pnav" id="gender">Not Available</p>
-                                            </div>
-                                        </div>
                  <div class="form-group">
                           <label for="role" class="control-label col-sm-4">Role:</label>
                           <div class="col-sm-8">
                            <p class="pnav" id="role">Not Available</p>    
                           </div>
-                      </div>
+                 </div>
 
-
-
-              
-
-                      <div class="form-group">    
+                  <div class="form-group">    
                           <label for="city" class=" control-label col-sm-4 col-xs-12">City:</label>
                           <div class="col-xs-12 col-sm-8">
                                    <p class="pnav" id="city">Not Available</p> 
                           </div>
-                      </div>
+                  </div>
 
 
-                      <div class="form-group has-feedback">
-                          <label for="state" class=" control-label col-sm-4 col-xs-12">State:</label>
+                  <div class="form-group has-feedback">
+                         <label for="state" class=" control-label col-sm-4 col-xs-12">State:</label>
                           <div class="col-sm-6 col-xs-8">
                                <p class="pnav"id="state">Not Available</p> 
                           </div>
-                      </div>
+                  </div>
 
-                      <div class="form-group has-feedback">
+                  <div class="form-group has-feedback">
                           <label for="country" class=" control-label col-sm-4 col-xs-12">Country:</label>
                           <div class="col-sm-6 col-xs-8">
                                <p class="pnav"id="country">Not Available</p> 
                           </div>
-                      </div>
-
-
                   </div>
-                  <hr/>
-
-                   <!-- for general info end-->
-
-
-
-
-
-
-
-
-               
-
-
-
-                  </form>
                 </div>
-
-
-
-
-    </div>
-
-
-
-
-
-
-  </body>
-
-    <script src="\js\jquery.js"></script> 
-      <script src="\js\jquery-ui.js"></script> 
-      <script src="\js\bootstrap.min.js"></script>
-      <script src="\js\jquery.bootstrap-duallistbox.min.js"></script>
-
-      <script type="text/javascript">
-      
-       $(document).ready(function(){
-
-
-             });
-    </script>
-
-   </html>
+              </form>
+            </div>
+           </div>
+        </body>
+</html>
 

@@ -1,6 +1,8 @@
 var localStrategy=require('passport-local').Strategy;
 var bCrypt=require('bcrypt-nodejs');
 var User=require('../models/user.js');
+var profile=require('../models/profile.js');
+
 
 
 //Generates hash.Used for password encryption
@@ -48,18 +50,30 @@ module.exports=function(passport){
                 return done(null,false,req.flash('msg','has already be taken'));
              }
              else{
-                 var data={ 
+                 var userData={ 
                     name:req.body.username,
                     email:req.body.email,
                     password:genHash(req.body.password)
                   }; 
 
                   //Register the user 
-                  User.collection.insert(data,function(err){
+                  User.collection.insert(userData,function(err){
                       if(err)
                          throw err;
-                      done(null,data);
+                      done(null,userData);
                     });
+
+                  //Create profile for user
+                  var profileData={
+                    fname:req.body.username,
+                    email:req.body.email,
+                  }
+
+                  profile.collection.insert(profileData,function(err){
+                      if(err)
+                         throw err;
+                  });
+
                 }
 
              });
