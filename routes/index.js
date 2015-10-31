@@ -9,6 +9,7 @@ var querystring=require('querystring');
 var projectCategory=require('../models/static.js').projectCategory;
 var locations=require('../models/static.js').locations;
 var projectDetails=require('../models/projectDetails.js');
+var activity=require('../models/activity.js');
 
 
 //function to check if user is logged in
@@ -59,7 +60,7 @@ var index=function(passport){
     //Handle POST register
     router.post('/register',passport.authenticate('register',{
         successRedirect:'/home',
-        failureRedirect:'/register',
+        failureRedirect:'/',
         failureFlash:true
     }));
 
@@ -122,6 +123,20 @@ var index=function(passport){
               console.log(data);
               res.json(data);
         });
+    });
+
+    //fetches activity log for the user
+    router.get('/activities',isLoggedIn,function(req,res){
+
+          var name=req.session.passport.user;
+
+          //Retrieve data based on the logged in user
+          activity.find({username:name}).sort({_id:'desc'}).limit(5).exec(function(err,data){
+              if(err)
+                res.json("err");
+              res.json(data);
+
+          });
     });
 
     return router;

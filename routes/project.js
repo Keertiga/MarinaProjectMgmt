@@ -7,14 +7,44 @@ var querystring=require('querystring');
 var isLoggedIn=require('./index').isLoggedIn;
 
 var projectDetails=require('../models/projectDetails.js');
+<<<<<<< HEAD
 var projectCategory=require('../models/static.js').projectCategory;
+=======
+var activity=require('../models/activity.js');
+
+>>>>>>> 7a0d7416f7a2d907267b516b7990ec035019b14f
 	//Handle POST to create project page
 	router.get('/',isLoggedIn,function(req,res){
 		res.render('project');
 	});
 
 
+	 //Handle POST to create project
+	 router.post('/create',function(req,res){
 
+	    projectDetails.collection.insert(req.body.details,function(err){
+	          if(err)
+	              res.json(err);
+	          res.json("success");    
+	      });
+
+        //Data formation for activity log
+        var log={
+        	 username:req.session.passport.user,
+        	 date:req.body.details.updated_at,
+        	 type:'Project Creation',
+        	 activityname:req.body.details.name
+        }
+        
+        //Insert into activity data store
+        activity.collection.insert(log,function(err){
+        	  if(err)
+        	  	res.json(err);
+        });
+
+	  });
+
+    
 	router.post('/update',function(req,res){
 		console.log(req.body.details);
 		projectDetails.collection.update({'name':req.body.details.name},req.body.details,function(err){
@@ -75,6 +105,7 @@ var projectCategory=require('../models/static.js').projectCategory;
     router.get('/editform',isLoggedIn,function(req, res) {
                     res.render('project/editform');
       });
+<<<<<<< HEAD
     //Handle POST to create project
 	 router.post('/create',function(req,res){
 	 	 console.log("create"+req.body.details);
@@ -106,6 +137,9 @@ var projectCategory=require('../models/static.js').projectCategory;
       });
 
 
+=======
+   
+>>>>>>> 7a0d7416f7a2d907267b516b7990ec035019b14f
 
 
 module.exports=router;
