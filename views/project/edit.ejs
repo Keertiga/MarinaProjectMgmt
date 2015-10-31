@@ -177,10 +177,10 @@ $.ajax({
           data:'category=all',
           headers:{"Accept":"application/json;odata=verbose"},
           success:function(data){
-            
+
         // for pagination
            var rcount =data;
-           alert(rcount);
+           
            var pcount = (parseInt(rcount%10)===0)?(parseInt(rcount/10)):(parseInt(rcount/10) +1);
 
            var visiblecount = (pcount>5)?5:pcount;
@@ -213,7 +213,7 @@ $.ajax({
                                     });
                               
                                     for(var i in data){
-                                        
+
                                         if(data[i] != '')
                                         {
                                         if(i >= ((page-1)*pagcount) && i < (((page-1)*pagcount) + pagcount))
