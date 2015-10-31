@@ -72,6 +72,8 @@ var index=function(passport){
     });
 
 
+
+
     //Handle logout functionality
     router.get('/signout',function(req,res){
         req.logout();
