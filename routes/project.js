@@ -116,6 +116,9 @@ var activity=require('../models/activity.js');
     router.get('/editform',isLoggedIn,function(req, res) {
                     res.render('project/update');
       });
+    router.get('/editformmobile',isLoggedIn,function(req, res) {
+                    res.render('project/updatemobile');
+      });
 
   
       //Get Add project Category/Location form
@@ -134,6 +137,14 @@ var activity=require('../models/activity.js');
 		    });
 
 });
+      router.get('/viewprojects',isLoggedIn,function(req,res){
+
+    		res.render('project/viewprojectsmobile')
+    });
+
+      router.get('/viewmobile',isLoggedIn,function(req, res) {
+                    res.render('project/viewformmobile');
+      });
 
 
 

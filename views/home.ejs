@@ -58,7 +58,7 @@
 
                             <div class="list-group"> <a href="/project" class="list-group-item">Create Project</a>
 
-                                <hr> <a href="/project/edit" class="list-group-item">Edit or Delete Projects</a> 
+                                <hr> <a href="#" class="list-group-item" id="editprojects">Edit or Delete Projects</a> 
                                 <hr> <a href="#" class="list-group-item" id="addCategory">Add Project Category/Location</a> 
                             </div>
                         </div>
@@ -214,6 +214,16 @@
                 });
                 BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_PRIMARY] = 'Add Category/Location';
                 modalWindow.open();
+            });
+            $("#editprojects").on('click',function(){
+                if($(window).width() >= 780){
+                    
+                    $("#editprojects").attr("href", "/project/edit");
+  
+                }
+                else
+                    $("#editprojects").attr("href", "/project/viewprojects");
+
             });
 
         //To Scroll Down on clicking Recent Activity
