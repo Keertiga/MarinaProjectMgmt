@@ -428,6 +428,7 @@
                 var formData=new Object;
                 formData.name=$("#name").text();
                 formData.category=$("#category").text();
+                formData.updated_at=new Date();
                  
                   $.ajax({
                             url:"../project/delete",
