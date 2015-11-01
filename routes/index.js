@@ -19,13 +19,19 @@ var isLoggedIn=function(req,res,next){
     res.redirect('/');
 }
 
-
+router.get('/viewall',isLoggedIn,function(req,res){
+        projectDetails.find({},function(err,data){
+            if(!err)
+                res.send(data);
+        });
+        //res.render('project');
+    });
 //function to handle sign in/sign up features
 var index=function(passport){
 
     // GET login page
     router.get('/', function(req, res) {
-        res.render('index', { title: 'Project Management' });
+        res.render('index', { msg: req.flash('msg') });
     });
 
     //Handle About before and after login

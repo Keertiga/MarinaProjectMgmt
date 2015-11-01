@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>Project Management</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
 	<link rel='stylesheet' href='\css\bootstrap.min.css'/>
   <link rel='stylesheet' href='\css\signin.css' />
+  <link rel='stylesheet' href='\css\form.css'/>
 
   </head> 
   <body>  
@@ -92,10 +93,11 @@
 
         <label for="password" class="form-label">Choose a password</label>
         <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
-
+        
+        <div><span class="error" id="pwdError"></span></div>
         <label for="confirmPassword" class="form-label">Confirm password</label>
         <input type="password" id="confirmPassword" class="form-control" placeholder="Password" name="confirmPassword" required>
-
+        <div><span class="error" id="confirmPwdError"></span></div>
         <button class="form-btn btn-lg btn-primary" id="signup_btn" type="submit">Register</button>
         
       </form>
@@ -131,7 +133,50 @@
  <script src="\js\jquery.js"></script>
   <script src="\js\bootstrap.min.js"></script>
 
+<script>
+$(document).ready(function () {
+  $(".modal").keypress(function(e) { 
+ 
+    if (e.keyCode == 27) { 
+		
+        $("#signup").fadeOut(500);
+        //or
+        
+    } 
+});
+  
+  $("#inputPassword").focusout(function(){ 
+    var pwd = $('#inputPassword').val();
+    var confirmpwd = $('#confirmPassword').val();
+    if(confirmpwd.length>0 && pwd.length > 0){
+      
+      if(confirmpwd == pwd){
+       
+        $("#confirmPwdError").html("");
+      }
+      if(confirmpwd != pwd)
+      
+      $("#confirmPwdError").html("Passwords dint match");
 
-
+    }
+    if(pwd.length < 8 && pwd.length >0 )
+      $("#pwdError").html("Password is weak");
+    else {
+      $("#pwdError").html("");
+    }
+  });
+  $("#confirmPassword").focusout(function(){
+    var pwd = $('#inputPassword').val();
+    var confirmpwd = $('#confirmPassword').val();
+    if(pwd.length > 0 && confirmpwd.length > 0){
+    if(confirmpwd != pwd )
+      $("#confirmPwdError").html("Passwords dint match");
+    if(confirmpwd == pwd)
+        $("#confirmPwdError").html("");
+      }
+  });
+  
+});
+  </script>
 
 

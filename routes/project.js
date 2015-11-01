@@ -68,13 +68,13 @@ var activity=require('../models/activity.js');
 			category:req.body.details.category,
 			name:req.body.details.name
 		}
-		console.log(req.body.details);
+
 		projectDetails.collection.remove(id,req.body.details,function(err){
 			 if(err)
 	            res.json(err);     
-
+             res.json("Project Deleted");
 		});
-		res.json("Project Deleted");
+	
 
 	});
 
@@ -116,6 +116,9 @@ var activity=require('../models/activity.js');
     router.get('/editform',isLoggedIn,function(req, res) {
                     res.render('project/update');
       });
+    router.get('/editformmobile',isLoggedIn,function(req, res) {
+                    res.render('project/updatemobile');
+      });
 
   
       //Get Add project Category/Location form
@@ -134,6 +137,14 @@ var activity=require('../models/activity.js');
 		    });
 
 });
+      router.get('/viewprojects',isLoggedIn,function(req,res){
+
+    		res.render('project/viewprojectsmobile')
+    });
+
+      router.get('/viewmobile',isLoggedIn,function(req, res) {
+                    res.render('project/viewformmobile');
+      });
 
 
 
