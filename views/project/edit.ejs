@@ -110,13 +110,11 @@
                 <!--Main pane-->
                 <div id="viewcontent" class="col-sm-8 panel panel-default"></div>
        </div>
-
-        <div>
-            <ul id='pagination-proj'></ul>
-        </div>
-  
-    </div>
   </div>
+  </div>
+        <div>
+            <div id='pagination-proj' class="navalign"></div>
+        </div>
 
           <!--confirm modal for deletion-->
           <div class="modal fade" id="confirmModal">
@@ -182,7 +180,7 @@
                      success:function(data){
 
                              var rcount =data;
-                             var pcount = (parseInt(rcount%10)===0)?(parseInt(rcount/10)):(parseInt(rcount/10) +1);
+                             var pcount = (Math.ceil(rcount/10));
                              var visiblecount = (pcount>5)?5:pcount;
                              var pagcount =10;
 
