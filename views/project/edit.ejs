@@ -166,6 +166,8 @@
     
      $(document).ready(function(){
 
+            
+
                //Pagination code starts
                var rcount = 1;
 
@@ -348,7 +350,7 @@
 
                                   //For populating locations list
                                   $.ajax({
-                                        url:"../locations",
+                                        url:"../AllLocations",
                                         type:"GET",
                                         headers:{"Accept":"application/json;odata=verbose"},
                                         success:function(data){
@@ -357,18 +359,18 @@
                                             
                                               for(var i in data){
                                                  if(locarr.length === 0){
-
-                                                     var item=$('<option>'+data[i]+'</option>');
+                                            
+                                                     var item=$('<option>'+data[i].location+'</option>');
                                                      $('#locations').append(item);  
 
                                                   }else{
 
-                                                     if($.inArray(data[i], locarr)>-1) {
-                                                          var item=$('<option selected="selected">'+data[i]+'</option>');
+                                                     if($.inArray(data[i].location, locarr)>-1) {
+                                                          var item=$('<option selected="selected">'+data[i].location+'</option>');
                                                           $('#locations').append(item);
                                                       }
                                                      else{
-                                                          var item=$('<option>'+data[i]+'</option>');
+                                                          var item=$('<option>'+data[i].location+'</option>');
                                                           $('#locations').append(item);
                                                      }
                                                   }
