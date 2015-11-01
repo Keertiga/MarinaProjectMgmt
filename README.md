@@ -1,6 +1,7 @@
 # MarinaProjectMgmt
 
 Please find the video of demo here https://docs.google.com/uc?id=0B-yJFx7iyKXHTnRpVmdydEU1ajA&export=download
+Please find the presentation in presentaion folder of repo.Click preezi icon to start the presentation.
 
 Project Management application 
 
