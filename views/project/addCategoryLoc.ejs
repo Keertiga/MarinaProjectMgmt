@@ -35,10 +35,8 @@
      <form class="form"  method="POST" action='/project/addLocation'>
         <input type="text" class="form-control" name="projectLocation" id="projectLocation" placeholder="Add Project Location" required>
         <span class="modalerror" id="locError"></span>
-         <input type="hidden" value="addLocation" name="location">
         <button class="form-btn btn btn-block btn-primary"  id="submitloc" type="submit">Add</button> 
-     </form>
-
+     </form>  
   </div>
 
    <!--Display Success Message after Adding Project Category/Location-->
@@ -100,7 +98,8 @@ $(document).ready(function(){
                          }else{
                             var msg= $('<h3 class="modalmessage" id="message">Added Successfully</h3>');
                             $('form').append(msg);
-                            $('#message').fadeOut(3000,function(){
+                            $('#projectCategory').val("");
+                            $('#message').fadeOut(2000,function(){
                                  $(this).remove();
                             });
                          }
@@ -126,7 +125,6 @@ $(document).ready(function(){
                     url:"../addLocation",
                     type:"POST",
                     data:{
-                        loadProds:1,
                         details:formData
                         },
                     dataType:"json",
@@ -134,9 +132,10 @@ $(document).ready(function(){
                          if(data=="exist"){
                             $('#locError').html("Location already exists");
                          }else{
-                            var msg= $('<h3 class="modalmessage" id="message1">Added Successfully</h3>');
+                            var msg= $('<h3 class="modalmessage" id="message">Added Successfully</h3>');
                             $('form').append(msg);
-                            $('#message1').fadeOut(3000,function(){
+                             $('#projectLocation').val("");
+                            $('.modalmessage').fadeOut(2000,function(){
                                  $(this).remove();
                             });
                          }
