@@ -15,16 +15,16 @@
             <div class="container">
                 <div class="navbar-header"> <a class="navbar-brand" href="/home"> Marina Project Management</a>
 
-                    <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="icon-bar"></span>
- <span class="icon-bar"></span>
- <span class="icon-bar"></span>
-
+                    <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> 
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>                                             
                     </button>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right ">
                         <li><a href="/about">About</a>
-                        </li>
+                        </li>   
                         <li><a href="/profile">Profile</a>
                         </li>
                         <li><a href="/faq">FAQ</a>
@@ -41,67 +41,52 @@
         <!-- Jumbotron -->
         <div class="jumbotron">
             <div class="container">
+       
                  <h3 class="lead"><strong>Welcome <%=user.name%></strong></h3>
-
-
             </div>
-
         </div>
+
         <div class="container">
             <div class="panel-default home-panel">
                 <div class="row">
                     <div class="col-md-4 col-sm-12">
                         <div class="thumbnail"> <a href="javascript:void(0)" class="content-box">
-               <p><img src="\images\Projects.jpeg" class="img-responsive" alt="Projects"> </p>
-               <h3> Projects</h3>
-             </a>
-
+                            <p><img src="\images\Projects.jpeg" class="img-responsive" alt="Projects"> </p>
+                            <h3> Projects</h3>
                             <div class="list-group"> <a href="/project" class="list-group-item">Create Project</a>
-
                                 <hr> <a href="/project/edit" class="list-group-item">Edit or Delete Projects</a> 
                                 <hr> <a href="#" class="list-group-item" id="addCategory">Add Project Category/Location</a> 
                             </div>
                         </div>
                     </div>
-                    <!-- /.col-md-4 -->
-                    <!-- /.col-sm-4 -->
+
                     <div class="col-md-4 col-sm-12">
                         <div class="thumbnail"> <a href="javascript:void(0)" class="content-box">
-               <p><img src="\images\Beneficiary.jpg" class="img-responsive" alt="Projects"> </p>
-               <h3> Beneficiary Details</h3>
-              </a>
-
-                            <div class="list-group"> <a href="/beneficiary" class="list-group-item">Add Details</a>
-
-                                <hr> <a href="/beneficiary/edit" class="list-group-item">Edit or Delete Details</a> 
-                                <hr> <a href="#" class="list-group-item" id="report">Import/Export</a>
-
+                           <p><img src="\images\Beneficiary.jpg" class="img-responsive" alt="Projects"> </p>
+                           <h3> Beneficiary Details</h3>
+                            <div class="list-group"> 
+                                    <a href="/beneficiary" class="list-group-item">Add Details</a><hr>
+                                    <a href="/beneficiary/edit" class="list-group-item">Edit or Delete Details</a>
+                                    <a href="#" class="list-group-item" id="report">Import / Export</a>
                             </div>
                         </div>
                     </div>
-                    <!-- /.col-md-4 -->
-                    <!-- /.col-sm-4 -->
+
                     <div class="col-md-4 col-sm-12">
                         <div class="thumbnail"> <a href="javascript:void(0)" class="content-box">
-               <p><img src="\images\Analytics.jpg" class="img-responsive" alt="Projects"> </p>
-               <h3>Analytics</h3>
-               </a>
-
-               <div class="list-group"> 
-                  <a href="/analytics" class="list-group-item">View Analytics</a>
-                  <hr>
-                  <a href="/analytics/trend" class="list-group-item">View Trends</a>  
+                           <p><img src="\images\Analytics.jpg" class="img-responsive" alt="Projects"> </p>
+                           <h3>Analytics</h3>
+                           <div class="list-group"> 
+                              <a href="/analytics" class="list-group-item">View Analytics</a>
+                              <hr>
+                              <a href="/analytics/trend" class="list-group-item">View Trends</a>  
+                           </div>
+                        </div>  
+                    </div>
                </div>
-            </div>  
-        </div><!-- /.col-md-4 --><!-- /.col-sm-4 -->
-       </div>
-      </div>
-
+           </div>
+       </div>   
      
-   </div>   
-     
-
-
     </div> <!-- /container -->
 
     <!--Show Recent Activities Button to view recent Activites -->
