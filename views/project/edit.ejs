@@ -52,20 +52,18 @@
              
     <div class="container">
 
-        <!--Success message pop up-->
-        <div id="popupproject" class="hidden">
-            <div class="col-md-12">
-                <div class="alert alert-success alert-dismissable">  
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
-                      ×
-                    </button>
-                    <h4 align="center" id="messagevalue">
-                      Project has been updated successfully!!!!!
-                    </h4>
-                </div>
-              </div>
-            </div>
 
+
+          <div id="prosuccess" class="hidden">  
+              <span class="success-msg">       
+                 <h4 id="messageupdate">Project has been updated successfully!!!!!<span class="glyphicon glyphicon-ok"></h4> 
+              </span> 
+         </div>
+        <div id="prodelete" class="hidden">  
+              <span class="success-msg">       
+                 <h4 id="messagedelete">Project has been deleted successfully!!!!!<span class="glyphicon glyphicon-ok"></h4> 
+              </span> 
+         </div>
 
          <!--navigation bar for projects-->      
          <div class="row">
@@ -442,9 +440,9 @@
                                   var messagevalue= "Project has been deleted successfully"; // incase if we want to append any id
                                   $("#messagevalue").text(messagevalue);
 
-                                  $('#popupproject').removeClass('hidden');
+                                  $('#prodelete').removeClass('hidden');
                                     window.setTimeout(function(){
-                                      $('#popupproject').addClass('hidden');
+                                      $('#prodelete').addClass('hidden');
                                       location.reload();
                                     },3000)
 

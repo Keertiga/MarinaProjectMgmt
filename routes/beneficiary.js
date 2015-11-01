@@ -51,7 +51,7 @@ var activity=require('../models/activity.js');
                 benfDetails.collection.insert(data,function(err){  
                      if(err)
                         res.json(err);
-                     res.render('/beneficiary',{'msg':'success'});
+                     res.render('beneficiary',{'msg':'success'});
                  });
           });
 
