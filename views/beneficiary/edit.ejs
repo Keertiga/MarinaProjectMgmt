@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+
+    <link rel='stylesheet' href='\css\bootstrap.min.css'/>  
+    <link rel='stylesheet' href='\css\beneficiary.css' />
+    
+
+ </head>
+
+  <body>
+
+     
+    <!--code for navigation bar-->
+     <div class="navbar navbar-default navbar-fixed-top navbar-home" >
+      <div class="container">
+        <div class="navbar-header">
+
+          <a class="navbar-brand" href="/home"> Marina Project Management</a>
+      <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>  
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right ">
+            <li><a href="/about">About</a></li>
+             <li><a href="/profile">Profile</a></li>
+            <li><a href="/faq">FAQ</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+             <li><a href="/signout">Log Out</a></li>
+           
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+      
+    <!-- Jumbotron -->
+    <div class="jumbotron">
+      <div class="container">
+        <h3 class="lead">Edit Beneficiary Details</h3> 
+        
+      </div>
+    </div>
+
+    
+    
+   <div class="container">
+  
+   <div class="panel-body">
+    <a class="btn btn-primary pull-right" href='../reports/export' id="export" >Export Details</a>
+    </div>
+   </div>
+  
+  <div class="container beneficiary">
+  
+    <div class="panel-group" id="accordion">
+    <div class="panel panel-default " id="panel1">
+        <div class="panel-heading">
+             <h4 class="panel-title">
+        <a data-toggle="collapse" data-target="#collapseOne" 
+           href="#collapseOne" class="benfilter">
+          Filter Beneficiary Details
+        </a>
+      </h4>
+
+        </div>
+
+      
+        <div id="collapseOne" class="panel-collapse collapse">
+
+
+            <div class="panel-body"> 
+
+                    <div class="row">
+                    <div class="col-sm-6 ">
+                          <label for="filter_category" class="control-label">Project Category</label>
+                          <select class="form-control" name="filter_category" id="filter_category">
+                              <option value="">Select a category</option>
+                          </select>
+                      
+
+                      
+                          <label for="filter_project" class="control-label">Project Name</label>
+                          <select class="form-control" name="filter_project" id="filter_project">
+                              <option value="">Select a project</option>
+                          </select>
+                      
+                      </div>
+                    
+
+                    <div class="col-sm-6 ">
+                          <label for="filter_location" class="control-label">Location</label>
+                          <select class="form-control" name="filter_location" id="filter_location">
+                              <option value="">Select an option</option>
+                          </select>
+                      
+                          <label for="filter_funds" class="control-label">Fund value</label>
+                          <select class="form-control" name="filter_funds" id="filter_funds">
+                              <option value="0">Select an option</option>
+                              <option value="1000">greater than 1000</option>
+                              <option value="10000">greater than 10000</option>
+                          </select>
+                      </div>
+                      </div>
+                  
+                  <div class="row filter-options">
+                  
+                       <button class=" btn-sm btn-primary up-btn " id="filter-action" >Submit</button>
+                       <button class="btn-sm btn-warning up-btn" id="hide-filter" >Hide Filter</button>
+                    
+                   </div>
+
+            
+        </div>
+
+         
+
+        
+
+    </div>
+    </div>
+    </div>
+
+
+
+        <div class="panel panel-default beneficiary_panel" >
+
+        <div class="panel-body"> 
+
+            <!--table of contents-->
+             <table class="table table-hover"  id="benf-details">
+              <thead>
+                <tr>  
+                  <th class="hidden-xs">Category</th>
+                  <th>Project Name</th>
+                  <th>Location</th>
+                  <th class="hidden-xs">Beneficiary Organization</th>
+                  <th class="hidden-xs">Beneficiary Name</th>
+                  <th>Funds</th>
+                  <th class="hidden-xs">Benefitted People</th>
+                  <th class="hidden-xs">Personnel</th>
+                  <th class="hidden-xs hidden-sm">Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                    <!--Beneficiary data will be dynamically added here-->
+              </tbody>
+            </table>
+
+            <div id="navtwin" class="navalign"></div>
+
+            </div>
+            </div>
+
+     </div>
+          </div>
+          </div> 
+
+    
+        </body>
+
+    <!-- Site footer -->
+    <footer class="footer">
+        <div class="container">
+            <p> PayPal &copy; Powered By Marina</p>
+        </div>
+    </footer>
+   
+   </body>
+
+
+         <!--Update modal to edit beneficiary details-->
+         <div class="modal fade" id="editModal">
+            <div class="modal-dialog">
+                 <div class="modal-content">
+
+                     <div class="modal-header">
+                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                         <h4 class="modal-title">Edit Beneficiary Details</h4>
+                     </div>
+
+                     <div class="modal-body" id="main-content"></div>
+
+                  </div>
+             </div>
+          </div>  
+
+            
+
+
+            
+          <!--confirm modal for deletion-->
+          <div class="modal fade" id="confirmModal">
+              <div class="modal-dialog">
+                  <div class="modal-content">
+
+                      <div class="modal-header">
+                        <h4 class="modal-title">Delete the record</h4>
+                      </div>
+
+                      <div class="modal-body">
+                        <p>
+                          Deleting the selected row.Please confirm.
+                        </p>
+                        <!--Hidden field to store id of the record to be deleted-->
+                        <input type="hidden" id="delete-id">
+                      </div>
+
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="remove">Delete</button>
+                      </div>
+
+                  </div>
+              </div>
+          </div>
+
+
+ 
+ 
+
+  <script src="\js\jquery.js"></script>
+  <script src="\js\bootstrap.min.js"></script>
+  <script src="\js\bootstrap-modal.min.js"></script>
+  <script src="\js\jquery.quick.pagination.min.js"></script>
+  <script src="\js\jquery.quick.pagination.js"></script>
+  <script src="\js\jquery.twbsPagination.js"></script>
+  <script src="\js\jquery.twbsPagination.min.js"></script>
+
+  <script type="text/javascript">
+
+
+
+
+    $(document).ready(function(){
+
+              //For populating beneficiary details in table format
+              $.ajax({
+                url:"../beneficiary/data",
+                type:"GET",
+                headers:{"Accept":"application/json;odata=verbose"},
+                
+                success:function(data){
+                    populateData(data);
+                   
+                },
+                error:function(data){
+                    alert("error");
+                },
+                async:false
+             });
+
+
+              //Function to populate table
+              function populateData(data){
+                     for(var i=0;i<data.length;i++){
+                          var tr;
+                          var deleteIcon;
+                          tr = $('<tr class="details" id='+data[i]._id+'/>');
+                          tr.append("<td class='hidden-xs'>" + data[i].Category + "</td>");
+                          tr.append("<td>" + data[i].ProjectName + "</td>");
+                          tr.append("<td>" + data[i].Location + "</td>");
+                          tr.append("<td class='hidden-xs'>" + data[i].Type + "</td>");
+                          tr.append("<td class='hidden-xs'>" + data[i].Name + "</td>");
+                          tr.append("<td>" + data[i].Funds + "</td>");
+                          tr.append("<td class='hidden-xs'>" + data[i].NumPeopleBenefited + "</td>");
+                          tr.append("<td class='hidden-xs'>" + data[i].TransOwner + "</td>");
+                          tr.append("<td class='hidden-xs hidden-sm'>" + data[i].TransDate + "</td>");
+
+                          deleteIcon=$(' <a href="#" id=trash><span class="glyphicon confirm-delete glyphicon-trash"></a>');
+                          tr.append(deleteIcon);
+
+                          $('tbody').append(tr);    
+                      }
+                   
+              }
+
+             
+
+               //Show filter block on click
+               $('#filter-option').on('click',function(){
+                         
+                          $('.block').addClass('filter-visible');
+                          $('#filter').show();
+                          $('#benf-details').addClass('benf-details-filter');
+                          loadDefaultOptions();
+
+                 });
+
+
+               //Hide filter on click
+               $('#hide-filter').on('click',function(){
+
+                          window.location.reload();
+                    
+               });
+
+              loadDefaultOptions();
+
+              //Load default options for locations,projects and categories
+               function loadDefaultOptions(){
+
+                      //For populating project category dropdown
+                      $.ajax({
+                          url:"../projectCategory",
+                          type:"GET",
+                          headers:{"Accept":"application/json;odata=verbose"},
+                          success:function(data){
+                              for(var i in data){
+                                  var item=$('<option>'+data[i].name+'</option>');
+                                  $('#filter_category').append(item);
+                              }
+                          },
+                          error:function(data){
+                              alert("error");
+                          }
+                      });
+                       
+
+
+                      //For loading all locations on load of page
+                      $.ajax({
+                                url:"../AllLocations",
+                                type:"GET",
+                                headers:{"Accept":"application/json;odata=verbose"},
+                                success:function(data){
+                                    for(var i in data){
+                                        var item=$('<option>'+data[i].location+'</option>');
+                                        $('#filter_location').append(item);
+                                    }
+                                },
+                                error:function(data){
+                                    alert("error");
+                                }
+                          });
+
+                       //Loading all projects 
+                      $.ajax({
+                                url:"../projects",
+                                type:"GET",
+                                data:'category=all',
+                                headers:{"Accept":"application/json;odata=verbose"},
+                                success:function(data){
+                                    for(var i in data){
+                                        var item=$('<option>'+data[i]+'</option>');
+                                        $('#filter_project').append(item);
+                                    }
+                                    
+                                },
+                                error:function(data){
+                                    alert("error");
+                                }
+                              });
+
+                        }
+
+
+              //On click of filter button after selecting options
+              $('#filter-action').on('click',function(){
+
+            
+                        var formData=new Object();
+                        formData.Location= $('option:selected', '#filter_location').val();
+                        formData.Category=$('option:selected', '#filter_category').val();
+                        formData.Project=$('option:selected', '#filter_project').val();
+                        formData.Funds=$('option:selected', '#filter_funds').val();
+
+
+                        $.ajax({
+                            url:"../beneficiary/filter",
+                            type:"GET",
+                            headers:{"Accept":"application/json;odata=verbose"},
+                            data:{
+                                filters: JSON.stringify(formData)
+                            },
+                            success:function(data){
+                                $('.details').remove();
+                                populateData(data);
+                             
+                            },
+                            error:function(data){
+                               
+                            },
+                            async:false
+                        });
+
+                       return false;
+                          
+                });
+
+
+
+              
+              //Displays modal window for deletion confirmation
+              $('tbody').on('click','.confirm-delete' ,function() {
+                     var id = $(this).closest('tr').attr('id');
+                     $("#confirmModal #delete-id").val(id);
+                     $('#confirmModal').modal('show');
+              });
+
+
+
+              //Handles deletion of the selected record
+              $('#remove').click(function() {
+                  
+                     //Getting id of the record to be deleted 
+                     var id =$("#confirmModal #delete-id").val();
+                    
+                     $.ajax({
+
+                            url: "../beneficiary/remove", 
+                            type:"POST",
+                            data:{
+                              loadProds:1,
+                              ID:id
+                            },
+                            dataType: "json",
+
+                            success: function(data){
+                                    //Constructing id to be deleted
+                                    var ID="#"+id;
+                                    $(ID).remove();
+                                    $('#confirmModal').modal('hide');
+                             },
+                             error:function(data){
+
+                             },
+                           async:false
+                        
+                      });
+              });
+
+    
+
+
+               //Handles click on row to provide editing facility
+               $('tbody').on('click','td',function(){
+
+                    //store the selected row & get the id
+                    var self=$(this);
+                    var id = $(this).closest('tr').attr('id');
+                    $("#editModal #edit-id").val(id);
+
+                    //load the update div
+                    $('#main-content').load('/beneficiary/update');
+
+                    //Set keyboard value for ESC key to work
+                    $('#editModal').modal({
+                           keyboard:true
+                    });
+
+                    $('#editModal').modal('show');
+
+                    //On show of update modal window set the values from selected row 
+                    $("#editModal").on('shown.bs.modal',function(e){
+
+                             var element=self.closest('tr').children();
+
+                             var category=element[0].textContent;
+                             var project_name=element[1].textContent;
+                             var location=element[2].textContent;
+                             var type=element[3].textContent;
+                             var name=element[4].textContent;
+                             var funds=element[5].textContent;
+                             var benf_people=element[6].textContent;
+                             var trans_owner=element[7].textContent;
+                             var trans_date=element[8].textContent;
+
+                             $("#project_category").val(category);
+
+                             setProjects(category,project_name);
+                             setLocations(project_name,location);
+
+                             $("#type").val(type);
+                             $("#name").val(name);
+                             $("#fund").val(funds);
+                             $("#benf-people").val(benf_people);
+                             $("#trans-owner").val(trans_owner);
+                             $("#trans-date").val(trans_date);
+                             $("#edit-id").val(id);
+                    });
+                    
+                  });
+
+
+               //Utility to get projects based upon project category
+               function setProjects(category,project_name){
+                    $('#project_name').html("");
+
+                    $.ajax({
+                      url:"../projects",
+                      type:"GET",
+                      data:'category='+category,
+                      headers:{"Accept":"application/json;odata=verbose"},
+                      success:function(data){
+                          for(var i in data){
+                              var item=$('<option>'+data[i]+'</option>');
+                              $('#project_name').append(item);
+                          }
+                           $("#project_name").val(project_name);
+
+                      },
+                      error:function(data){
+                          alert("error");
+                      }
+                    });
+
+                }
+
+                //Utility to get projects based upon project category
+                function setLocations(project,location){
+
+                   $('#location').html("");
+                   $.ajax({
+                      url:"../locations",
+                      type:"GET",
+                      data:"name="+project,
+                      headers:{"Accept":"application/json;odata=verbose"},
+                      success:function(data){
+                          for(var i in data){
+                              var item=$('<option>'+data[i]+'</option>');
+                              $('#location').append(item);
+                          }
+                          $("#location").val(location);
+                      },
+                      error:function(data){
+                          alert("error");
+                      }
+                  });
+              
+                  }
+
+
+                  //Pagination script
+                   
+                  //set number of rows in page and number of pages
+                  var rowsShown = 10;
+                  var rowsTotal = $('tbody tr').length;
+                  var numPages = rowsTotal/rowsShown;
+
+
+                  //Show first page
+                  $('tbody tr').hide();
+                  $('tbody tr').slice(0, rowsShown).show();
+
+
+
+
+                  var totalpagestwin = Math.ceil(numPages);
+                 $('#navtwin').twbsPagination({
+                                  totalPages: totalpagestwin,
+                                  visiblePages: 5,
+                                  onPageClick: function (event, page) {
+                                        var currPage = page-1;
+                                        var startItem = (currPage * rowsShown) + 1;
+                                        var endItem = startItem + rowsShown;
+                                        $('tbody tr').css('opacity','0.0').hide().slice(startItem, endItem).
+                                        css('display','table-row').animate({opacity:1}, 300);
+                                  }
+
+                                });
+
+
+
+
+         
+                   
+        
+    });
+
+    </script>
+
+     <!-- Site footer -->
+     
+     <footer class="footer">
+     
+        <div class="container">
+        
+        <p> PayPal &copy; Powered By Marina</p>
+        
+        </div>
+
+      </footer>
+
+</html>
