@@ -24,9 +24,9 @@
 
           <a class="navbar-brand" href="/home"> Marina Project Management</a>
             <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
           </button>
         </div>  
         <div class="collapse navbar-collapse">
@@ -73,12 +73,14 @@
                 <div class="sidebar-nav">
                   <div class="navbar navbar-default" role="navigation">
                     <div class="navbar-header">
-                      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
-                        <span class="sr-only">Project Details</span>
+                      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
                       </button>
                       <span class="visible-xs navbar-brand">Projects</span>
                     </div>
-                    <div class="navbar-collapse id="sidebar" collapse sidebar-navbar-collapse">
+                    <div class="collapse navbar-collapse sidebar" id="sidebar">
                       <ul id="projectlist" class="nav navbar-nav pagination-sm">  
                          <!--project list goes here-->
                       </ul>
@@ -156,7 +158,7 @@
 </body>
 
     
-  <script src="\js\jquery.js"></script> 
+    <script src="\js\jquery.js"></script> 
     <script src="\js\jquery-ui.js"></script> 
     <script src="\js\bootstrap.min.js"></script>
     <script src="\js\jquery.bootstrap-duallistbox.min.js"></script>
@@ -168,7 +170,7 @@
     
      $(document).ready(function(){
 
-
+               alert($(window).width());
                //Pagination code starts
                var rcount = 1;
 
