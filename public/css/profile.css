@@ -75,3 +75,14 @@ hr {
     display: none;
 }
 }
+
+.form-control-feedback{
+  width: 60px;
+}
+.profile-panel{
+  padding-top: 60px;
+}
+
+#profileedit{
+  display: inline-block;
+}
