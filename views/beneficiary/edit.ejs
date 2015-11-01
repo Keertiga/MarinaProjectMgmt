@@ -6,7 +6,7 @@
 
     <link rel='stylesheet' href='\css\bootstrap.min.css'/>  
     <link rel='stylesheet' href='\css\beneficiary.css' />
-    <link type="text/css" rel="stylesheet" href="path_to/simplePagination.css"/>
+    
 
  </head>
 
@@ -148,8 +148,12 @@
                     <!--Beneficiary data will be dynamically added here-->
               </tbody>
             </table>
+
+            <div id="navtwin" class="navalign"></div>
+
             </div>
             </div>
+
      </div>
           </div>
           </div> 
@@ -220,6 +224,10 @@
   <script src="\js\jquery.js"></script>
   <script src="\js\bootstrap.min.js"></script>
   <script src="\js\bootstrap-modal.min.js"></script>
+  <script src="\js\jquery.quick.pagination.min.js"></script>
+  <script src="\js\jquery.quick.pagination.js"></script>
+  <script src="\js\jquery.twbsPagination.js"></script>
+  <script src="\js\jquery.twbsPagination.min.js"></script>
 
   <script type="text/javascript">
 
@@ -526,41 +534,40 @@
 
 
                   //Pagination script
-                  $('tbody').after('<div id="nav"></div>');
-
+                   
                   //set number of rows in page and number of pages
                   var rowsShown = 10;
                   var rowsTotal = $('tbody tr').length;
                   var numPages = rowsTotal/rowsShown;
 
-                  //Form pagination UI
-                  for(i = 0;i < numPages;i++) {
-                        var pageNum = i + 1;
-                        $('#nav').append('<a href="#" rel="'+i+'">'+pageNum+'</a> ');
-                  }
 
                   //Show first page
                   $('tbody tr').hide();
                   $('tbody tr').slice(0, rowsShown).show();
-                  $('#nav a:first').addClass('active');
-
-                  //On click of page number
-                  $('#nav a').bind('click', function(){
- 
-                          $('#nav a').removeClass('active');
-                          $(this).addClass('active');
-                          var currPage = $(this).attr('rel');
-                          var startItem = currPage * rowsShown;
-                          var endItem = startItem + rowsShown;
-                          $('tbody tr').css('opacity','0.0').hide().slice(startItem, endItem).
-                                css('display','table-row').animate({opacity:1}, 300);
-                  });
 
 
-                    
-                   
-});
+
+
+                  var totalpagestwin = Math.ceil(numPages);
+                 $('#navtwin').twbsPagination({
+                                  totalPages: totalpagestwin,
+                                  visiblePages: 5,
+                                  onPageClick: function (event, page) {
+                                        var currPage = page-1;
+                                        var startItem = (currPage * rowsShown) + 1;
+                                        var endItem = startItem + rowsShown;
+                                        $('tbody tr').css('opacity','0.0').hide().slice(startItem, endItem).
+                                        css('display','table-row').animate({opacity:1}, 300);
+                                  }
+
+                                });
+
+
+
+
          
+                   
+        
     });
 
     </script>
