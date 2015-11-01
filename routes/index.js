@@ -25,7 +25,7 @@ var index=function(passport){
 
     // GET login page
     router.get('/', function(req, res) {
-        res.render('index', { title: 'Project Management' });
+        res.render('index', { msg: req.flash('msg') });
     });
 
     //Handle About before and after login
