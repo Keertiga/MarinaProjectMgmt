@@ -10,7 +10,7 @@
     <link rel='stylesheet' href='\css\form.css'/>
     <link rel='stylesheet' href='\css\profile.css' />
     <link rel='stylesheet' href='\css\bootstrap-theme.min.css' />
-    <link href="css/bootstrap-duallistbox.min.css" rel="stylesheet" type="text/css" media="all">
+    
 
 
 </head>
@@ -118,6 +118,34 @@
     </div>
   </div>
 
+          <!--confirm modal for deletion-->
+          <div class="modal fade" id="confirmModal">
+              <div class="modal-dialog">
+                  <div class="modal-content">
+
+                      <div class="modal-header">
+                        <h4 class="modal-title">Delete the record</h4>
+                      </div>
+
+                      <div class="modal-body">
+                        <p>
+                          Deleting the selected Project.Please confirm.
+                        </p>
+                        <!--Hidden field to store id of the record to be deleted-->
+                        <input type="hidden" id="category">
+                        <input type="hidden" id="name">
+                      </div>
+
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="remove">Delete</button>
+                      </div>
+
+                  </div>
+              </div>
+          </div>
+          <!--confirm modal for deletion end-->
+
     <!-- Site footer -->
      <footer class="footer">
         <div class="container">
@@ -182,12 +210,21 @@
                                                         $('hr').each(function(){
                                                              $(this).remove();
                                                          });
-                              
+                                                        var j=0;
                                                         for(var i in data){
                                                                if(data[i] != ''){                                     
                                                                    if(i >= ((page-1)*pagcount) && i < (((page-1)*pagcount) + pagcount)){
-                                                                          var item=$('<li><a href="#">'+data[i]+'</a></li><hr/>');
+
+                                                                    if(j===0)
+                                                                        {
+                                                                          j=1;
+                                                                         var item=$('<li><a class= "highlight" href="#">'+data[i]+'</a></li><hr/>');
                                                                          $('#projectlist').append(item);
+                                                                        }
+                                                                          else{
+                                                                            var item=$('<li><a href="#">'+data[i]+'</a></li><hr/>');
+                                                                         $('#projectlist').append(item);
+                                                                        }
                                                                     }
                                                                 }
                                                         }
@@ -371,17 +408,29 @@
           $('#projectedit').addClass('hidden');
       });
                 
-          //On click of delete icon
+
+
+        
+
+          //On click of Action delete icon - show a modal confirm
           $("#projectdelete").on('click',function(e){
-            e.preventDefault();
-             var r = confirm("Click ok to delete the Project");
-                if (r == true) {
-                   
-            var formData=new Object;
-              
-             formData.name=$("#name").text();  
-             
-              $.ajax({
+                  var cat = $("#category").text();
+                  var pro = $("#name").text();
+                  $("#confirmModal #category").val(cat);
+                  $("#confirmModal #name").val(pro);
+                  $('#confirmModal').modal('show')
+
+          });
+
+          //TO delete the record 
+          $('#remove').on('click',function(e) {
+               
+                e.preventDefault();
+                var formData=new Object;
+                formData.name=$("#name").text();
+                formData.category=$("#category").text();
+                 
+                  $.ajax({
                             url:"../project/delete",
                             type:"POST",
                             data:{
@@ -389,6 +438,8 @@
                                 },
                             dataType:"json",
                             success:function(data){
+
+                                $('#confirmModal').modal('hide');
                                   var messagevalue= "Project has been deleted successfully"; // incase if we want to append any id
                                   $("#messagevalue").text(messagevalue);
 
@@ -398,7 +449,7 @@
                                       location.reload();
                                     },3000)
 
-                                 
+                                  
          
                                    $('form').find("input[type=text],input[type=email],select").val("");                            
                               },
@@ -409,8 +460,7 @@
                         });
                        
                         $("#mainprojectcontent").load();
-
-                      } 
+     
                });
 
         });

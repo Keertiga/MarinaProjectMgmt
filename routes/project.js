@@ -42,12 +42,8 @@ var activity=require('../models/activity.js');
 
 	  });
 
-<<<<<<< HEAD
+
     //Handle POST to update project
-=======
-     
-    //Handle POST to update project 
->>>>>>> keeraj/develop
 	router.post('/update',function(req,res){
 
 		var id={
@@ -63,15 +59,17 @@ var activity=require('../models/activity.js');
 
 	});
 
-<<<<<<< HEAD
+
 	//Handle POST to delete project
-=======
-   
-    //Handle POST to delete a project
->>>>>>> keeraj/develop
+
 	router.post('/delete',function(req,res){
+
+		var id={
+			category:req.body.details.category,
+			name:req.body.details.name
+		}
 		console.log(req.body.details);
-		projectDetails.collection.remove({'name':req.body.details.name},function(err){
+		projectDetails.collection.remove(id,req.body.details,function(err){
 			 if(err)
 	            res.json(err);     
 
@@ -80,11 +78,9 @@ var activity=require('../models/activity.js');
 
 	});
 
-<<<<<<< HEAD
-	//GET Project data to be displayed
-=======
+
 	//GET project data to be displayed
->>>>>>> keeraj/develop
+
 	router.get('/data',isLoggedIn,function(req, res) {
     
       var reqBody=querystring.parse(url.parse(req.url).query);

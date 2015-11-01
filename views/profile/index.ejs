@@ -191,6 +191,41 @@
                   });
           });
 
+     //To reload the profile on cancel
+      $("#cancelupdate").on('click',function(e){
+
+        //To load the record of the user
+        $('#viewprofile').load('/profile/view');
+              $.ajax({
+                url:"../profile/data",
+                type:"GET",
+                headers:{"Accept":"application/json;odata=verbose"},
+                success:function(data){
+
+                      for(var i in data){
+                        $('#userid').text(data[i].userid);
+                        $('#fname').text(data[i].fname);
+                        $('#lname').text(data[i].lname);
+                        $('#gender').text(data[i].gender);
+                        $('#DOB').text(data[i].DOB);
+                        $('#mobile').text(data[i].mobile);                                  
+                        $('#email').text(data[i].email);
+                        $('#city').text(data[i].city);
+                        $('#state').text(data[i].state);
+                        $('#role').text(data[i].role);
+                        $('#country').text(data[i].country);
+
+                        $('#fullname').text(data[i].fname +" "+data[i].lname);
+
+                      }
+                },
+                error:function(data){
+                  alert("error");
+                }
+               });
+
+ });
+
    });
 </script>
 
