@@ -68,13 +68,13 @@ var activity=require('../models/activity.js');
 			category:req.body.details.category,
 			name:req.body.details.name
 		}
-		console.log(req.body.details);
+
 		projectDetails.collection.remove(id,req.body.details,function(err){
 			 if(err)
 	            res.json(err);     
-
+             res.json("Project Deleted");
 		});
-		res.json("Project Deleted");
+	
 
 	});
 

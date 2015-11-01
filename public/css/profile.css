@@ -70,8 +70,10 @@ hr {
     width: 50%;
 }
 
+.navalign{
+  padding-left:5%;
+}
 @media screen and (max-width: 766px){
 #pagination-proj{
     display: none;
-}
 }

@@ -14,37 +14,41 @@
 </head>
 <body>
 
- <!--navigation bar-->
- <div class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">Project Management</a>
-          <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>  
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav navbar-right ">
-            <li ><a href="#">Home</a></li>
-            <li class="active"><a href="/profile">Profile</a></li>
-            <li><a href="#">FAQ</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="/signout">Log out</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-       
+ <!--code for navigation bar-->
+        <div class="navbar navbar-default navbar-fixed-top navbar-home">
+            <div class="container">
+                <div class="navbar-header"> <a class="navbar-brand" href="/home"> Marina Project Management</a>
 
-      
-  <!-- Jumbotron -->
-  <div class="jumbotron">
-    <div class="container">
-        <h3 class="lead"><strong>Profile Details</strong></h3> 
-    </div>
-  </div>
+                    <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> 
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>                                             
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right ">
+                        <li><a href="/about">About</a>
+                        </li>   
+                        <li><a href="/profile">Profile</a>
+                        </li>
+                        <li><a href="/faq">FAQ</a>
+                        </li>
+                        <li><a href="/contact">Contact Us</a>
+                        </li>
+                        <li><a href="/signout">Log Out</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--code for navigation bar ends here-->
+        <!-- Jumbotron -->
+        <div class="jumbotron">
+            <div class="container">
+       
+                 <h3 class="lead"><strong>Profile Details</strong></h3>
+            </div>
+        </div>
 
   <div class="container">
 
@@ -82,15 +86,11 @@
        </div>
       </div>
 
-
-
-   <!--Code for main pane-->
-   <div  class="row">
-
-        <!--code for action button-->
+ 
+ <!--code for action button-->
         <div class="col-md-8">
           <div class="col-md-4 col-md-offset-8" align="right">
-              <div class="btn-group" align="right">
+              <div class="btn-group pull-right" >
                 <button class="btn btn-primary">Action</button> 
                   <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle">
                     <span class="caret"></span>
@@ -103,16 +103,21 @@
               </div>
           </div>
    </div><!--main pane row-->
-
    
    <!--code for profile page-->
     <div id="profile" class="col-sm-8 panel panel-default">
           <!-- sample form -->
     </div>
 
-  </div><!--row-->
+
 </div><!--container-->
 
+ <!-- Site footer -->
+        <footer class="footer">
+            <div class="container">
+                <p>PayPal &copy; Powered By Marina</p>
+            </div>
+        </footer>
 
 </body>
 
