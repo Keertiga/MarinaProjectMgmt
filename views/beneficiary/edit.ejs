@@ -48,47 +48,56 @@
 
     
     
+   <div class="container">
+  
+   <div class="panel-body">
+    <a class="btn btn-primary pull-right" href='../reports/export' id="export" >Export Details</a>
+    </div>
+   </div>
+  
   <div class="container beneficiary">
-    
-         <div class="panel panel-default " >
+  
+    <div class="panel-group" id="accordion">
+    <div class="panel panel-default " id="panel1">
+        <div class="panel-heading">
+             <h4 class="panel-title">
+        <a data-toggle="collapse" data-target="#collapseOne" 
+           href="#collapseOne" class="benfilter">
+          Filter Beneficiary Details
+        </a>
+      </h4>
 
-        <div class="panel-body ">
-          <!--Filter and export buttons-->
-          <div class="block">
-               <a class="btn btn-primary"  id="filter-option" >Filter</a>
-               <a class="btn btn-primary" href='../reports/export' id="export" >Export</a>
-          </div>
-      
-      
-      <!--Hidden filter block-->
-        <div id="filter" class="filter-visible">
-            
-            <form class="form">
+        </div>
 
-                  <div id="left" class="left">
-                      <div>
+      
+        <div id="collapseOne" class="panel-collapse collapse">
+
+
+            <div class="panel-body"> 
+
+                    <div class="row">
+                    <div class="col-sm-6 ">
                           <label for="filter_category" class="control-label">Project Category</label>
                           <select class="form-control" name="filter_category" id="filter_category">
                               <option value="">Select a category</option>
                           </select>
-                      </div>
+                      
 
-                      <div>
+                      
                           <label for="filter_project" class="control-label">Project Name</label>
                           <select class="form-control" name="filter_project" id="filter_project">
                               <option value="">Select a project</option>
                           </select>
+                      
                       </div>
-                  </div>
+                    
 
-                  <div id="right" class="right">
-                      <div>
+                    <div class="col-sm-6 ">
                           <label for="filter_location" class="control-label">Location</label>
                           <select class="form-control" name="filter_location" id="filter_location">
                               <option value="">Select an option</option>
                           </select>
-                      </div>
-                      <div>
+                      
                           <label for="filter_funds" class="control-label">Fund value</label>
                           <select class="form-control" name="filter_funds" id="filter_funds">
                               <option value="0">Select an option</option>
@@ -96,17 +105,32 @@
                               <option value="10000">greater than 10000</option>
                           </select>
                       </div>
-                  </div>
+                      </div>
+                      <div class="row">
 
-                  <button class="btn-sm btn-primary up-btn"  id="filter-action">Submit</button>
-                  <button class="btn-sm btn-primary up-btn"  id="hide-filter">Hide Filters</button>
-            </form>
-          </div>
+                     <button class=" btn-sm btn-primary up-btn center-block" id="filter-action" >Submit</button>
+                     
+                      </div>
+
+            
+        </div>
 
          
 
+        
+
+    </div>
+    </div>
+    </div>
+
+
+
+        <div class="panel panel-default beneficiary_panel" >
+
+        <div class="panel-body"> 
+
             <!--table of contents-->
-            <table class="table table-hover"  id="benf-details">
+             <table class="table table-hover"  id="benf-details">
               <thead>
                 <tr>  
                   <th>Category</th>
@@ -124,9 +148,11 @@
                     <!--Beneficiary data will be dynamically added here-->
               </tbody>
             </table>
+            </div>
+            </div>
      </div>
           </div>
-          </div>
+          </div> 
 
     
         </body>
@@ -188,7 +214,7 @@
           </div>
 
 
-
+ 
  
 
   <script src="\js\jquery.js"></script>
@@ -531,9 +557,9 @@
                   });
 
 
-
-
-
+                    
+                   
+});
          
     });
 
