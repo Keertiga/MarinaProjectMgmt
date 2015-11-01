@@ -111,6 +111,7 @@ var activity=require('../models/activity.js');
       benfDetails.collection.update({_id:id},data,function(err){
             if(err)
               res.json(err);
+            res.render('beneficiary/edit');
            
       });
       

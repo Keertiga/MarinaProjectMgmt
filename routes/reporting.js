@@ -100,6 +100,7 @@ var template=require('../config/template.js');
                               benfDetails.collection.insertMany(JSON.parse(data),function(err){
                                     if(err)
                                       throw err;
+                                    res.render('home',{user:req.session.passport.user});
                               });
                          }
 

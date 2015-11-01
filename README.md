@@ -1,4 +1,7 @@
 # MarinaProjectMgmt
+
+Please find the video of demo here https://docs.google.com/uc?id=0B-yJFx7iyKXHTnRpVmdydEU1ajA&export=download
+
 Project Management application 
 
 Project Management application is the web based application for managing application across locations.
@@ -23,13 +26,13 @@ Set up steps
           db.createCollection('User');
           db.createCollection('project_details');   
           db.createCollection('benf_details');
-          db.createCollection('activities');
+          db.createCollection('activity');
           db.createCollection('project_category');
           db.createCollection('locations');
           db.createCollection('profile_details')
     3.Then do the mongo import of db dumps we will be sharing
          mongoimport -d 'ProjectMgmt' -c <collection name> --file <filename.json>
       
-      We have attached sample .xls file for import feature and db dumps.
+      We have attached sample .xls file "Book.xls" for import feature and db dumps in folder db dumps.
           
              

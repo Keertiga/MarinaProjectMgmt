@@ -1,0 +1,3 @@
+{"_id":{"$oid":"563655b17eccb9601919caf6"},"email":"keraj@paypal.com","name":"keraj","password":"$2a$10$2ltLCgWw1vklu/cCfyzjT.fZVA7wwfTFnQfh7kQxhDRrii6yUL73G"}
+{"_id":{"$oid":"5636560f7eccb9601919caf8"},"email":"project@gmail.com","name":"Project","password":"$2a$10$p0QU26HBMyXHLwdh9TO.3u4YkSgWXNbksgy.JL3oPkzfhKevQ3m3u"}
+{"_id":{"$oid":"563656737eccb9601919cafa"},"email":"mgmt@gmail.com","name":"Keraj","password":"$2a$10$W6moMwM.YxKc9u9/7b.1yeYuRrb90nxRVWgivndiPM9qECUxnHmWu"}
