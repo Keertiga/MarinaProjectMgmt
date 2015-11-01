@@ -125,6 +125,10 @@ p{
   text-align: center;
   }
 
+  .aboutus p{
+    text-align: left;
+  }
+
 
   }
 
@@ -261,7 +265,7 @@ li.aboutus {
     background-color:#185151
 }
 
- 
+
 
 
 .form-control{
