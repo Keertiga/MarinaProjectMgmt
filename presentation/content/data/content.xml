@@ -1,0 +1,766 @@
+<zuiprezi>
+  <version>6</version>
+  <zui-table>
+    <settings>
+      
+      <autoplay>
+        
+        <delay>4000</delay>
+        
+      </autoplay>
+      
+      <bounds x="-34318.16760753462" y="-21246.04846577293" width="68636.33521506924" height="42492.09693154586"/>
+      <aspectratio>off</aspectratio>
+      <languages>
+        <language>en</language>
+      </languages>
+      <mode type="normal"/>
+    </settings>
+    <object id="4_95982358" type="button" x="3.83353636234199e-13" y="-1089.100039349676" r="0" s="64.19410326886386" class="invisible">
+      <type>invisible</type>
+      <size>
+        <w>1070.3204291044776</w>
+        <h>629.1213569641113</h>
+      </size>
+      <meta>
+        <parentTemplate>creativity</parentTemplate>
+        <notModifiedByUser>from-template</notModifiedByUser>
+      </meta>
+    </object>
+    <object id="41_95982358" type="image" x="-8039.640520037407" y="13152.096931028227" r="0" s="10.452519316403771">
+      <source w="1195" h="741">2114764381<url>2114764381.png</url></source>
+      <sourceUrl>http%3A%2F%2F0103.static.prezi.com.s3.amazonaws.com%2Fmedia%2F2%2Ff%2F7%2Feb467e15b8c222424aea0b12230975395ef39.png</sourceUrl>
+      <meta>
+        <parentTemplate>creativity</parentTemplate>
+        <notModifiedByUser>from-template</notModifiedByUser>
+      </meta>
+    <resource><id>2114764381</id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/2/f/7/eb467e15b8c222424aea0b12230975395ef39.png</url></resource></object>
+    <object id="50_95982358" type="shape" x="-8858.598768445001" y="-6126.175609517952" r="42.63808485129535" s="33.62602388821991" class="line3">
+      <geom type="arrow">
+        <sp>64.69121087104536 8.162878338872165</sp>
+        <ep>-64.69121087104537 8.162878338872144</ep>
+        <b>16.32575667774431</b>
+        <t>5</t>
+      </geom>
+      <meta>
+        <parentTemplate>creativity</parentTemplate>
+        <notModifiedByUser>from-template</notModifiedByUser>
+      </meta>
+    </object>
+    <object id="51_95982358" type="shape" x="2521.8380794761288" y="-4242.486158606234" r="-36.19369663667335" s="33.6260238882199" class="line3">
+      <geom type="arrow">
+        <sp>-48.276105281626 5.239698474156967</sp>
+        <ep>48.276105281626 5.239698474156967</ep>
+        <b>-10.479396948313934</b>
+        <t>5</t>
+      </geom>
+      <meta>
+        <parentTemplate>creativity</parentTemplate>
+        <notModifiedByUser>from-template</notModifiedByUser>
+      </meta>
+    </object>
+    <object id="52_95982358" type="shape" x="4444.3688067380035" y="-445.67653866367857" r="16.758958417180867" s="33.626023888219926" class="line3">
+      <geom type="arrow">
+        <sp>-69.3012213715813 10.593808888699954</sp>
+        <ep>69.3012213715813 10.593808888699954</ep>
+        <b>-21.187617777399907</b>
+        <t>5</t>
+      </geom>
+      <meta>
+        <parentTemplate>creativity</parentTemplate>
+        <notModifiedByUser>from-template</notModifiedByUser>
+      </meta>
+    </object>
+    <object id="13_95982358" type="shape" x="-11102.882543157384" y="242.4157686013679" r="-21.68067400230493" s="24.226960477033575" class="line3">
+      <geom type="arrow">
+        <sp>64.1047888375167 10.93847106999856</sp>
+        <ep>-64.10478883751671 10.938471069998553</ep>
+        <b>21.876942139997112</b>
+        <t>5</t>
+      </geom>
+      <meta>
+        <parentTemplate>creativity</parentTemplate>
+        <notModifiedByUser>from-template</notModifiedByUser>
+      </meta>
+    </object>
+    <object id="15_95982358" type="button" x="-3532.4492587259247" y="-142.10557720773247" r="0" s="11.968824924877726" class="circle">
+      <type>circle</type>
+      <size>
+        <w>800</w>
+        <h>800</h>
+      </size>
+      <meta>
+        <parentTemplate>creativity</parentTemplate>
+        <notModifiedByUser>from-template</notModifiedByUser>
+      </meta>
+    </object>
+    <object id="16_95982358" type="text" x="-3574.40668393208" y="-2536.080368821513" r="-1.601727615887786e-31" s="26.38614515584584" class="strong">
+      <height>29.16</height>
+      <width>220.4993900181616</width>
+      <p align="center">
+        <text><![CDATA[Our Story.!!]]></text>
+      </p>
+      <layout>
+        <layout-element role="title"/>
+      </layout>
+    </object>
+    <object id="17_95982358" type="text" x="-3261.2484263900415" y="674.3202727958536" r="-2.7759820227195356e-31" s="15.224672576063002" class="strong">
+      <height>262.44</height>
+      <width>390.9237784827681</width>
+      <p listType="bullet" indent="1">
+        <text color="1657497"><![CDATA[Marina Project Management is an online website built by a team from PayPal Chennai as a part of Grace Hopper Hackathon 2015.]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text color="1657497"><![CDATA[It helps manage various projects across various locations.]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text color="1657497"><![CDATA[It helps organizations to eliminate double work and boost productivity and profitability.]]></text>
+      </p>
+      <layout>
+        <layout-element role="body"/>
+      </layout>
+    </object>
+    <object id="18_95982358" type="button" x="-19338.129643842123" y="6690.193630129936" r="0" s="8.27519846381" class="circle">
+      <type>circle</type>
+      <size>
+        <w>800</w>
+        <h>800</h>
+      </size>
+      <meta>
+        <parentTemplate>creativity</parentTemplate>
+        <notModifiedByUser>from-template</notModifiedByUser>
+      </meta>
+    </object>
+    <object id="19_95982358" type="text" x="-19376.80839435616" y="4712.374686521653" r="-1.6017276158877856e-31" s="18.24327694907391" class="strong">
+      <height>29.16</height>
+      <width>220.4993900181616</width>
+      <p align="center">
+        <text><![CDATA[Why Web App ?]]></text>
+      </p>
+      <layout>
+        <layout-element role="title"/>
+      </layout>
+    </object>
+    <object id="20_95982358" type="text" x="-19211.293194312027" y="7054.784949018544" r="-2.775982022719536e-31" s="10.526278720275776" class="body">
+      <height>291.6</height>
+      <width>390.9237784827681</width>
+      <p>
+        <text color="1657497"><![CDATA[Our goal is to offer mobile-friendly content to the widest possible audience. In this cases we decided to use website for the following advantages:]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text color="1657497"><![CDATA[Immediacy  ]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text color="1657497"><![CDATA[Compatibility]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text color="1657497"><![CDATA[Upgradability ]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text color="1657497"><![CDATA[Findability ]]></text>
+      </p>
+      <p>
+        <text><![CDATA[]]></text>
+      </p>
+      <layout>
+        <layout-element role="body"/>
+      </layout>
+    </object>
+    <object id="21_95982358" type="button" x="11536.723350554892" y="-7871.571667289334" r="0" s="7.73655843956736" class="circle">
+      <type>circle</type>
+      <size>
+        <w>800</w>
+        <h>800</h>
+      </size>
+      <meta>
+        <parentTemplate>creativity</parentTemplate>
+        <notModifiedByUser>from-template</notModifiedByUser>
+      </meta>
+    </object>
+    <object id="22_95982358" type="text" x="11509.602386373484" y="-9419.018972636251" r="-1.6017276158877872e-31" s="17.055805835107403" class="strong">
+      <height>29.16</height>
+      <width>220.4993900181616</width>
+      <p align="center">
+        <text><![CDATA[Key Features]]></text>
+      </p>
+      <layout>
+        <layout-element role="title"/>
+      </layout>
+    </object>
+    <object id="23_95982358" type="text" x="12254.73446869052" y="-8419.83777208124" r="-2.7759820227195356e-31" s="9.841113881043189" class="body">
+      <style font-family="Cabin" fontFamily="custom-cabin"/>
+      <style font-family="Cabin" fontFamily="custom-cabin"/>
+      <height>116.64</height>
+      <width>390.9237784827681</width>
+      <p listType="bullet" indent="1">
+        <text color="1657497"><![CDATA[Manage Projects]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text color="1657497"><![CDATA[Manage Beneficiary]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text color="1657497"><![CDATA[Analytics]]></text>
+      </p>
+      <p>
+        <text><![CDATA[]]></text>
+      </p>
+      <layout>
+        <layout-element role="body"/>
+      </layout>
+    </object>
+    <object id="25_95982358" type="button" x="12581.87987947309" y="-6702.361255943737" r="0" s="2.392736126244591" class="circle">
+      <type>circle</type>
+      <size>
+        <w>800</w>
+        <h>800</h>
+      </size>
+      <meta>
+        <parentTemplate>creativity</parentTemplate>
+        <notModifiedByUser>from-template</notModifiedByUser>
+      </meta>
+    </object>
+    <object id="26_95982358" type="text" x="12573.49200115712" y="-7180.950424484998" r="-1.6017276158877865e-31" s="5.274960837257883" class="strong">
+      <height>29.16</height>
+      <width>220.4993900181616</width>
+      <p align="center">
+        <text><![CDATA[Cool Features ]]></text>
+      </p>
+      <layout>
+        <layout-element role="title"/>
+      </layout>
+    </object>
+    <object id="27_95982358" type="text" x="12706.803220954036" y="-6751.3087445672945" r="-2.775982022719536e-31" s="3.04362577877405" class="body">
+      <height>87.48</height>
+      <width>390.9237784827681</width>
+      <p listType="bullet" indent="1">
+        <text color="3288169"><![CDATA[Import and Export Data.]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text color="3288169"><![CDATA[Viewing Recent Activity of User.]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text color="3288169"><![CDATA[View and Edit User Profile Details.]]></text>
+      </p>
+      <layout>
+        <layout-element role="body"/>
+      </layout>
+    </object>
+    <object id="28_95982358" type="button" x="13088.341403156464" y="9138.378278484512" r="0" s="5.397354747452959" class="circle">
+      <type>circle</type>
+      <size>
+        <w>800</w>
+        <h>800</h>
+      </size>
+      <meta>
+        <parentTemplate>creativity</parentTemplate>
+        <notModifiedByUser>from-template</notModifiedByUser>
+      </meta>
+    </object>
+    <object id="29_95982358" type="text" x="13069.42065617013" y="8058.812716459939" r="-1.6017276158877867e-31" s="11.89886114282369" class="strong">
+      <height>29.16</height>
+      <width>220.4993900181616</width>
+      <p align="center">
+        <text><![CDATA[Technical Stack]]></text>
+      </p>
+      <layout>
+        <layout-element role="title"/>
+      </layout>
+    </object>
+    <object id="30_95982358" type="text" x="12994.764039227455" y="9048.74859271534" r="-2.7759820227195356e-31" s="6.865582822256041" class="body">
+      <height>145.8</height>
+      <width>390.9237784827681</width>
+      <p listType="bullet" indent="1">
+        <text color="3288169"><![CDATA[Node.js]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text color="3288169"><![CDATA[BootStrap]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text color="3288169"><![CDATA[HighCharts]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text color="3288169"><![CDATA[Mongo DB]]></text>
+      </p>
+      <p>
+        <text><![CDATA[]]></text>
+      </p>
+      <layout>
+        <layout-element role="body"/>
+      </layout>
+    </object>
+    <object id="32_95982358" type="button" x="-21283.512668217365" y="-12632.455635674038" r="0" s="4.030613053181971" class="circle">
+      <type>circle</type>
+      <size>
+        <w>800</w>
+        <h>800</h>
+      </size>
+      <meta>
+        <parentTemplate>creativity</parentTemplate>
+        <notModifiedByUser>from-template</notModifiedByUser>
+      </meta>
+    </object>
+    <object id="33_95982358" type="text" x="-21298.146264426483" y="-13582.170960905883" r="-1.601727615887787e-31" s="8.885779661397539" class="strong">
+      <height>58.32</height>
+      <width>220.4993900181616</width>
+      <p align="center">
+        <text><![CDATA[Simple and Incredible.!!]]></text>
+      </p>
+      <layout>
+        <layout-element role="title"/>
+      </layout>
+    </object>
+    <object id="34_95982358" type="text" x="-21216.41847446544" y="-12280.319900489376" r="-2.7759820227195356e-31" s="5.127050015407257" class="body">
+      <style font-family="Cabin" fontFamily="custom-cabin"/>
+      <style font-family="Cabin" fontFamily="custom-cabin"/>
+      <height>349.92</height>
+      <width>390.9237784827681</width>
+      <p listType="bullet" indent="1">
+        <text color="1657497"><![CDATA[Marina gives you powerful project management, social collaboration and real-time visibility for any project or task. ]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text color="1657497"><![CDATA[Making stuff easy and intuitive is not our only goal. In addition to usability, we strive to create accessibility, convenience and credibility. Simplicity reflects in our home page design and this mantra has been followed throughout the site and our apps.]]></text>
+      </p>
+      <layout>
+        <layout-element role="body"/>
+      </layout>
+    </object>
+    <object id="35_95982358" type="text" x="-10410.930493568823" y="16145.900842487972" r="0" s="118.05897276122582" class="head">
+      <style font-family="ComicZineOT" fontFamily="custom-comiczineot"/>
+      <style font-family="ComicZineOT" fontFamily="custom-comiczineot"/>
+      <height>86.4</height>
+      <width>331.1008920616313</width>
+      <p>
+        <text><![CDATA[Project management]]></text>
+      </p>
+      <p align="center">
+        <text><![CDATA[A New Way to Manage Projects]]></text>
+      </p>
+      <p align="center">
+        <text><![CDATA[]]></text>
+      </p>
+    </object>
+    <object id="0_73639391" type="button" x="-1376.7941192860512" y="-17349.850097739778" r="0" s="8.410409635503441" class="circle">
+      <type>circle</type>
+      <size>
+        <w>800</w>
+        <h>800</h>
+      </size>
+    </object>
+    <object id="1_73639391" type="text" x="-1377.541346842447" y="-19213.465802617746" r="0" s="26.210208350636115" class="strong">
+      <height>29.16</height>
+      <width>-186.48000000000002</width>
+      <p>
+        <text><![CDATA[Behind the scenes]]></text>
+      </p>
+    </object>
+    <object id="2_73639391" type="image" x="-3428.2508789904364" y="-17897.171601805014" r="0" s="5.105319615910735">
+      <source w="576" h="576">3938828048<mask x="156" y="46" w="269" h="288"/>
+      <url>3938828048.jpg</url></source>
+      <sourceUrl>prash.jpg</sourceUrl>
+    <resource><id>3938828048</id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/8/a/1/87e72df9199aa3409135ae3da0e4d5892b706.jpg</url></resource></object>
+    <object id="3_73639391" type="image" x="-2154.97388165572" y="-16052.568800096557" r="0" s="4.311043511854076">
+      <source w="960" h="720">3938834918<mask x="311" y="221" w="250" h="355"/>
+      <url>3938834918.jpg</url></source>
+      <sourceUrl>roobhini.jpg</sourceUrl>
+    <resource><id>3938834918</id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/d/c/b/7de59fcd50115ad2d9a99e10c9c9117a4a3e5.jpg</url></resource></object>
+    <object id="4_73639391" type="image" x="-226.8194595199428" y="-15908.79046492308" r="0" s="2.5207098778939834">
+      <source w="581" h="581">3938849960<url>3938849960.jpg</url></source>
+      <sourceUrl>vara.jpg</sourceUrl>
+    <resource><id>3938849960</id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/6/a/e/6531e99148f604958b21222baf0ef2b29b1a0.jpg</url></resource></object>
+    <object id="5_73639391" type="text" x="-3378.223827927855" y="-16903.141773296342" r="0" s="11.002341801485017" class="strong">
+      <height>29.16</height>
+      <width>105.342</width>
+      <p>
+        <text color="3288169"><![CDATA[prasanthi]]></text>
+      </p>
+    </object>
+    <object id="6_73639391" type="text" x="-226.7839128432116" y="-15073.273402358487" r="0" s="11.002341801485017" class="strong">
+      <height>29.16</height>
+      <width>-43.752</width>
+      <p>
+        <text color="3288169"><![CDATA[vara]]></text>
+      </p>
+    </object>
+    <object id="7_73639391" type="text" x="-2154.9563520487213" y="-14948.08166178456" r="0" s="11.002341801485017" class="strong">
+      <height>29.16</height>
+      <width>-86.66400000000002</width>
+      <p>
+        <text color="3288169"><![CDATA[roobhini]]></text>
+      </p>
+    </object>
+    <object id="8_73639391" type="image" x="693.1224650496913" y="-17897.493081669603" r="0" s="0.8565351875249466">
+      <source w="1198" h="1800">3938867186<url>3938867186.jpg</url></source>
+      <sourceUrl>shalini.jpg</sourceUrl>
+    <resource><id>3938867186</id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/0/a/8/caa7e0cf3866870f4b9a5b4dd084fedb01ae2.jpg</url></resource></object>
+    <object id="9_73639391" type="text" x="702.1046451964172" y="-16903.391413657315" r="0" s="11.002341801485017" class="strong">
+      <height>29.16</height>
+      <width>-66.408</width>
+      <p>
+        <text color="3288169"><![CDATA[shalini]]></text>
+      </p>
+    </object>
+    <object id="11_73639391" type="text" x="-1278.276354167832" y="-17133.865186691743" r="0" s="11.002341801485017" class="strong">
+      <height>29.16</height>
+      <width>-82.056</width>
+      <p>
+        <text color="3288169"><![CDATA[keertiga]]></text>
+      </p>
+    </object>
+    <object id="12_73639391" type="shape" x="-2374.5678343632767" y="-7494.1725520135315" r="-75.00000000000001" s="41.14638721450205" class="line3">
+      <geom type="arrow">
+        <sp>-58.79999999999999 10.947658345331318</sp>
+        <ep>58.79999999999999 10.947658345331318</ep>
+        <b>-21.895316690662636</b>
+        <t>5</t>
+      </geom>
+    </object>
+    <object id="13_73639391" type="image" x="-1277.7079118199106" y="-17990.37555112556" r="0" s="2.973252029709283">
+      <source w="640" h="640">3938923046<mask x="108" y="45" w="440" h="450"/>
+      <url>3938923046.jpg</url></source>
+      <sourceUrl>keertiga.jpg</sourceUrl>
+    <resource><id>3938923046</id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/c/a/0/8fe6295eabd1b31b9b83c030d440f6c3f8128.jpg</url></resource></object>
+  </zui-table>
+  <background>
+    <layer depth="17.144785739810743" fadescale="0.1283188972663292">
+      <object id="background2114773093" type="image" x="-1022.2370520883076" y="-387.60427695783153" r="0" s="31.475623436598863">
+        <source w="3000" h="1911">2114773093<url>2114773093.png</url></source>
+        <sourceUrl>_Creativity%20(2).png</sourceUrl>
+      <resource><id>2114773093</id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/5/5/4/1453418ad48f763b46ad44308ba029ee48cec.png</url></resource></object>
+    </layer>
+  </background>
+  <path>
+    <s>
+      <eagle o="4_95982358"/>
+    </s>
+    <s>
+      <eagle o="15_95982358"/>
+    </s>
+    <s>
+      <eagle o="32_95982358"/>
+    </s>
+    <s>
+      <eagle o="18_95982358"/>
+    </s>
+    <s>
+      <eagle o="28_95982358"/>
+    </s>
+    <s>
+      <eagle o="21_95982358"/>
+    </s>
+    <s>
+      <eagle o="25_95982358"/>
+    </s>
+    <s>
+      <eagle o="0_73639391"/>
+    </s>
+    <s>
+      <eagle o="4_95982358"/>
+    </s>
+  </path>
+  <sound bgTrackId="3938930423">
+    <t id="3938930423" url="692dbbe30408f18f9dca018c0e39946b11fc3.mp3" type="audio/mpeg" name="isUenc84HUxX.128 (mp3cut.net).mp3" length="60526" resource="http://0103.static.prezi.com.s3.amazonaws.com/media/2/d/2/692dbbe30408f18f9dca018c0e39946b11fc3.mp3"/>
+  </sound>
+  <style type="text/css"><![CDATA[
+@font-face
+{
+	src: url('Cabin-Regular.keg');
+	fontFamily: body;
+	font-class: body;
+	font-style: normal;
+	font-weight: normal;
+	font-family: Cabin;
+}
+
+@font-face
+{
+	src: url('Cabin-Regular.keg');
+	fontFamily: custom-cabin;
+	font-class: custom-cabin;
+	font-style: normal;
+	font-weight: normal;
+	font-family: Cabin;
+}
+
+@font-face
+{
+	src: url('ComicZineOT-Regular.keg');
+	fontFamily: custom-comiczineot;
+	font-class: custom-comiczineot;
+	font-style: normal;
+	font-weight: normal;
+	font-family: ComicZineOT;
+}
+
+@font-face
+{
+	src: url('ComicZineOT-Regular.keg');
+	fontFamily: head;
+	font-class: head;
+	font-style: normal;
+	font-weight: normal;
+	font-family: ComicZineOT;
+}
+
+@font-face
+{
+	src: url('Cabin-Bold.keg');
+	fontFamily: strong;
+	font-class: strong;
+	font-style: normal;
+	font-weight: bold;
+	font-family: Cabin;
+}
+
+@font-face
+{
+	src: url('Cabin-Italic.keg');
+	font-style: italic;
+	font-weight: normal;
+	font-family: Cabin;
+}
+
+@font-face
+{
+	src: url('Cabin-BoldItalic.keg');
+	font-style: italic;
+	font-weight: bold;
+	font-family: Cabin;
+}
+
+.line1
+{
+	color: #b27b9e;
+	gradEndColor: #b27b9e;
+	gradStartColor: #b27b9e;
+}
+
+.line2
+{
+	color: #f2b477;
+	gradEndColor: #f2b477;
+	gradStartColor: #f2b477;
+}
+
+.line3
+{
+	color: #ee8ea0;
+	gradEndColor: #ee8ea0;
+	gradStartColor: #ee8ea0;
+}
+
+.line4
+{
+	color: #beda87;
+	gradEndColor: #beda87;
+	gradStartColor: #beda87;
+}
+
+.line5
+{
+	color: #75beb0;
+	gradEndColor: #75beb0;
+	gradStartColor: #75beb0;
+}
+
+.poly1
+{
+	color: #f4f4ef;
+	gradEndColor: #b27b9e;
+	gradStartColor: #b27b9e;
+}
+
+.poly2
+{
+	color: #f4f4ef;
+	gradEndColor: #f2b477;
+	gradStartColor: #f2b477;
+}
+
+.poly3
+{
+	color: #f4f4ef;
+	gradEndColor: #ee8ea0;
+	gradStartColor: #ee8ea0;
+}
+
+.poly4
+{
+	color: #f4f4ef;
+	gradEndColor: #beda87;
+	gradStartColor: #beda87;
+}
+
+.poly5
+{
+	color: #f4f4ef;
+	gradEndColor: #75beb0;
+	gradStartColor: #75beb0;
+}
+
+Background
+{
+	gradEnd: #f4f4ef;
+	gradStart: #f4f4ef;
+}
+
+Grid
+{
+	color: #b3b3af;
+}
+
+ZArrow
+{
+	borderAlpha: 0;
+	borderThickness: 0;
+	gradEndAlpha: 1;
+	gradEndColor: #fff;
+	gradStartAlpha: 1;
+	gradStartColor: #fff;
+	thickness: 5;
+}
+
+ZCircle
+{
+	borderAlpha: 0;
+	gradEndAlpha: 1;
+	gradStartAlpha: 1;
+	lockTintAlpha: 0;
+	radius: 0;
+	thickness: 100;
+}
+
+ZCurveLine
+{
+	color: #fff;
+}
+
+ZFrame.bracket
+{
+	borderAlpha: 0;
+	borderColor: #318bff;
+	borderThickness: 0;
+	gradEndAlpha: 1;
+	gradEndColor: #b27b9e;
+	gradStartAlpha: 1;
+	gradStartColor: #b27b9e;
+	padding: 1.03;
+	thickness: 5;
+}
+
+ZFrame.circle
+{
+	borderAlpha: 0;
+	borderColor: #ed145b;
+	borderThickness: 0;
+	gradEndAlpha: 1;
+	gradEndColor: #ee4e6e;
+	gradStartAlpha: 1;
+	gradStartColor: #ee4e6e;
+	padding: 1.03;
+	thickness: 5;
+}
+
+ZFrame.roundrect
+{
+	borderAlpha: 0;
+	borderThickness: 0;
+	gradEndAlpha: .7;
+	gradEndColor: #beda87;
+	gradStartAlpha: .8;
+	gradStartColor: #beda87;
+	padding: 1.03;
+	radius: 1;
+	thickness: 3;
+}
+
+ZLabel
+{
+	lockTintAlpha: 0.15;
+	padding: 1.2;
+}
+
+ZLabel.body
+{
+	color: #000;
+	fontFamily: body;
+}
+
+ZLabel.body-background
+{
+	background-alpha: 0.8;
+	background-color: #75beb0;
+	background-padding: 6;
+}
+
+ZLabel.head
+{
+	color: #222;
+	fontFamily: head;
+}
+
+ZLabel.head-background
+{
+	background-alpha: 0.8;
+	background-color: #ee8ea0;
+	background-padding: 6;
+}
+
+ZLabel.strong
+{
+	color: #ee4e6e;
+	fontFamily: strong;
+}
+
+ZLabel.strong-background
+{
+	background-alpha: 0.8;
+	background-color: #f2b477;
+	background-padding: 6;
+}
+
+ZLine
+{
+	color: #000;
+}
+
+ZMarker
+{
+	alpha: .45;
+	color: #7c7c8c;
+}
+
+ZPath
+{
+	alpha: 1;
+	color: #333;
+	textColor: #fff;
+	thickness: 3;
+}
+
+ZPath Ball.base
+{
+	alpha: 1;
+	fillColor: #333;
+	radius: 12;
+}
+
+ZPath Ball.mid
+{
+	alpha: .5;
+	fillColor: #333;
+	radius: 8;
+}
+
+ZPoly
+{
+	borderAlpha: 0;
+	gradEndAlpha: 1;
+	gradStartAlpha: 1;
+	lockTintAlpha: 0;
+	radius: 0;
+	thickness: 100;
+}
+
+]]></style>
+  <hash>524f8ff8</hash>
+<sync><oid>mxpwgbziu3ti</oid><title>project-management</title><hash>524f8ff8</hash></sync><config>ZzqfeW5qH06OqxKFvAZsf2WQe0CNURQifqDcN00vJjs1734U7bzY2VKvseAUbrDli4ZeA/yLLyccMEAybOz1I9mysYLfbSezbLiFh8vTRuWIlaNQnWPM6++dl6E2TrPQ2b386cMKnauwJoy+9bYraarylqyllAXerRyGTYTROXJcy4F5NfF88nyESiqpzqms0GdtGkvjRjHPdXCQd/Gdud4gtcu6lK4aqQVmgugGbzh6NwXLCYAspGh7sdWQE87jqFS3d1+Bkm8WOY2xKbQcn5fRjNc6Syv9GIQjZVe0B3AYwUM2nVKCIzm7U5bYcPja1t1Ho5z4YjFCDkwW/nazsA==</config></zuiprezi>
