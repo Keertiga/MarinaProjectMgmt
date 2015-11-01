@@ -95,10 +95,6 @@ background-image: url('../images/bg.png');
   margin-top: 14px;
 }
 
-.form-group{
-
-  max-width: 400px;
-}
 
 .form-heading{
       max-width: 400px;
@@ -127,6 +123,10 @@ background-image: url('../images/bg.png');
 
 p{
   text-align: center;
+  }
+
+  .aboutus p{
+    text-align: left;
   }
 
 
@@ -246,3 +246,45 @@ text-align: center;
 .modalerror{
   color:red;
 }
+#recentActivityDetails{
+  padding-top:500px;
+  overflow:auto;
+  padding-bottom: 500px;
+
+}
+
+#recentActivity{
+ background-color: #FFFFFF;
+  
+}
+
+.btn-recentActivities {
+    padding:10px 15px;
+    border:1px solid #185151;
+    background-color:transparent;
+    color:#185151;
+    font-family:Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight:400;
+    font-size:16px
+}
+.btn-recentActivities:hover {
+    color:#fff;
+    background-color:#185151
+}
+
+
+
+
+.form-control{
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;  
+  font-size: 16px;
+  margin: 10px 0px 10px 0px;b0c4de;
+}
+
+
+
