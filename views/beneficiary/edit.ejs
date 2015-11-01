@@ -107,11 +107,13 @@
                           </select>
                       </div>
                       </div>
-                      <div class="row">
-
-                     <button class=" btn-sm btn-primary up-btn center-block" id="filter-action" >Submit</button>
-                     
-                      </div>
+                  
+                  <div class="row filter-options">
+                  
+                       <button class=" btn-sm btn-primary up-btn " id="filter-action" >Submit</button>
+                       <button class="btn-sm btn-warning up-btn" id="hide-filter" >Hide Filter</button>
+                    
+                   </div>
 
             
         </div>
@@ -294,11 +296,11 @@
                //Hide filter on click
                $('#hide-filter').on('click',function(){
 
-                          $('#filter').hide();
-                          $('#benf-details').removeClass('benf-details-filter');
-                          $('.block').removeClass('filter-visible');
-
+                          window.location.reload();
+                    
                });
+
+              loadDefaultOptions();
 
               //Load default options for locations,projects and categories
                function loadDefaultOptions(){

@@ -51,6 +51,7 @@ var activity=require('../models/activity.js');
                 benfDetails.collection.insert(data,function(err){  
                      if(err)
                         res.json(err);
+                    
                      res.render('beneficiary',{'msg':'success'});
                  });
           });
@@ -110,7 +111,7 @@ var activity=require('../models/activity.js');
       benfDetails.collection.update({_id:id},data,function(err){
             if(err)
               res.json(err);
-            res.json("success");
+           
       });
       
       //Data formation for activity log
@@ -124,7 +125,8 @@ var activity=require('../models/activity.js');
         //Insert into activity data store
         activity.collection.insert(log,function(err){
             if(err)
-              res.json(err);
+               res.json(err);
+
         });
 
   });

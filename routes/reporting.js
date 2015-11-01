@@ -77,29 +77,36 @@ var template=require('../config/template.js');
 
      var filepath=path.resolve('.')+'\\files\\Beneficiary-Import.xls';
 
-     
+ 
      //Read the uploaded file
      fs.readFile(req.file.path,function(err,data){
 
-          //Write into a server file
+           //Write into a server file
            fs.writeFile(filepath,data,'binary',function(err){
-                 if(err)
+
+                if(err)
                     throw err;
-                 
                  //Convert uploaded excel into json
                  xls2json({input:'./files/Beneficiary-Import.xls',output:"./files/Beneficiary-out.json",sheet:"Sheet1"}, 
                         function(err, result) {
                              if(err)
                                 throw err;
-                  });
+                   });
 
                   //Read the converted json file and insert into data store
                   fs.readFile('./files/Beneficiary-out.json','utf8',function(err,data){
-
+ 
                         if(data!=""){
+                        
                               benfDetails.collection.insertMany(JSON.parse(data),function(err){
+ 
                                     if(err)
                                       throw err;
+                                    else{
+                                      var user=req.session.passport.user;
+                                      console.log("Imported Successfully");
+                                      res.render('home',{user:user});
+                                    }
                               });
                          }
 
