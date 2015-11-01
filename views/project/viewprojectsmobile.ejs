@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Project creation</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <link rel='stylesheet' href='\css\bootstrap.min.css'/>
+    <link rel='stylesheet' href='\css\form.css'/>
+    <link rel='stylesheet' href='\css\jquery-ui.min.css'/>
+
+</head>
+<body>
+    
+    <!-- code for navigation bar starts-->
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Project Management</a>
+          <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>  
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right ">
+            <li class="active"><a href="/home">Home</a></li>
+            <li><a href="#">FAQ</a></li> 
+            <li><a href="#">About</a></li>
+            <li><a href="/signout">Log out</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="jumbotron">
+      <div class="container">
+        <h3 class="lead">Edit Projects</h3> 
+        <p> To edit or delete projects details </p>
+      </div>
+    </div>
+    <div class="container">
+
+        <!--Success message pop up-->
+        <div id="popupproject" class="hidden">
+            <div class="col-md-12">
+                <div class="alert alert-success alert-dismissable">  
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                      
+                    </button>
+                    <h4 align="center" id="messagevalue">
+                      Project has been updated successfully!!!!!
+                    </h4>
+                </div>
+              </div>
+            </div>
+
+  <!-- view projects code starts here-->
+
+  <div class="container">
+    <div class="row">
+      
+      <div class="col-md-8 col-md-offset-2"><h1>Project List</h1></div>
+
+    </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <form  class="form-horizontal" role="form">
+                    
+                   <div>
+                      <ul id='pagination-proj'></ul>
+                  </div>
+                    <!-- all projects -->
+                 
+                      <ul class="viewprojects" id="viewprojects">
+                          
+                          
+                      </ul>
+                    
+                    <!--all projects ends here-->
+                    <!--test code-->
+                    
+                      <!--edit panel button-->
+                      
+                    
+                    <div class="hidepanel panel panel-default " id="hidepanel" >
+                      <div class="row">
+                          <div class="col-lg-6"></div>
+                          
+                          <div class="dropdown" style="float:right;margin-right:30px">
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Action
+                            <span class="caret"></span></button>
+                            <ul class="dropdown-menu" style="float:right;margin-right:30px">
+                              <li style="float:right;margin-right:30px"><a id="edit" href="#">Edit</a></li>
+                              <li style="float:right;margin-right:30px"><a id="projectdelete" href="#">Delete</a></li>
+                            </ul>
+                          </div>
+                      </div>
+                      <div class="loadform" id="loadform">
+                      </div>
+                    </div>
+                  
+
+                  </form>
+            </div>
+        </div>
+  </div> 
+</body>
+<script src="\js\jquery.js"></script> 
+    <script src="\js\jquery-ui.js"></script> 
+    <script src="\js\bootstrap.min.js"></script>
+    
+<script type="text/javascript">
+$(document).ready(function(){
+       //hide the panel
+       $("#hidepanel").hide();
+        $.ajax({
+          url:"../viewall",
+          type:"GET",
+          headers:{"Accept":"application/json;odata=verbose"},
+          success:function(data){
+           
+                for(var i=0;i<data.length;i++)
+                  if(data[i].name != null) 
+                    
+                    $('.viewprojects').append("<li class='btn btn-default form-control "+data[i]._id+"' id='btn'>"+data[i].name+"</li>");
+                  
+                var count=0;
+                var previous=0;
+                var even=0;
+                $('#viewprojects').on('click','#btn',function(e){
+                          e.preventDefault();
+                          
+                          if(++count>0)
+                            ;
+                          var myClasses = this.classList;
+                          for(i=0;i<data.length;i++) {
+                           if(data[i]._id==myClasses[3] && data[i].name != "")
+                             break;
+                         }
+
+                         if(previous != data[i]._id ){ 
+                          
+                              $("#hidepanel").append($("#loadform").load("/project/viewmobile",function(){
+                                    
+                                    $('#category').text(data[i].category);  
+                                    $('#name').text(data[i].name);
+                                    $('#desc').text(data[i].desc);
+                                    $('#lead').text(data[i].lead);
+                                    $('#email').text(data[i].email);
+                                    $('#locations').text(data[i].locations);  
+                                    $('#date').text(data[i].start_date+"to"+data[1].end_date);
+                                    $('#funds').text(data[i].funds);  
+                            })).insertAfter(this);
+
+                             $("#hidepanel").show(); 
+                             even=0;
+                       
+                       }
+                       else {
+                        if(even%2==0){
+                          $("#hidepanel").hide();
+                        }
+                        else
+                        {
+                          $("#hidepanel").append($("#loadform").load("/project/viewmobile",function(){
+                                    
+                                    $('#category').text(data[i].category);  
+                                    $('#name').text(data[i].name);
+                                    $('#desc').text(data[i].desc);
+                                    $('#lead').text(data[i].lead);
+                                    $('#email').text(data[i].email);
+                                    $('#locations').text(data[i].locations);  
+                                    $('#date').text(data[i].start_date+"to"+data[1].end_date);
+                                    $('#funds').text(data[i].funds);  
+                            })).insertAfter(this);
+
+                             $("#hidepanel").show(); 
+
+                        }
+                        even++;
+                      }
+                       previous=data[i]._id;
+                      });
+                    $(".hidepanel").on('click',"#edit",function(e){
+                        e.preventDefault();
+                        var cat = $("#category").text();
+                          var pro = $("#name").text();
+                          var desc= $("#desc").text();
+                          var lead= $("#lead").text();
+                          var email= $("#email").text();
+                          var location = $("#locations").text();
+                          var start_date = $("#date").text().slice(0,10);
+                          var end_date = $("#date").text().slice(16,26);
+                          var funds = $("#funds").text();
+                      
+                         $("#loadform").load("/project/editformmobile",function(){
+                             // alert($('#name').val(pro));
+                                      $('#name').text(pro);
+                                      $('#desc').val(desc);
+                                      $('#lead').val(lead);
+                                      $('#email').val(email);
+                                      $('#funds').val(funds);
+                                      $('#location').val(location);
+                                      $('#category').text(cat);
+                                      $('#start-date').val(start_date);
+                                  $('#end-date').val(end_date);
+                                      //load locations
+                                      alert("loaded");
+                                      $.ajax({
+                                        url:"../locations",
+                                        type:"GET",
+                                        headers:{"Accept":"application/json;odata=verbose"},
+                                        success:function(data){
+
+                                              var locarr = location.split(',')
+                                            
+                                              for(var i in data){
+                                                 if(locarr.length === 0){
+
+                                                     var item=$('<option>'+data[i]+'</option>');
+                                                     $('#locations').append(item);  
+
+                                                  }else{
+
+                                                     if($.inArray(data[i], locarr)>-1) {
+                                                          var item=$('<option selected="selected">'+data[i]+'</option>');
+                                                          $('#locations').append(item);
+                                                      }
+                                                     else{
+                                                          var item=$('<option>'+data[i]+'</option>');
+                                                          $('#locations').append(item);
+                                                     }
+                                                  }
+
+                                                }
+                                           },
+                                        error:function(data){
+                                             alert("error");
+                                         },
+                                        async:false
+                                 });
+
+                               //For handling location list events
+                               $('#locations').bootstrapDualListbox({
+                                    bootstrap2compatible    : false,
+                                    preserveselectiononmove : false,            // 'all' / 'moved' / false
+                                    moveonselect            : true,             // true/false (forced true on androids, see the comment later)
+                                    initialfilterfrom       : '',               // string, filter selectables list on init
+                                    initialfilterto         : '',               // string, filter selected list on init
+                                    helperselectnamepostfix     : '_helper',    // 'string_of_postfix' / false
+                                    infotext: 'Showing all {0}',// text when all options are visible / false for no info text
+                                    infotextfiltered        : '<span class="label label-warning">Filtered</span> {0} from {1}',// when not all of the options are visible due to the filter
+                                    selectorminimalheight   : 100,
+                                    showfilterinputs        : true,
+                                    filterplaceholder       : 'Filter',
+                                    filtertextclear         : 'show all',
+                                    nonselectedlistlabel    : '',            // 'string', false
+                                    selectedlistlabel       : '',            // 'string', false
+                                    filteronvalues          : false             // filter by selector's values, boolean
+                           });
+
+
+
+                         });
+                      });
+                  $('.hidepanel').on('click',"#projectdelete",function(e){
+                    e.preventDefault();
+                    alert("delete");
+                    var formData=new Object;
+              
+             formData.name=$("#name").text();  
+                      $.ajax({
+                            url:"../project/delete",
+                            type:"POST",
+                            headers:{"Accept":"application/json;odata=verbose"},
+                            data:{
+                                loadProds:1,
+                                details: formData
+                                },
+                            dataType:"json",
+                            
+                            success:function(){ 
+                                alert("success");
+                                location.reload();
+                            },
+                            error:function(){
+                              alert(formData.name);
+                              alert("error");
+                             },
+                            async:false
+                    });
+
+                  });
+
+          },
+            error:function(data){
+                alert("error");
+            },
+            async:false
+           
+        });
+          
+
+  });
+
+</script>
+
+
+</html>
