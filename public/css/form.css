@@ -129,7 +129,14 @@ footer h5 {
 
 }
 
-
-
-
+.success-msg{
+     display: inline-block;
+     position: relative;
+     top:12px;
+     left: 44%;
+     color:green;
+     padding:0px 10px 0px 10px;
+     background-color:white;
+     border-radius: 5px;
+}
 

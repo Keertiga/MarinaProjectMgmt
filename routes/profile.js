@@ -21,7 +21,10 @@ var profile=require('../models/profile.js');
 	      var email=req.session.passport.user.email;
 	      
 		  profile.find({email:email},function(err,data){
-		           res.json(data);
+		  	    if(err)
+		  	    	res.json(err);
+		  	    else
+		            res.json(data);
 		  });
 	});
 
@@ -34,7 +37,8 @@ var profile=require('../models/profile.js');
 		profile.collection.update({email:email},req.body.details,function(err){
 			 if(err)
 	            res.json(err);
-	         res.json("profile Updated");
+	         else
+	            res.json("profile Updated");
 		});
 
 	});
