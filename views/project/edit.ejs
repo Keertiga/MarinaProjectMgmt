@@ -212,15 +212,21 @@ $.ajax({
                                     $('hr').each(function(){
                                        $(this).remove();
                                     });
-                              
+                                    var j=0;
                                     for(var i in data){
 
                                         if(data[i] != '')
                                         {
+
                                         if(i >= ((page-1)*pagcount) && i < (((page-1)*pagcount) + pagcount))
                                         {
-
-                                              var item=$('<li><a href="#">'+data[i]+'</a></li><hr/>');
+                                            if(j===0)
+                                            {
+                                              j=1;
+                                             var item=$('<li><a class= "highlight" href="#">'+data[i]+'</a></li><hr/>');
+                                             $('#projectlist').append(item);
+                                            }
+                                             var item=$('<li><a href="#">'+data[i]+'</a></li><hr/>');
                                              $('#projectlist').append(item);
                                             //  alert(data[i]);
                                           }
@@ -517,7 +523,7 @@ $("#projectedit").on('click',function(e){
      });
                 
           $("#projectdelete").on('click',function(e){
-
+            e.preventDefault();
              var r = confirm("Click ok to delete the Project");
                 if (r == true) {
                    
@@ -540,9 +546,10 @@ $("#projectedit").on('click',function(e){
                                   $('#popupproject').removeClass('hidden');
                                     window.setTimeout(function(){
                                       $('#popupproject').addClass('hidden');
+                                      location.reload();
                                     },3000)
 
-                                 window.location.reload();
+                                 
          
                                     $('form').find("input[type=text],input[type=email],select").val("");                            
                               },

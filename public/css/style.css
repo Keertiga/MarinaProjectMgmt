@@ -238,3 +238,11 @@ footer h5 {
 li.aboutus {
    margin:0 0 10px 0;   
 }
+
+.modalmessage{
+color: green;
+text-align: center;
+}
+.modalerror{
+  color:red;
+}

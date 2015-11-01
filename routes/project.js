@@ -42,7 +42,7 @@ var activity=require('../models/activity.js');
 
 	  });
 
-    
+    //Handle POST to update project
 	router.post('/update',function(req,res){
 		console.log(req.body.details);
 		projectDetails.collection.update({'name':req.body.details.name},req.body.details,function(err){
@@ -54,7 +54,7 @@ var activity=require('../models/activity.js');
 
 	});
 
-
+	//Handle POST to delete project
 	router.post('/delete',function(req,res){
 		console.log(req.body.details);
 		projectDetails.collection.remove({'name':req.body.details.name},function(err){
@@ -67,7 +67,7 @@ var activity=require('../models/activity.js');
 
 	});
 
-	//GET beneficiary data to be displayed
+	//GET Project data to be displayed
 	router.get('/data',isLoggedIn,function(req, res) {
     
      console.log("here");
@@ -104,14 +104,6 @@ var activity=require('../models/activity.js');
                     res.render('project/editform');
       });
 
-	 router.post('/create',function(req,res){
-	 	 console.log("create"+req.body.details);
-	      projectDetails.collection.insert(req.body.details,function(err){
-	          if(err)
-	              res.json(err);
-	          res.json("Project Created");
-	      });
-	  });
   
       //Get Add project Category/Location form
       router.get('/addCategoryLoc',isLoggedIn,function(req, res) {

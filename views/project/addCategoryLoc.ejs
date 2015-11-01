@@ -12,7 +12,7 @@
   <!--Modal window for initial import/export option-->
   <div  id="modal">
     <p>Select one of the options you would like to add</p>
-     <div class="modal-radio">
+     <div class="modal-radio" align="center">
         <label class="radio-inline">
           <input type="radio" name="addcategory" id="addCategory">Category</label>
         <label class="radio-inline">
@@ -22,9 +22,10 @@
 
   <!--Modal window after Selecting Category-->
   <div id="after-category" class="list-group">
-     <form class="form"  method="POST" action='/project/addCategoryLoc'>
+     <form class="form"  method="POST" action='/project/addCategory'>
         <input type="text" class="form-control" name="projectCategory" id="projectCategory" placeholder="Add Project Category" required>
-        <button class="form-btn btn btn-block btn-primary" id="submit" type="submit">Add</button> 
+        <span class="modalerror" id="catError"></span>
+        <button class="form-btn btn btn-block btn-primary" id="submitcat" type="submit">Add</button> 
      </form>
 
   </div>
@@ -33,58 +34,120 @@
   <div id="after-location" class="list-group">
      <form class="form"  method="POST" action='/project/addLocation'>
         <input type="text" class="form-control" name="projectLocation" id="projectLocation" placeholder="Add Project Location" required>
+        <span class="modalerror" id="locError"></span>
          <input type="hidden" value="addLocation" name="location">
-        <button class="form-btn btn btn-block btn-primary" id="submit" type="submit">Add</button> 
+        <button class="form-btn btn btn-block btn-primary"  id="submitloc" type="submit">Add</button> 
      </form>
 
   </div>
 
    <!--Display Success Message after Adding Project Category/Location-->
-  <div id="success-message" class="list-group">
-     <div class="alert alert-success" role="alert">Added Successfully!!</div>
-  </div>
+
 
 
   <script src="\js\jquery.js"></script>
   <script src="\js\bootstrap.min.js"></script>
   <script type="text/javascript">
         
-        $(document).ready(function(){
+$(document).ready(function(){
 
 
+         //Hides category & location radio buttons and displays Add Category button
+         $("input:radio[id=addCategory]").click(function(){
+          
+               $('#modal').hide();
+               $('#after-category').show();
 
-             //Hides category & location radio buttons and displays Add Category button
-             $("input:radio[id=addCategory]").click(function(){
-              
-                   $('#modal').hide();
-                   $('#after-category').show();
+         });
 
-             });
+          //Hides category & location radio buttons and displays Add Location button
+         $("input:radio[id=addLocation]").click(function(){
+          
+               $('#modal').hide();
+               $('#after-location').show();
 
+         });
 
-
-              //Hides category & location radio buttons and displays Add Location button
-             $("input:radio[id=addLocation]").click(function(){
-              
-                   $('#modal').hide();
-                   $('#after-location').show();
-
-             });
-
-             
-
-                 
-
-        
-
-    
-
-
-
+         //To remove the error on focus for catergory
+        $("#projectCategory").focus(function(){
+                 $('#catError').html("");
         });
+        //To remove the error on focus for location
+        $("#projectLocation").focus(function(){
+                 $('#locError').html("");
+        });
+ 
+  // TO add category into DB
 
+     $('#submitcat').on('click',function(e){
 
-        
+             e.preventDefault();
+              //Forming JSON object for form data to be sent to handle POST
+              var formData=new Object;
+              formData.name=$("#projectCategory").val();
+              
+              $.ajax({
+                    url:"../addCategory",
+                    type:"POST",
+                    data:{
+                        loadProds:1,
+                        details:formData
+                        },
+                    dataType:"json",
+                    success:function(data){
+                        if(data=="exist"){
+                            $('#catError').html("Category already exists");
+                         }else{
+                            var msg= $('<h3 class="modalmessage" id="message">Added Successfully</h3>');
+                            $('form').append(msg);
+                            $('#message').fadeOut(3000,function(){
+                                 $(this).remove();
+                            });
+                         }
 
+                      },
+                     error:function(data){
+                           alert("error");
+                      },
+                      async:false
+                });
+       });
+
+  // TO add location into DB
+
+     $('#submitloc').on('click',function(e){
+
+             e.preventDefault();
+              //Forming JSON object for form data to be sent to handle POST
+              var formData=new Object;
+              formData.location=$("#projectLocation").val();
+              
+              $.ajax({
+                    url:"../addLocation",
+                    type:"POST",
+                    data:{
+                        loadProds:1,
+                        details:formData
+                        },
+                    dataType:"json",
+                    success:function(data){
+                         if(data=="exist"){
+                            $('#locError').html("Location already exists");
+                         }else{
+                            var msg= $('<h3 class="modalmessage" id="message1">Added Successfully</h3>');
+                            $('form').append(msg);
+                            $('#message1').fadeOut(3000,function(){
+                                 $(this).remove();
+                            });
+                         }
+                    },
+                     error:function(data){
+                           alert("error");
+                      },
+                      async:false
+                });
+       });
+             
+  });
   </script>
   </html>

@@ -105,13 +105,65 @@ var index=function(passport){
     });
 
 
+    //Handle POST for addCategory
+    router.post('/addCategory',function(req,res){
+         console.log("Category:"+req.body.details.name);
+        projectCategory.find({'name':req.body.details.name}).limit(1).exec(function(err,data){
+                if(err){
+                    console.log(err);
+                    }
+                    console.log("data length"+data.length);
+                 if(data.length == 0)
+                 {
+                    console.log("New category");
+                        projectCategory.collection.insert(req.body.details,function(err){
+                              if(err)
+                                  res.json(err);
+                                data = "success";
+                              res.json(data);    
+                        });
+                 }
+                 else{
+                    data = "exist";
+                    console.log("Already exist");
+                    res.json(data);
+                 }
+            });
+        });
+
+    //Handle POST for addCategory
+    router.post('/addLocation',function(req,res){
+         console.log("Location:"+req.body.details.location);
+        locations.find({'location':req.body.details.location}).limit(1).exec(function(err,data){
+                if(err){
+                    console.log(err);
+                    }
+                    console.log("data length"+data.length);
+                 if(data.length == 0)
+                 {
+                      console.log("New location");
+                        locations.collection.insert(req.body.details,function(err){
+                              if(err)
+                                  res.json(err);
+                                data = "success";
+                              res.json(data);    
+                        });
+                 }
+                 else{
+                  console.log("Already Exist");
+                  data ="exist";
+                    res.json(data);
+                 }
+            });
+        });
+
+
     //Fetches All locations
     router.get('/AllLocations', function(req, res) {
         locations.find({},function(err,data){
                res.json(data);
         });
     });
-
 
 
     //Fetches Location based on Project Category and Projects
