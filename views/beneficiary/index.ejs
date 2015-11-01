@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Project creation</title>
+    <title>Beneficiary creation</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -45,6 +45,19 @@
       </div>
     </div>
 
+          <!--pop up for success message-->
+    <div id="success" class="hidden">  
+           <h4 id="msg"><%=msg%></h4> 
+   </div>
+
+         <!-- pop up-->
+          <div id="profilesuccess" class="hidden">  
+              <span class="success-msg">       
+                 <h4 id="message">Successfully added Beneficiary details!!!!<span class="glyphicon glyphicon-ok"></h4> 
+              </span> 
+         </div>
+
+        <!--Pop up-->
 
 <div class="container beneficiary">
     <div class="panel panel-default beneficiary_panel" >
@@ -195,6 +208,17 @@
      $(document).ready(function(){
 
 
+         if($('#msg').text()==="success"){
+            $('#profilesuccess').removeClass('hidden');
+            setTimeout(function(){
+                 $('#profilesuccess').addClass('hidden');
+                    $('#msg').val('');       
+            },5000);
+        }
+
+       // $('#msg').fadeOut(5000);
+
+        
         //Date controls
         $('#date').datepicker().change(function(){
 

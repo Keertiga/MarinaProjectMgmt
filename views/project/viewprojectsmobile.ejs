@@ -210,7 +210,7 @@ $(document).ready(function(){
                                       $('#start-date').val(start_date);
                                   $('#end-date').val(end_date);
                                       //load locations
-                                      alert("loaded");
+                                      //alert("loaded");
                                       $.ajax({
                                         url:"../locations",
                                         type:"GET",
@@ -270,7 +270,7 @@ $(document).ready(function(){
                       });
                   $('.hidepanel').on('click',"#projectdelete",function(e){
                     e.preventDefault();
-                    alert("delete");
+                   // alert("delete");
                     var formData=new Object;
               
              formData.name=$("#name").text();  
@@ -285,11 +285,11 @@ $(document).ready(function(){
                             dataType:"json",
                             
                             success:function(){ 
-                                alert("success");
+                                //alert("success");
                                 location.reload();
                             },
                             error:function(){
-                              alert(formData.name);
+                              //alert(formData.name);
                               alert("error");
                              },
                             async:false
