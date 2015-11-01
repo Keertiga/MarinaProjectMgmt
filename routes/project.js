@@ -45,17 +45,29 @@ var activity=require('../models/activity.js');
 
     //Handle POST to update project
 	router.post('/update',function(req,res){
-
+    console.log("inside update");
 		var id={
 			category:req.body.details.category,
 			name:req.body.details.name
 
 		}
 		projectDetails.collection.update(id,req.body.details,function(err){
+      console.log("inside projectDetails update");
 			 if(err)
 	            res.json(err);
 	        res.json("Project Updated");
 		});
+    var log={
+           username:req.session.passport.user.name,
+           date:req.body.details.updated_at,
+           type:'Project Updated',
+           activityname:req.body.details.name
+        }
+        activity.collection.insert(log,function(err){
+          console.log("inside activitylog of update");
+            if(err)
+              res.json(err);
+        });
 
 	});
 
@@ -74,7 +86,18 @@ var activity=require('../models/activity.js');
 	            res.json(err);     
              res.json("Project Deleted");
 		});
-	
+	var log={
+           username:req.session.passport.user.name,
+           date:req.body.details.updated_at,
+           type:'Project Deleted',
+           activityname:req.body.details.name
+        }
+
+        activity.collection.insert(log,function(err){
+          console.log("inside activitylog of delete");
+            if(err)
+              res.json(err);
+        });
 
 	});
 

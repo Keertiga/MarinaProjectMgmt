@@ -50,6 +50,23 @@ var index=function(passport){
     });
 
 
+    //Handle About before and after login
+    router.get('/about-Home',function(req, res) {
+        res.render('about-Home');
+    });
+
+    //Handle Contact before and after login
+      router.get('/contact-Home',function(req, res) {
+        res.render('contact-Home');
+    });
+
+    //Handle FAQ before and after login
+      router.get('/faq-Home',function(req, res) {
+        res.render('faq-Home');
+    });
+
+
+
     // Handle POST signin
     router.post('/signin',passport.authenticate('signin',{
         successRedirect:'/home',
