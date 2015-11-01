@@ -109,15 +109,15 @@
             <table class="table table-hover"  id="benf-details">
               <thead>
                 <tr>  
-                  <th>Category</th>
+                  <th class="hidden-xs">Category</th>
                   <th>Project Name</th>
                   <th>Location</th>
-                  <th>Beneficiary Organization</th>
-                  <th>Beneficiary Name</th>
+                  <th class="hidden-xs">Beneficiary Organization</th>
+                  <th class="hidden-xs">Beneficiary Name</th>
                   <th>Funds</th>
-                  <th>Benefitted People</th>
-                  <th>Personnel</th>
-                  <th>Date</th>
+                  <th class="hidden-xs">Benefitted People</th>
+                  <th class="hidden-xs">Personnel</th>
+                  <th class="hidden-xs hidden-sm">Date</th>
                 </tr>
               </thead>
               <tbody>
@@ -225,15 +225,15 @@
                           var tr;
                           var deleteIcon;
                           tr = $('<tr class="details" id='+data[i]._id+'/>');
-                          tr.append("<td>" + data[i].Category + "</td>");
+                          tr.append("<td class='hidden-xs'>" + data[i].Category + "</td>");
                           tr.append("<td>" + data[i].ProjectName + "</td>");
                           tr.append("<td>" + data[i].Location + "</td>");
-                          tr.append("<td>" + data[i].Type + "</td>");
-                          tr.append("<td>" + data[i].Name + "</td>");
+                          tr.append("<td class='hidden-xs'>" + data[i].Type + "</td>");
+                          tr.append("<td class='hidden-xs'>" + data[i].Name + "</td>");
                           tr.append("<td>" + data[i].Funds + "</td>");
-                          tr.append("<td>" + data[i].NumPeopleBenefited + "</td>");
-                          tr.append("<td>" + data[i].TransOwner + "</td>");
-                          tr.append("<td>" + data[i].TransDate + "</td>");
+                          tr.append("<td class='hidden-xs'>" + data[i].NumPeopleBenefited + "</td>");
+                          tr.append("<td class='hidden-xs'>" + data[i].TransOwner + "</td>");
+                          tr.append("<td class='hidden-xs hidden-sm'>" + data[i].TransDate + "</td>");
 
                           deleteIcon=$(' <a href="#" id=trash><span class="glyphicon confirm-delete glyphicon-trash"></a>');
                           tr.append(deleteIcon);

@@ -62,7 +62,7 @@ var activity=require('../models/activity.js');
    
     //Handle POST to delete a project
 	router.post('/delete',function(req,res){
-		console.log(req.body.details);
+	
 		projectDetails.collection.remove({'name':req.body.details.name},function(err){
 			 if(err)
 	            res.json(err);     
