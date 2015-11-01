@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>View Projects</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="\css\bootstrap-duallistbox.min.css" rel="stylesheet" type="text/css" media="all">
+    <link rel='stylesheet' href='\css\bootstrap.min.css'/>
+    <link rel='stylesheet' href='\css\jquery-ui.min.css'/>
+    <link rel='stylesheet' href='\css\form.css'/>
+    <link rel='stylesheet' href='\css\profile.css' />
+
+    <script src="\js\jquery.js"></script>
+    <script src="\js\bootstrap.min.js"></script>
+
+</head>
+<body>
+
+
+
+   <div class="row">
+       <div class="col-md-8 col-md-offset-2">
+              <form  class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <div class="col-sm-8">
+                                <h3 align="center" class="pnav" id="name">Project Name</h3>
+                         </div>
+                    </div>
+                    <hr>
+
+
+                    <div class="form-group ">
+                        <label for="category" class="control-label col-sm-4 ">Project Category:</label>
+                        <div class="col-sm-8">
+                               <p class="pnav" id="category" name="category"></p>
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label for="Desc" class="control-label col-sm-4">Project Description:</label>
+                        <div class="col-sm-8">
+                            <input type="text" id="desc" class="form-control"  name="desc" required>
+                         
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lead" class=" control-label col-sm-4">Project Lead:</label>
+                        <div class="col-sm-8">
+                            <input type="text" id="lead"  class="form-control" name="lead" required >
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class=" control-label col-sm-4">Contact Email:</label>
+                        <div class="col-sm-8">
+                           <input type="email" id="email" class="form-control" name="email"  required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">    
+                        <label for="locations" class=" control-label col-sm-4 col-xs-12">Locations:</label>
+                      <div class="col-xs-12 col-sm-8">
+                                <select multiple="multiple" size="10" id="locations" required></select> 
+                                <span class="error" id="locationsError"></span>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group has-feedback">
+                        <label for="period" class=" control-label col-sm-4 col-xs-12">Project Timeframe:</label>
+                             <div class="col-sm-4 col-xs-6">
+                                <input type= "text" id="start-date" class=" form-control" placeHolder="Start Date" required>
+                                <i class="glyphicon glyphicon-calendar form-control-feedback"></i>
+                                <span class="error" id="startDateError"></span>
+                            </div>
+                            <div class="col-sm-4 col-xs-6">
+                                <input type= "text" id="end-date" class="form-control" placeholder="End Date" required>
+                                <i class="glyphicon glyphicon-calendar form-control-feedback"></i>
+                                <span class="error" id="endDateError"></span>
+                            </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="funds" class=" control-label col-sm-4 col-xs-12 ">Project Fund:</label>
+
+                        <div class="col-sm-6 col-xs-8">
+                            <input type="text" id="funds" class="form-control" name="funds" required><span class="error" id="fundsError"></span>
+                          </div>
+                            <div class="col-sm-2 col-xs-4">
+                              <input id="funds" class="form-control" value="INR" name="currency" >
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <div class="col-sm-offset-6 col-xs-12 col-xs-offset-3">
+                            <button class="btn btn-primary btn-lg" id="submit" type="submit">Save</button>
+                        </div>
+                    </div>
+                </form>
+              </div>
+          </div>
+   
+</body>
+
+
+    <script src="\js\jquery.js"></script> 
+    <script src="\js\jquery-ui.js"></script> 
+    <script src="\js\bootstrap.min.js"></script>
+    <script src="\js\jquery.bootstrap-duallistbox.min.js"></script>
+
+    <script type="text/javascript">
+    
+     $(document).ready(function(){
+
+
+                //For date control
+                $(".date-picker").datepicker();
+
+                //Date controls
+                $('#start-date , #end-date').datepicker().change(function(){
+                        $('.error').hide();
+                        isDateValid($(this));
+                });
+
+
+
+              //Start and end date validations
+              function isDateValid(dateObject){
+                   var start_date=new Date($('#start-date').val()).getTime();
+                   var end_date=new Date($('#end-date').val()).getTime();
+
+
+                  if( dateObject.attr('id')=="end-date" && isNaN(start_date)){
+                      $("#startDateError").html("Please give the start date too").show();
+                   }
+
+                   if(start_date>end_date){
+                      $("#endDateError").html("End date falls before start date").show();
+                  }
+              }
+
+
+           //For submitting data
+           $('#submit').on('click',function(e){
+                     
+                     e.preventDefault();
+                    //  var refresh="false";
+
+                     var selectedLoc=[];
+
+                      //Getting selected locations
+                      $('#bootstrap-duallistbox-selected-list_ option').each(function(i,selected){
+                          selectedLoc[i] = $(selected).text();
+                      });
+
+                       if(selectedLoc.length==0){
+                            $("#locationsError").html("  Please select locations").show();
+                            return false;
+                      }else{
+                            $("#locationsError").html("");  
+                      }
+
+                      var locations=[];
+
+                      //Forming JSON Array for locations
+                      for(var i=0;i<selectedLoc.length;i++){
+                          locations.push(selectedLoc[i]);
+                      }
+
+                      //Forming JSON object for form data to be sent to handle POST
+                      var formData=new Object;
+
+                    
+                      formData.category=$('#category').text();
+                      formData.name=$("#name").text();
+                      formData.desc=$("#desc").val();
+                      formData.lead=$("#lead").val();
+                      formData.email=$("#email").val();
+                      formData.start_date=$("#start-date").val();
+                      formData.end_date=$("#end-date").val();
+                      formData.locations=locations;
+                      formData.funds=$("#funds").val();
+                      formData.currency=$("#currency").val();
+                      formData.updated_at=Date.now();
+
+
+                     $.ajax({
+                            url:"../project/update",
+                            type:"POST",
+                            data:{
+                                details:formData
+                                },
+                            dataType:"json",
+                            success:function(){
+                              location.reload();
+                           var messagevalue= "Project has been Updated successfully";
+                                      $("#messagevalue").text(messagevalue);
+                                      $('#popupproject').removeClass('hidden');
+
+                                      window.setTimeout(function(){
+                                            $('#popupproject').addClass('hidden');
+                                      },3000)
+                                    
+                               },
+                            error:function(){
+                            
+                             },
+                            async:false
+                        });
+
+                        // $('#projectedit').removeClass('hidden');
+               
+                   });
+        
+                
+
+           });
+
+
+
+
+  </script>
+
+ </html>
+
