@@ -96,7 +96,7 @@
                     </div>
                      <div class="form-group">
                         <div class="col-sm-offset-6 col-xs-12 col-xs-offset-3">
-                            <button class="btn btn-primary" id="submit" type="submit">Save</button>
+                            <button class="btn btn-primary btn-lg" id="submit" type="submit">Save</button>
                         </div>
                     </div>
                 </form>
@@ -195,51 +195,15 @@
                                 },
                             dataType:"json",
                             success:function(){
-                          
-                                    var pro_name = $("#name").text();
-                                    var category=$('#category').text();
-
-                                    //load view mode of project
-                                    $('#viewcontent').load('/project/view',function(){
-
-                                          $.ajax({
-                                                url:"../project/data",
-                                                type:"GET",
-                                                data:"category="+category+"&name="+pro_name,
-                                                headers:{"Accept":"application/json;odata=verbose"},
-                                                success:function(data){
-                                                     
-                                                    for(var i in data){
-                                                      
-                                                        $('#category').text(data[i].category);
-                                                        $('#name').text(data[i].name);
-                                                        $('#desc').text(data[i].desc);
-                                                        $('#lead').text(data[i].lead);
-                                                        $('#email').text(data[i].email);
-                                                        $('#locations').text(data[i].locations);  
-                                                        $('#date').text(data[i].start_date+" to "+data[i].end_date);
-                                                        $('#funds').text(data[i].funds);
-                                                    }
-                                                   
-                                                   
-                                                },
-                                                error:function(data){
-                                                    alert("error");
-                                                }
-                                         });
-                                      });
-                                      
-                                      //Display message
-                                      var messagevalue= "Project has been Updated successfully";
+                              location.reload();
+                           var messagevalue= "Project has been Updated successfully";
                                       $("#messagevalue").text(messagevalue);
-                                      $('#prosuccess').removeClass('hidden');
+                                      $('#popupproject').removeClass('hidden');
 
                                       window.setTimeout(function(){
-                                            $('#prosuccess').addClass('hidden');
+                                            $('#popupproject').addClass('hidden');
                                       },3000)
-
-                                       //clear the form
-                                      $('form').find("input[type=text],input[type=email],select").val("");
+                                    
                                },
                             error:function(){
                             
@@ -247,7 +211,7 @@
                             async:false
                         });
 
-                         $('#projectedit').removeClass('hidden');
+                        // $('#projectedit').removeClass('hidden');
                
                    });
         

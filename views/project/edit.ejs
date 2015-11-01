@@ -52,25 +52,23 @@
              
     <div class="container">
 
-        <!--Success message pop up-->
-        <div id="popupproject" class="hidden">
-            <div class="col-md-12">
-                <div class="alert alert-success alert-dismissable">  
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
-                      ×
-                    </button>
-                    <h4 align="center" id="messagevalue">
-                      Project has been updated successfully!!!!!
-                    </h4>
-                </div>
-              </div>
-            </div>
 
+
+          <div id="prosuccess" class="hidden">  
+              <span class="success-msg">       
+                 <h4 id="messageupdate">Project has been updated successfully!!!!!<span class="glyphicon glyphicon-ok"></h4> 
+              </span> 
+         </div>
+        <div id="prodelete" class="hidden">  
+              <span class="success-msg">       
+                 <h4 id="messagedelete">Project has been deleted successfully!!!!!<span class="glyphicon glyphicon-ok"></h4> 
+              </span> 
+         </div>
 
          <!--navigation bar for projects-->      
          <div class="row">
-              <div class="col-sm-3 colldiv">
-                <div class="sidebar-nav">
+              <div class="col-sm-3 colldiv" >
+                <div class="sidebar-nav" style="padding-top : 15px">
                   <div class="navbar navbar-default" role="navigation">
                     <div class="navbar-header">
                       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar">
@@ -80,8 +78,8 @@
                       </button>
                       <span class="visible-xs navbar-brand">Projects</span>
                     </div>
-                    <div class="collapse navbar-collapse sidebar" id="sidebar">
-                      <ul id="projectlist" class="nav navbar-nav pagination-sm">  
+                    <div class="collapse navbar-collapse sidebar"  id="sidebar">
+                      <ul id="projectlist"  class="nav navbar-nav pagination-sm">  
                          <!--project list goes here-->
                       </ul>
                     </div><!--nav-collapse -->
@@ -93,7 +91,7 @@
         <!--Action drop down-->
         <div  id="mainprojectcontent" >
               <div class="col-md-8">
-                  <div class="col-md-4 col-md-offset-8" align="right">
+                  <div class="col-md-4 col-md-offset-8 " align="right" style="padding-bottom:10px">
                       <div class="btn-group" align="right">
                          <button class="btn btn-primary">Action</button> 
                          <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle">
@@ -112,13 +110,11 @@
                 <!--Main pane-->
                 <div id="viewcontent" class="col-sm-8 panel panel-default"></div>
        </div>
-
-        <div>
-            <ul id='pagination-proj'></ul>
-        </div>
-  
-    </div>
   </div>
+  </div>
+        <div>
+            <div id='pagination-proj' class="navalign"></div>
+        </div>
 
           <!--confirm modal for deletion-->
           <div class="modal fade" id="confirmModal">
@@ -170,7 +166,8 @@
     
      $(document).ready(function(){
 
-               alert($(window).width());
+            
+
                //Pagination code starts
                var rcount = 1;
 
@@ -184,7 +181,7 @@
                      success:function(data){
 
                              var rcount =data;
-                             var pcount = (parseInt(rcount%10)===0)?(parseInt(rcount/10)):(parseInt(rcount/10) +1);
+                             var pcount = (Math.ceil(rcount/10));
                              var visiblecount = (pcount>5)?5:pcount;
                              var pagcount =10;
 
@@ -353,7 +350,7 @@
 
                                   //For populating locations list
                                   $.ajax({
-                                        url:"../locations",
+                                        url:"../AllLocations",
                                         type:"GET",
                                         headers:{"Accept":"application/json;odata=verbose"},
                                         success:function(data){
@@ -362,18 +359,18 @@
                                             
                                               for(var i in data){
                                                  if(locarr.length === 0){
-
-                                                     var item=$('<option>'+data[i]+'</option>');
+                                            
+                                                     var item=$('<option>'+data[i].location+'</option>');
                                                      $('#locations').append(item);  
 
                                                   }else{
 
-                                                     if($.inArray(data[i], locarr)>-1) {
-                                                          var item=$('<option selected="selected">'+data[i]+'</option>');
+                                                     if($.inArray(data[i].location, locarr)>-1) {
+                                                          var item=$('<option selected="selected">'+data[i].location+'</option>');
                                                           $('#locations').append(item);
                                                       }
                                                      else{
-                                                          var item=$('<option>'+data[i]+'</option>');
+                                                          var item=$('<option>'+data[i].location+'</option>');
                                                           $('#locations').append(item);
                                                      }
                                                   }
@@ -431,6 +428,7 @@
                 var formData=new Object;
                 formData.name=$("#name").text();
                 formData.category=$("#category").text();
+                formData.updated_at=new Date();
                  
                   $.ajax({
                             url:"../project/delete",
@@ -445,9 +443,9 @@
                                   var messagevalue= "Project has been deleted successfully"; // incase if we want to append any id
                                   $("#messagevalue").text(messagevalue);
 
-                                  $('#popupproject').removeClass('hidden');
+                                  $('#prodelete').removeClass('hidden');
                                     window.setTimeout(function(){
-                                      $('#popupproject').addClass('hidden');
+                                      $('#prodelete').addClass('hidden');
                                       location.reload();
                                     },3000)
 

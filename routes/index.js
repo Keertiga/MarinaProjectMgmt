@@ -19,13 +19,19 @@ var isLoggedIn=function(req,res,next){
     res.redirect('/');
 }
 
-
+router.get('/viewall',isLoggedIn,function(req,res){
+        projectDetails.find({},function(err,data){
+            if(!err)
+                res.send(data);
+        });
+        //res.render('project');
+    });
 //function to handle sign in/sign up features
 var index=function(passport){
 
     // GET login page
     router.get('/', function(req, res) {
-        res.render('index', { title: 'Project Management' });
+        res.render('index', { msg: req.flash('msg') });
     });
 
     //Handle About before and after login
@@ -42,6 +48,23 @@ var index=function(passport){
       router.get('/faq',function(req, res) {
         res.render('faq');
     });
+
+
+    //Handle About before and after login
+    router.get('/about-Home',function(req, res) {
+        res.render('about-Home');
+    });
+
+    //Handle Contact before and after login
+      router.get('/contact-Home',function(req, res) {
+        res.render('contact-Home');
+    });
+
+    //Handle FAQ before and after login
+      router.get('/faq-Home',function(req, res) {
+        res.render('faq-Home');
+    });
+
 
 
     // Handle POST signin

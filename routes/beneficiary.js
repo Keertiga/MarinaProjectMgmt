@@ -13,7 +13,7 @@ var activity=require('../models/activity.js');
 
   //GET create beneficiary page
   router.get('/',isLoggedIn,function(req,res){
-  	res.render('beneficiary');
+  	res.render('beneficiary',{msg:''});
   });
 
   //GET edit beneficiary page
@@ -51,7 +51,8 @@ var activity=require('../models/activity.js');
                 benfDetails.collection.insert(data,function(err){  
                      if(err)
                         res.json(err);
-                     res.redirect(req.get('referer'));
+                    
+                     res.render('beneficiary',{'msg':'success'});
                  });
           });
 
@@ -109,8 +110,8 @@ var activity=require('../models/activity.js');
 
       benfDetails.collection.update({_id:id},data,function(err){
             if(err)
-              throw err;
-            res.json("success");
+              res.json(err);
+           
       });
       
       //Data formation for activity log
@@ -124,7 +125,8 @@ var activity=require('../models/activity.js');
         //Insert into activity data store
         activity.collection.insert(log,function(err){
             if(err)
-              res.json(err);
+               res.json(err);
+
         });
 
   });
@@ -154,6 +156,8 @@ var activity=require('../models/activity.js');
      
       //Getting the data based on the filter
       benfDetails.find(query,function(err,data){
+         if(err)
+           res.json(err);
          res.json(data);
       });
 

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Project creation</title>
@@ -42,6 +42,13 @@
         <h3 class="lead"><strong>Create a New Project</strong></h3> 
        </div>
     </div>
+
+      <!--pop up for success message-->
+    <div id="success" class="hidden">  
+        <span class="success-msg">       
+           <h4>Project Created Successfully <span class=" glyphicon glyphicon-ok"></span></h4>   
+        </span> 
+   </div>
 
 
     <div class="container beneficiary">
@@ -101,12 +108,12 @@
                     <div class="form-group has-feedback">
                         <label for="period" class=" control-label col-sm-4 col-xs-12">Project Timeframe</label>
                         <div class="col-sm-4 col-xs-6">
-                            <input type= "text" id="start-date" class=" form-control" placeHolder="Start Date">
+                            <input type= "text" id="start-date" class=" form-control" placeHolder="Start Date" required>
                             <i class="glyphicon glyphicon-calendar form-control-feedback"></i>
                             <span class="error" id="startDateError"></span>
                         </div>
                         <div class="col-sm-4 col-xs-6">
-                            <input type= "text" id="end-date" class="form-control" placeholder="End Date">
+                            <input type= "text" id="end-date" class="form-control" placeholder="End Date" required>
                             <i class="glyphicon glyphicon-calendar form-control-feedback"></i>
                             <span class="error" id="endDateError"></span>
                         </div>
@@ -120,15 +127,14 @@
                         </div>
 
                         <div class="col-sm-2 col-xs-4">
-                              <input id="funds" class="form-control" value="INR" name="currency" required>
+                              <input id="funds" class="form-control" value="INR" name="currency" readonly>
                         </div>
                     </div>
 
 
                     <div class="form-group">
                         <div class="col-sm-offset-6 col-xs-12 col-xs-offset-3">
-                            
-                             <button class="btn btn-primary" id="submit" > Add Project</button>
+                             <button class="btn btn-primary" id="submit" type="submit"> Add Project</button>
                         </div>
                     </div>
                 </form>
@@ -285,21 +291,16 @@
 
            //For submitting data
            $('#submit').on('click',function(e){
-                     
+                               
                       var selectedLoc=[];
+                      var isFormEmpty="false";
 
                       //Getting selected locations
                       $('#bootstrap-duallistbox-selected-list_ option').each(function(i,selected){
                           selectedLoc[i] = $(selected).text();
                       });
 
-                      if(selectedLoc.length==0){
-                            $("#locationsError").html("  Please select locations").show();
-                            return false;
-                      }else{
-                            $("#locationsError").html("");  
-                      }
-
+                
 
                       var locations=[];
 
@@ -307,7 +308,8 @@
                       for(var i=0;i<selectedLoc.length;i++){
                           locations.push(selectedLoc[i]);
                       }
-
+ 
+ 
                       //Forming JSON object for form data to be sent to handle POST
                       var formData=new Object;
                       
@@ -318,26 +320,44 @@
                       formData.email=$("#email").val();
                       formData.start_date=$("#start-date").val();
                       formData.end_date=$("#end-date").val();
-                      formData.locations=locations;
                       formData.funds=$("#funds").val();
                       formData.currency=$("#currency").val();
                       formData.updated_at=new Date();
+                      
+                      
+                      //Check for empty fields
+                      if(formData["category"]=="" || formData["name"]=="" ||formData["desc"]=="" ||formData["lead"]==""||formData["email"]==""||formData["start_date"]==""||formData["end_date"]==""||formData["funds"]==""||formData["currency"]||formData["updated_at"]==""){
+                             var isFormEmpty=true;
+                      }
+                      
+                      if(selectedLoc.length==0 && isFormEmpty=="false"){
+                            $("#locationsError").html("  Please select locations").show();
+                            return false;
+                      }else{
+                            $("#locationsError").html(""); 
+                             formData.locations=locations;
 
-                      $.ajax({
-                            url:"../project/create",
-                            type:"POST",
-                            data:{
-                                details:formData
-                                },
-                            dataType:"json",
-                            success:function(){
-                                 
-                             },
-                            error:function(){
-                            
-                             },
-                            async:false
-                        });
+                      }
+
+                      if(isFormEmpty=="false"){
+                           $.ajax({
+                                  url:"../project/create",
+                                  type:"POST",
+                                  data:{
+                                      details:formData
+                                      },
+                                  dataType:"json",
+                                  success:function(){
+                                         $('#success').removeClass('hidden');
+                                         window.setTimeout(function(){location.reload()},20000)
+                                   },
+                                  error:function(){
+                                  
+                                   },
+                                  async:false
+                              });
+                    } 
+              
 
 
                    });
